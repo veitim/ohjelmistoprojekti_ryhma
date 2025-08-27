@@ -7,6 +7,7 @@
 ## Työjonot
 
 ## Roolit
+Roolit jaetaan kokouksen yhteydessä.
 
 ## Kokoukset
 
