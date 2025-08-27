@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ScrumOhje
 
 ## Scrum-syklin yleiskuvaus
@@ -10,4 +11,13 @@
 
 ## Kokoukset
 
-## Miksi Scrum Toimii?
+###
+=======
+
+
+
+
+
+## testihommeli
+1. 1
+2. 2
