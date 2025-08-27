@@ -18,7 +18,8 @@ Scrum toimii, koska se yhdistää selkeän rakenteen ja jatkuvan oppimisen, joll
 ###
 =======
 
-
+## Onko scrum sen arvoista ?
+Scrum on wörtti, koska se saa koko ryhmän toimimaan
 
 
 
