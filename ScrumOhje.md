@@ -1,7 +1,13 @@
 # ScrumOhje
 
-## Kappale
+## Scrum-syklin yleiskuvaus
 
-### 
+## Sprintit
 
-##### Testi
+## Työjonot
+
+## Roolit
+
+## Kokoukset
+
+## Miksi Scrum Toimii?
