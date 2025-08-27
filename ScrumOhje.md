@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 # ScrumOhje
 
 ## Kappale
 
-### 
+###
+=======
 
-##### Testi
+
+
+
+
+## testihommeli
+1. 1
+2. 2
