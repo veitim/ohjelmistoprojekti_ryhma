@@ -4,6 +4,8 @@
 
 ## Sprintit
 
+Sprintti on, kuin miniprojekti. Tehdään yksi asia kerralla 
+
 ## Työjonot
 
 ## Roolit
