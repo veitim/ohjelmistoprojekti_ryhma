@@ -36,28 +36,26 @@ Roolit jaetaan kokouksen yhteydessä.
 
 Scrumissa käytävät kokoukset ovat:
 
-#### Sprintin suunnittelu
+### Sprintin suunnittelu
 
 Miten ja mitä sprintin aikana pitäisi saada tehdyksi. 
 
-#### Päivittäinen scrum
+### Päivittäinen scrum
 
 Päivittäinen lyhyt palaveri (15min), joka käydään samassa paikassa ja samaan aikaan. Käydään lävitse, että missä mennään ja miten sujuu.
 
-#### Sprintin katselmointi
+### Sprintin katselmointi
 
 Scrum-tiimi esittelee sprintin aikana luodun tuotoksen ja vastaanottaa palautteen. Tässä vaiheesa käydään myös lävitse, että mitä pävityksiä tuotejonoon tehdään.
 
-#### Sprintin retrospektiivi
+### Sprintin retrospektiivi
 
 Tässä scrum-tiimi yhdessä käy läpi, että miten sprintti meni tiimin mielestä. Pohidtaan mitä voitaisiin tehdä paremmin ja miten.
 
 ## Miksi Scrum Toimii?
+
 Scrum toimii, koska se yhdistää selkeän rakenteen ja jatkuvan oppimisen, jolloin tiimit pystyvät reagoimaan muutoksiin nopeasti
 
 ## Onko scrum sen arvoista ?
+
 Scrum on wörtti, koska se saa koko ryhmän toimimaan järkevästi. Jotain toimintamalli aina tarvitaan, näin tämä onkin kätevä. Githubilla on siis iso rooli projektin tilaan.
-
-
-
-
