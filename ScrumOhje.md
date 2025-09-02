@@ -1,6 +1,6 @@
 # ScrumOhje
 
-Tässä ohjeessa käydään läpi scrumin yleiskuvaa ja miten tätä sovellettaan stackhackereiden projketissa.
+Tässä ohjeessa käydään läpi scrumin yleiskuvaa.
 
 ## Scrum-syklin yleiskuvaus
 
@@ -15,11 +15,11 @@ Scrum-sykli:
 
 ## Sprintit
 
-Sprintin aikana noudatetaan sprinttisuunnitelmaa. Eli sprinttisuunnitelma määrittää mitä sprintin aikana pitää saada tehdyksi ja tähän suunnitelmaan ei tehdä muutoksia. 
-
-Alustavan suunnitelman mukaan projekti-sprintit tulevat olemaan viikon mittaisia.
+Sprintin aikana noudatetaan sprinttisuunnitelmaa, joka luoodaan jokaisen sprintin alussa. Eli sprinttisuunnitelma määrittää mitä sprintin aikana pitää saada tehdyksi ja tähän suunnitelmaan ei tehdä muutoksia.
 
 ## Työjonot
+
+Työjono voi olla tuotejono tai sprinttijono. Tuotejono on koko projektin kattava työlistä ja sprinttijono on sprintin aikana määritetyt tehtävät. Eli Tuotejono määrittää mitkä osiot/komponentit täytyy olla valmiina, että projektia voidaan valmiiksi kutsua. Sprinttijono määrittää mitkä palaset täytyy suorittaa, jotta osio/komponentti on valmis. 
 
 ## Roolit
 
