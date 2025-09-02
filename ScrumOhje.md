@@ -23,6 +23,13 @@ Työjono voi olla tuotejono tai sprinttijono. Tuotejono on koko projektin kattav
 
 ## Roolit
 
+Scrum-tiimi koostuu:
+* Kehittäjistä
+* Tuotteen omistajasta
+* Scrum masterista
+
+Kehittäjät suorittavat sprintit. Scrum master organisoi tuotteen/tiimin kehittämistä/kehitystä. Tuotteen omistaja vastaa tuotteen arvon maksimoinnista, eli mitä tehdään seuraavaksi.
+
 ## Kokoukset
 
 ## Miksi Scrum Toimii?
