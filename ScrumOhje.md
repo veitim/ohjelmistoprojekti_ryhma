@@ -21,6 +21,7 @@ Sprintin aikana noudatetaan sprinttisuunnitelmaa, joka luoodaan aina jokaisen sp
 
 Työjono voi olla tuotejono tai sprinttijono. Tuotejono on koko projektin kattava työlista kun taas sprinttijono on sprintin aikana määritetyt tehtävät. Eli Tuotejono määrittää mitkä osiot/komponentit täytyy olla valmiina, että projektia voidaan valmiiksi kutsua. Sprinttijono määrittää mitkä palaset täytyy suorittaa, jotta osio/komponentti on valmis. 
 
+
 ## Roolit
 
 Scrum-tiimi koostuu:
