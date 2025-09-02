@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ScrumOhje
 
 Tässä ohjeessa käydään läpi scrumin yleiskuvaa.
@@ -55,8 +54,6 @@ Tässä scrum-tiimi yhdessä käy läpi, että miten sprintti meni tiimin mieles
 
 ## Miksi Scrum Toimii?
 Scrum toimii, koska se yhdistää selkeän rakenteen ja jatkuvan oppimisen, jolloin tiimit pystyvät reagoimaan muutoksiin nopeasti
-###
-=======
 
 ## Onko scrum sen arvoista ?
 Scrum on wörtti, koska se saa koko ryhmän toimimaan järkevästi. Jotain toimintamalli aina tarvitaan, näin tämä onkin kätevä. Githubilla on siis iso rooli projektin tilaan.
