@@ -4,9 +4,18 @@ Tässä ohjeessa käydään läpi scrumin yleiskuvaa ja miten tätä sovellettaa
 
 ## Scrum-syklin yleiskuvaus
 
+Tarkoituksena on saada valmis kokonaisprojekti, joten alkuun pohditaan mistä palasista projekti koostuu. Palaset muodostavat työjonon, joita työstetään sprinttien aikana (tuotejono päivittyy mahdollisesti projetkin edetessä). Eli valmis kokonaisuus rakennetaana komponentti kerrallaan vaihe kerrallaan.
+
+Scrum-sykli:
+* 1 Valitaan tuotejonosta tärkein kappale
+* 2 Tehdään sprinttisuunnitelma (mitä sprintin aikana pitäisi saada valmiiksi)
+* 3 Suoritetaan sprintille (tyypillisesti 1-4 viikkoa) määritetyt tavoitteet.
+* 4 Tarkastellaan sprintin aikana saatu tuotos ja päivitetään työjono.
+* 5 Arvioidaan sprintti, eli miten meni ja mitä/miten voisi tehdä paremmin.
+
 ## Sprintit
 
-Sprintit ovat tyypillisesti 1-4 viikon mittaisia syklejä, minkä aikana tarkoitus on tuottaa toimiva komponentti. Sprintin aihe valikoituu tuotejonon prioriteetin perusteella.
+Sprintin aikana noudatetaan sprinttisuunnitelmaa. Eli sprinttisuunnitelma määrittää mitä sprintin aikana pitää saada tehdyksi ja tähän suunnitelmaan ei tehdä muutoksia. 
 
 Alustavan suunnitelman mukaan projekti-sprintit tulevat olemaan viikon mittaisia.
 
