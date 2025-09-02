@@ -49,6 +49,6 @@ Scrum-tiimi esittelee sprintin aikana luodun tuotoksen ja vastaanottaa palauttee
 
 #### Sprintin retrospektiivi
 
-Tässä scrum-tiimi yhdessä käy läpi, että miten sprintti meni tiimin mielestä. Pohidtaan mitä voitaisiin tehdä paremmin ja miten. 
+Tässä scrum-tiimi yhdessä käy läpi, että miten sprintti meni tiimin mielestä. Pohidtaan mitä voitaisiin tehdä paremmin ja miten.
 
 ## Miksi Scrum Toimii?
