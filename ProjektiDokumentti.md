@@ -1,6 +1,6 @@
 # TicketGuru-projekti #
 
-Tiimi: Jari Kuusikko, Timo Veijalainen, Markus Ovaska, Anton Mattila, Semere Samuel Fizur
+Tiimi: Jari Kuusikko, Timo Veijalainen, Markus Ovaska, Anton Mattila, Samuel Fizum
 ## Johdanto ##
 
 Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
