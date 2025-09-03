@@ -19,7 +19,7 @@ Määrittelyssä järjestelmää tarkastellaan käyttäjän näkökulmasta. Jär
 
 Kuvauksissa kannattaa harkita, mikä on toteuttajalle ja asiakkaalle oleellista tietoa ja keskittyä siihen.
 
-##Käyttöliittymä
+## Käyttöliittymä
 Tärkeimmät käyttöliittymän näkymät:
 - Etusivu ja kirjautuminen
 - Käyttäjän etusivu
