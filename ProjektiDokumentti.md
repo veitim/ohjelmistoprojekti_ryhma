@@ -1,14 +1,13 @@
-Projektin nimi
+# TicketGuru-projekti #
 
-Tiimi: Etunimi Sukunimi, Etunimi Sukunimi
-Johdanto
+Tiimi: Jari Kuusikko, Timo Veijalainen, Markus Ovaska, Anton Mattila, Semere Samuel Fizur
+## Johdanto ##
 
-Johdantoon kirjoitetaan lyhyt, ytimekäs kuvaus siitä, mikä on projektin aihe, kuka on asiakas (käyttäjä), mitä hän haluaa ja saa järjestelmältä, mitä tekniikoita käytetään ja mitä konkreettisesti on valmiina, kun projekti päättyy.
+Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
 
-    Järjestelmän tarkoitus ja tiivis kuvaus siitä, mistä on kyse ja kenelle järjestelmä on tarkoitettu.
-    Toteutus- ja toimintaympäristö lyhyesti:
-        Palvelinpuolen ratkaisut ja teknologiat (esim. palvelinteknologia, mikä tietokantajärjestelmä on käytössä)
-        Käyttöliittymäratkaisut ja teknologiat (esim. päätelaitteet: puhelin, täppäri, desktop)
+ Järjestelmä toteutetaan Spring Boot ympäristössä.
+
+Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelaitetyypeillä. Jatkokehityksessä on tarkoituksena luoda myös verkkokauppa lipunostoa varten
 
 Järjestelmän määrittely
 
