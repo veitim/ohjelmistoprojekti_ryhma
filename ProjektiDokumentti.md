@@ -19,11 +19,15 @@ Määrittelyssä järjestelmää tarkastellaan käyttäjän näkökulmasta. Jär
     Lyhyt kuvaus käyttötapauksista tai käyttäjätarinat
 
 Kuvauksissa kannattaa harkita, mikä on toteuttajalle ja asiakkaalle oleellista tietoa ja keskittyä siihen.
-Käyttöliittymä
 
-Esitetään käyttöliittymän tärkeimmät (vain ne!) näkymät sekä niiden väliset siirtymät käyttöliittymäkaaviona.
+##Käyttöliittymä
+Tärkeimmät käyttöliittymän näkymät:
+- Etusivu ja kirjautuminen
+- Käyttäjän etusivu
+- Toimintonäkymä(Myynti ja osto tilanteissa)
+- Listaus- tai hakunäkymä
+- profiilinäkymä
 
-Jos näkymän tarkoitus ei ole itsestään selvä, se pitää kuvata lyhyesti.
 Tietokanta
 
 Järjestelmään säilöttävä ja siinä käsiteltävät tiedot ja niiden väliset suhteet kuvataan käsitekaaviolla. Käsitemalliin sisältyy myös taulujen välisten viiteyhteyksien ja avainten määritykset. Tietokanta kuvataan käyttäen jotain kuvausmenetelmää, joko ER-kaaviota ja UML-luokkakaaviota.
