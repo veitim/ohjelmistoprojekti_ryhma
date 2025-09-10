@@ -1,6 +1,20 @@
 # TicketGuru-projekti #
 
-Tiimi: Jari Kuusikko, Timo Veijalainen, Markus Ovaska, Anton Mattila, Samuel Fizum
+Tämä projekti on tehty osana Haaga-Helian Ohjelmistoprojekti 1 - SOF005AS3A-3021 kurssia (syksy 2025).
+
+Projektin jäsenet (scrum-tiimi):
+
+* Jari Kuusikko
+* Anton Mattila
+* Markus Ovaska
+* Samuel Fizum Semere
+* Timo Veijalainen
+
+Kurssitoteutuksen vetäjät (tuotteenomistajat):
+
+* Petteri Lappalainen
+* Markku Ruonavaara
+
 ## Johdanto ##
 
 Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
@@ -13,21 +27,21 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 
 ## Käyttäjäroolit:
 
-* Asiakas
+### Asiakas
 
-Epäsuorasti käyttää järjestelmää
+* Epäsuorasti käyttää järjestelmää
 
-* Lipunmyyjä
+### Lipunmyyjä
 
-Järjestelmän pääkäyttäjä. Eli henkilö, joka myy ja tulostaa liput asiakkaalle.
+* Järjestelmän pääkäyttäjä. Eli henkilö, joka myy ja tulostaa liput asiakkaalle.
 
-* Lipuntarkastaja
+### Lipuntarkastaja
 
-Henkilö, joka tarkastaa lipun aitouden ja sen, että onko tämä käytetty.
+* Henkilö, joka tarkastaa lipun aitouden ja sen, että onko tämä käytetty.
 
-* Järjestelmän ylläpitäjä
+### Järjestelmän ylläpitäjä
 
-Pitää huolen siitä, että järjestelmä toimii oikein.
+* Pitää huolen siitä, että järjestelmä toimii oikein.
 
 ## Käyttäjätarinat:
 
