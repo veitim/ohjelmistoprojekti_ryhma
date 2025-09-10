@@ -1,7 +1,7 @@
 ## Käyttäjäroolit:
 
 * Asiakas
-* Lipunmyyntipisteen myyjä
+* Lipunmyyjä
 * Lipuntarkastaja
 * Järjestelmän ylläpitäjä
 
