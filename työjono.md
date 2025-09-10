@@ -35,4 +35,10 @@ Lipunmyyjä haluaa pystyä valita lipun tyypin. Aikuinen, lapsi tai erityisryhm�
 
 Järjestelmän ylläpitäjä haluaa pystyä määrittämään uusia lipputyyppejä.
 
-###
+### Tarina 8
+
+Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), jotta hänen ei tarvitse kantaa paperilippua mukanaan.
+
+Tarina 9
+
+Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
