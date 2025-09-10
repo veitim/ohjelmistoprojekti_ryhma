@@ -27,8 +27,12 @@ Järjestelmän ylläpitäjä haluaa kyetä jatkokehittämään järjestelmään,
 
 Lipunmyyjä haluaa tulostaa myymättömät liput ovelle kerralla ilman suurempaa päänvaivaa.
 
-###
+### Tarina 6
 
-###
+Lipunmyyjä haluaa pystyä valita lipun tyypin. Aikuinen, lapsi tai erityisryhmä.
+
+### Tarina 7
+
+Järjestelmän ylläpitäjä haluaa pystyä määrittämään uusia lipputyyppejä.
 
 ###
