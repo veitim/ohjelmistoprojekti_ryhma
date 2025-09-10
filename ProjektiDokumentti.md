@@ -14,9 +14,20 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 ## Käyttäjäroolit:
 
 * Asiakas
+
+Epäsuorasti käyttää järjestelmää
+
 * Lipunmyyjä
+
+Järjestelmän pääkäyttäjä. Eli henkilö, joka myy ja tulostaa liput asiakkaalle.
+
 * Lipuntarkastaja
+
+Henkilö, joka tarkastaa lipun aitouden ja sen, että onko tämä käytetty.
+
 * Järjestelmän ylläpitäjä
+
+Pitää huolen siitä, että järjestelmä toimii oikein.
 
 ## Käyttäjätarinat:
 
