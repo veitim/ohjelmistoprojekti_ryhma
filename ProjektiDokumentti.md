@@ -27,21 +27,17 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 
 ## Käyttäjäroolit:
 
-### Asiakas
+### * Asiakas: 
+Ostaa lipun myyntipisteessä ja jatkossa verkkokaupassa. Haluaa varman pääsyn tapahtumaan lipulla. Voi saada lipun joko paperitulosteena tai säköisenä.
 
-* Epäsuorasti käyttää järjestelmää
+### * Lipunmyyjä: 
+Myy ja tulostaa liput myyntipisteessä. Tulostaa jäljellä olevat liput ovimyyntiä varten. Valitsee lipputyypin (aikuinen, lapsi, erityisryhmä).
 
-### Lipunmyyjä
+### * Lipuntarkastaja:
+ Skannaa lipun ovella ja merkitsee sen käytetyksi. Saa järjestelmältä välittömän tiedon, onko lippu kelvollinen.
 
-* Järjestelmän pääkäyttäjä. Eli henkilö, joka myy ja tulostaa liput asiakkaalle.
-
-### Lipuntarkastaja
-
-* Henkilö, joka tarkastaa lipun aitouden ja sen, että onko tämä käytetty.
-
-### Järjestelmän ylläpitäjä
-
-* Pitää huolen siitä, että järjestelmä toimii oikein.
+### * Järjestelmän ylläpitäjä:
+ Lisää ja muokkaa tapahtumia, lippuja ja lipputyyppejä. Hallinnoi käyttäjätilejä ja oikeuksia. Näkee raportteja myynneistä ja tapahtumista. Vastaa järjestelmän toiminnasta ja jatkokehityksestä.
 
 ## Käyttäjätarinat:
 
