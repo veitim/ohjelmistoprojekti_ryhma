@@ -1,6 +1,20 @@
 # TicketGuru-projekti #
 
-Tiimi: Jari Kuusikko, Timo Veijalainen, Markus Ovaska, Anton Mattila, Samuel Fizum
+Tämä projekti on tehty osana Haaga-Helian Ohjelmistoprojekti 1 - SOF005AS3A-3021 kurssia (syksy 2025).
+
+Projektin jäsenet (scrum-tiimi):
+
+* Jari Kuusikko
+* Anton Mattila
+* Markus Ovaska
+* Samuel Fizum Semere
+* Timo Veijalainen
+
+Kurssitoteutuksen vetäjät (tuotteenomistajat):
+
+* Petteri Lappalainen
+* Markku Ruonavaara
+
 ## Johdanto ##
 
 Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
@@ -11,13 +25,57 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 
 ## Järjestelmän määrittely
 
-Määrittelyssä järjestelmää tarkastellaan käyttäjän näkökulmasta. Järjestelmän toiminnot hahmotellaan käyttötapausten tai käyttäjätarinoiden kautta, ja kuvataan järjestelmän käyttäjäryhmät.
+## Käyttäjäroolit:
 
-    Lyhyt kuvaus käyttäjäryhmistä (rooleista)
-    Käyttäjäroolit ja roolien tarvitsemat toiminnot, esim. käyttötapauskaaviona (use case diagram) tai käyttäjätarinoina.
-    Lyhyt kuvaus käyttötapauksista tai käyttäjätarinat
+### * Asiakas: 
+Ostaa lipun myyntipisteessä ja jatkossa verkkokaupassa. Haluaa varman pääsyn tapahtumaan lipulla. Voi saada lipun joko paperitulosteena tai säköisenä.
 
-Kuvauksissa kannattaa harkita, mikä on toteuttajalle ja asiakkaalle oleellista tietoa ja keskittyä siihen.
+### * Lipunmyyjä: 
+Myy ja tulostaa liput myyntipisteessä. Tulostaa jäljellä olevat liput ovimyyntiä varten. Valitsee lipputyypin (aikuinen, lapsi, erityisryhmä).
+
+### * Lipuntarkastaja:
+ Skannaa lipun ovella ja merkitsee sen käytetyksi. Saa järjestelmältä välittömän tiedon, onko lippu kelvollinen.
+
+### * Järjestelmän ylläpitäjä:
+ Lisää ja muokkaa tapahtumia, lippuja ja lipputyyppejä. Hallinnoi käyttäjätilejä ja oikeuksia. Näkee raportteja myynneistä ja tapahtumista. Vastaa järjestelmän toiminnasta ja jatkokehityksestä.
+
+## Käyttäjätarinat:
+
+### Tarina1
+
+Lipunmyyjä haluaa pystyä myymään ja tulostamaan useita lippuja yhdelle asiakkaalle, jotta myyminen olisi tehokkaampaa.
+
+### Tarina 2
+
+Asiakas haluaa, että hän pääsee lippunsa kanssa takuuvarmasti tapahtumaan.
+
+### Tarina 3
+
+Lipuntarkastaja haluaisi, että liput voidaan lukea lukulaitteella. Näin ei tarvitse pitää lippulistoja, joita yliviivamalla merkataan käytetyt liput.
+
+### Tarina 4
+
+Järjestelmän ylläpitäjä haluaa kyetä jatkokehittämään järjestelmään, vaikka tämä olisi käytössä.
+
+### Tarina 5
+
+Lipunmyyjä haluaa tulostaa myymättömät liput ovelle kerralla ilman suurempaa päänvaivaa.
+
+### Tarina 6
+
+Lipunmyyjä haluaa pystyä valita lipun tyypin. Aikuinen, lapsi tai erityisryhmä.
+
+### Tarina 7
+
+Järjestelmän ylläpitäjä haluaa pystyä määrittämään uusia lipputyyppejä.
+
+### Tarina 8
+
+Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), jotta hänen ei tarvitse kantaa paperilippua mukanaan.
+
+### Tarina 9
+
+Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
 
 ## Käyttöliittymä
 Tärkeimmät käyttöliittymän näkymät:

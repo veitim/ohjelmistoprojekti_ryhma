@@ -1,7 +1,7 @@
 ## Käyttäjäroolit:
 
 * Asiakas
-* Lipunmyyntipisteen myyjä
+* Lipunmyyjä
 * Lipuntarkastaja
 * Järjestelmän ylläpitäjä
 
@@ -35,4 +35,18 @@ Lipunmyyjä haluaa pystyä valita lipun tyypin. Aikuinen, lapsi tai erityisryhm�
 
 Järjestelmän ylläpitäjä haluaa pystyä määrittämään uusia lipputyyppejä.
 
-###
+### Tarina 8
+
+Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), jotta hänen ei tarvitse kantaa paperilippua mukanaan.
+
+ ### Tarina 9
+
+Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
+
+ ### Tarina 10
+
+ Asiakas haluaa voida maksaa lippunsa eri maksutavoilla (esim. kortti, mobiilimaksu, käteinen), jotta lipun osto olisi mahdollisimman joustavaa.
+
+ ### Tarina 11
+
+ Lipuntarkastaja haluaa pystyä tarkistamaan lipun myös ilman verkkoyhteyttä, jotta tarkastus onnistuu myös paikoissa, joissa netti ei toimi.
