@@ -39,6 +39,6 @@ Järjestelmän ylläpitäjä haluaa pystyä määrittämään uusia lipputyyppej
 
 Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), jotta hänen ei tarvitse kantaa paperilippua mukanaan.
 
-Tarina 9
+ ### Tarina 9
 
 Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
