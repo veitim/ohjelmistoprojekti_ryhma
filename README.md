@@ -1,4 +1,4 @@
-# TicketGuru-projekti #
+# TicketGuru-projekti
 
 Tämä projekti on tehty osana Haaga-Helian Ohjelmistoprojekti 1 - SOF005AS3A-3021 kurssia (syksy 2025).
 
@@ -15,7 +15,7 @@ Kurssitoteutuksen vetäjät (tuotteenomistajat):
 * Petteri Lappalainen
 * Markku Ruonavaara
 
-## Johdanto ##
+## Johdanto
 
 Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
 
@@ -43,7 +43,11 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 
 * Pitää huolen siitä, että järjestelmä toimii oikein.
 
-## Käyttäjätarinat:
+## Käyttötapaus
+
+
+
+## Käyttäjätarinat
 
 ### Tarina1
 
@@ -80,3 +84,15 @@ Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), 
 ### Tarina 9
 
 Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
+
+## Käyttöliittymä
+
+### Etusivu ja kirjautuminen
+
+### Käyttäjän etusivu
+
+### Toimintonäkymä(Myynti ja osto tilanteissa)
+
+### Listaus- tai hakunäkymä
+
+### profiilinäkymä
