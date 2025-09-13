@@ -46,7 +46,6 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 ## Käyttötapaus
 
 
-
 ## Käyttäjätarinat
 
 ### Tarina1
@@ -86,6 +85,8 @@ Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), 
 Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
 
 ## Käyttöliittymä
+
+![kayttoliittyma](images/Käyttöliittymäkaava.png)
 
 ### Etusivu ja kirjautuminen
 
