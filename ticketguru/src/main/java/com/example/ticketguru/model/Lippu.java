@@ -1,5 +1,7 @@
 package com.example.ticketguru.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,7 @@ public class Lippu {
     private String paikka;
     private boolean tila;
 
+    @JsonIgnoreProperties("liput")
     @ManyToOne
     @JoinColumn(name = "tapahtuma_id")
     private Tapahtuma tapahtuma;
