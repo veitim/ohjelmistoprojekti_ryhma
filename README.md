@@ -88,12 +88,8 @@ Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käyt
 
 ![kayttoliittyma](images/Käyttöliittymäkaava.png)
 
-### Etusivu ja kirjautuminen
+## Tietokanta
 
-### Käyttäjän etusivu
+![tietokanta](images/tietokantakaavio.png)
 
-### Toimintonäkymä(Myynti ja osto tilanteissa)
 
-### Listaus- tai hakunäkymä
-
-### profiilinäkymä

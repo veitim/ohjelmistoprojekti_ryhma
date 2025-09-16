@@ -78,6 +78,7 @@ Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), 
 Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
 
 ## Käyttöliittymä
+
 Tärkeimmät käyttöliittymän näkymät:
 - Etusivu ja kirjautuminen
 - Käyttäjän etusivu
