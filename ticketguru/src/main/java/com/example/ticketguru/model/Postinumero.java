@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 public class Postinumero {
 
     @Id
-    private int postinumero;
+    private Long postinumero;
 
     @Column(name = "postitoimipaikka", length = 255)
     private String postitoimipaikka;
@@ -25,16 +25,16 @@ public class Postinumero {
 
     public Postinumero() {}
 
-    public Postinumero(int postinumero, String postitoimipaikka) {
+    public Postinumero(Long postinumero, String postitoimipaikka) {
         this.postinumero = postinumero;
         this.postitoimipaikka = postitoimipaikka;
     }
 
-    public int getPostinumero() {
+    public Long getPostinumero() {
         return postinumero;
     }
 
-    public void setPostinumero(int postinumero) {
+    public void setPostinumero(Long postinumero) {
         this.postinumero = postinumero;
     }
 
