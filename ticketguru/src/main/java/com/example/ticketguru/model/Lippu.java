@@ -33,6 +33,7 @@ public class Lippu {
     @JoinColumn(name = "tapahtuma_id")
     private Tapahtuma tapahtuma;
 
+    @JsonIgnoreProperties("lippu")
     @OneToMany(mappedBy= "lippu", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<Myyntirivi> myyntirivit;
 

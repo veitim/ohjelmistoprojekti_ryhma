@@ -1,5 +1,64 @@
 package com.example.ticketguru.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+@Entity
 public class Postinumero {
+
+    @Id
+    private int postinumero;
+
+    @Column(name = "postitoimipaikka", length = 255)
+    private String postitoimipaikka;
+
+    @JsonIgnoreProperties("postinumero")
+    @OneToMany(mappedBy= "postinumero", cascade= CascadeType.ALL)
+    private List<Asiakas> asiakkaat;
+
+    public Postinumero() {}
+
+    public Postinumero(int postinumero, String postitoimipaikka) {
+        this.postinumero = postinumero;
+        this.postitoimipaikka = postitoimipaikka;
+    }
+
+    public int getPostinumero() {
+        return postinumero;
+    }
+
+    public void setPostinumero(int postinumero) {
+        this.postinumero = postinumero;
+    }
+
+    public String getPostitoimipaikka() {
+        return postitoimipaikka;
+    }
+
+    public void setPostitoimipaikka(String postitoimipaikka) {
+        this.postitoimipaikka = postitoimipaikka;
+    }
+
+    public List<Asiakas> getAsiakkaat() {
+        return asiakkaat;
+    }
+
+    public void setAsiakkaat(List<Asiakas> asiakkaat) {
+        this.asiakkaat = asiakkaat;
+    }
+
+    @Override
+    public String toString() {
+        return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + ", asiakkaat="
+                + asiakkaat + "]";
+    }
+    
 
 }
