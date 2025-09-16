@@ -2,6 +2,7 @@ package com.example.ticketguru.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +17,10 @@ public class Lippu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long lippu_id;
 
+    @Column(name = "paikka", nullable = false, length = 255)
     private String paikka;
+
+    @Column(name = "tila")
     private boolean tila;
 
     @JsonIgnoreProperties("liput")
