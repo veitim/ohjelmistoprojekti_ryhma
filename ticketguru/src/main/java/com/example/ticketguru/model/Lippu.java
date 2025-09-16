@@ -1,14 +1,19 @@
 package com.example.ticketguru.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Lippu {
@@ -27,6 +32,9 @@ public class Lippu {
     @ManyToOne
     @JoinColumn(name = "tapahtuma_id")
     private Tapahtuma tapahtuma;
+
+    @OneToMany(mappedBy= "lippu", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    private List<Myyntirivi> myyntirivit;
 
     public Lippu() {
         super();
@@ -69,6 +77,14 @@ public class Lippu {
 
     public void setTapahtuma(Tapahtuma tapahtuma) {
         this.tapahtuma = tapahtuma;
+    }
+
+    public List<Myyntirivi> getMyyntirivit() {
+        return myyntirivit;
+    }
+
+    public void setMyyntirivit(List<Myyntirivi> myyntirivit) {
+        this.myyntirivit = myyntirivit;
     }
 
     @Override
