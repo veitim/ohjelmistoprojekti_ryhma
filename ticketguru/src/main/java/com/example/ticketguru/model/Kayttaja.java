@@ -10,11 +10,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Asiakas {
+public class Kayttaja {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long asiakas_id;
+    private long kayttaja_id;
     
     @Column(name = "etunimi", length = 255)
     private String etunimi;
@@ -37,16 +37,21 @@ public class Asiakas {
     @Column(name = "lisatieto", length = 255)
     private String lisatieto;
 
-    @JsonIgnoreProperties("asiakkaat")
+    @JsonIgnoreProperties("kayttajat")
     @ManyToOne
     @JoinColumn(name= "postinumero")
     private Postinumero postinumero;
 
+    @JsonIgnoreProperties("kayttajat")
+    @ManyToOne
+    @JoinColumn(name= "rooli_id")
+    private Rooli rooli;
 
-    public Asiakas() {
+
+    public Kayttaja() {
     }
 
-    public Asiakas(String etunimi, String sukunimi, String katuosoite, String sahkoposti, String puhelinnro,
+    public Kayttaja(String etunimi, String sukunimi, String katuosoite, String sahkoposti, String puhelinnro,
             String lisatieto, String syntymaaika, Postinumero postinumero) {
         this.etunimi = etunimi;
         this.sukunimi = sukunimi;
@@ -58,12 +63,12 @@ public class Asiakas {
         this.postinumero = postinumero;
     }
 
-    public long getAsiakas_id() {
-        return asiakas_id;
+    public long getKayttaja_id() {
+        return kayttaja_id;
     }
 
-    public void setAsiakas_id(long asiakas_id) {
-        this.asiakas_id = asiakas_id;
+    public void setKayttaja_id(long kayttaja_id) {
+        this.kayttaja_id = kayttaja_id;
     }
 
     public String getEtunimi() {
@@ -132,7 +137,7 @@ public class Asiakas {
 
     @Override
     public String toString() {
-        return "Asiakas [asiakas_id=" + asiakas_id + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", katuosoite="
+        return "kayttaja [kayttaja_id=" + kayttaja_id + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", katuosoite="
                 + katuosoite + ", syntymaaika=" + syntymaaika + ", sahkoposti=" + sahkoposti + ", puhelinnro="
                 + puhelinnro + ", lisatieto=" + lisatieto + ", postinumero=" + postinumero +"]";
     }
