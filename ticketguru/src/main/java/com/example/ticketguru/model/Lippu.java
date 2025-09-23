@@ -33,6 +33,11 @@ public class Lippu {
     @JoinColumn(name = "tapahtuma_id")
     private Tapahtuma tapahtuma;
 
+    @JsonIgnoreProperties("liput")
+    @ManyToOne
+    @JoinColumn(name = "tyyppi_id")
+    private LippuTyyppi lipputyyppi;
+
     @JsonIgnoreProperties("lippu")
     @OneToMany(mappedBy= "lippu", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<Myyntirivi> myyntirivit;
@@ -86,6 +91,14 @@ public class Lippu {
 
     public void setMyyntirivit(List<Myyntirivi> myyntirivit) {
         this.myyntirivit = myyntirivit;
+    }
+
+    public LippuTyyppi getLipputyyppi() {
+        return lipputyyppi;
+    }
+
+    public void setLipputyyppi(LippuTyyppi lipputyyppi) {
+        this.lipputyyppi = lipputyyppi;
     }
 
     @Override
