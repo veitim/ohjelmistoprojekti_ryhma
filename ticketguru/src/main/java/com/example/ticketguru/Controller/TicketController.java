@@ -2,7 +2,9 @@ package com.example.ticketguru.Controller;
 
 import java.util.List;
 
+import java.util.Optional;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,18 +12,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 
 import com.example.ticketguru.model.Tapahtuma;
 import com.example.ticketguru.model.TapahtumaRepository;
 
-
 @RestController
 @RequestMapping("/api/tapahtumat")
-public class TapahtumaRestController {
+public class TicketController {
 
     private final TapahtumaRepository tapahtumaRepository;
 
-    public TapahtumaRestController(TapahtumaRepository tapahtumaRepository) {
+    public TicketController(TapahtumaRepository tapahtumaRepository) {
         this.tapahtumaRepository = tapahtumaRepository;
     }
 
@@ -45,6 +48,7 @@ public class TapahtumaRestController {
                     tapahtuma.setJarjestajaId(updated.getJarjestajaId());
                     tapahtuma.setAlkamisPvm(updated.getAlkamisPvm());
                     tapahtuma.setPaattymisPvm(updated.getPaattymisPvm());
+                    tapahtuma.setHinta(updated.getHinta());
                     tapahtuma.setLisatiedot(updated.getLisatiedot());
 
                     Tapahtuma saved = tapahtumaRepository.save(tapahtuma);
@@ -53,12 +57,14 @@ public class TapahtumaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("path")
-    public String postMethodName(@RequestBody String entity) {
-        //TODO: process POST request
-        
-        return entity;
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTapahtuma(@PathVariable Long id) {
+        return tapahtumaRepository.findById(id)
+                .map(tapahtuma -> {
+                    tapahtumaRepository.delete(tapahtuma);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
-    
-
 }
+

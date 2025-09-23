@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -32,9 +31,6 @@ public class Tapahtuma {
     @Column(name = "paattymis_pvm")
     private LocalDate paattymisPvm;
     
-    @Column(name = "hinta", precision = 10, scale = 2)
-    private BigDecimal hinta;
-    
     @Column(name = "lisatiedot", columnDefinition = "TEXT")
     private String lisatiedot;
     
@@ -45,13 +41,12 @@ public class Tapahtuma {
     
     public Tapahtuma(String nimi, String katuosoite, long jarjestajaId, 
                     LocalDate alkamisPvm, LocalDate paattymisPvm, 
-                    BigDecimal hinta, String lisatiedot) {
+                     String lisatiedot) {
         this.nimi = nimi;
         this.katuosoite = katuosoite;
         this.jarjestajaId = jarjestajaId;
         this.alkamisPvm = alkamisPvm;
         this.paattymisPvm = paattymisPvm;
-        this.hinta = hinta;
         this.lisatiedot = lisatiedot;
     }
     
@@ -103,13 +98,6 @@ public class Tapahtuma {
         this.paattymisPvm = paattymisPvm;
     }
     
-    public BigDecimal getHinta() {
-        return hinta;
-    }
-    
-    public void setHinta(BigDecimal hinta) {
-        this.hinta = hinta;
-    }
     
     public String getLisatiedot() {
         return lisatiedot;
@@ -136,7 +124,6 @@ public class Tapahtuma {
                 ", jarjestajaId=" + jarjestajaId +
                 ", alkamisPvm=" + alkamisPvm +
                 ", paattymisPvm=" + paattymisPvm +
-                ", hinta=" + hinta +
                 ", lisatiedot='" + lisatiedot + '\'' +
                 '}';
     }
