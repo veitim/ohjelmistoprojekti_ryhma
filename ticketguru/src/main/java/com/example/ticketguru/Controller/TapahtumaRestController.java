@@ -3,6 +3,7 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,12 +54,13 @@ public class TapahtumaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("path")
-    public String postMethodName(@RequestBody String entity) {
-        //TODO: process POST request
-        
-        return entity;
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTapahtuma(@PathVariable Long id) {
+        return tapahtumaRepository.findById(id)
+                .map(tapahtuma -> {
+                    tapahtumaRepository.delete(tapahtuma);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
-    
-
 }
