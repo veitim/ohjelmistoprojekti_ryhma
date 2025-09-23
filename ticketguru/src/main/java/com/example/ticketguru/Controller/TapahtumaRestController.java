@@ -44,7 +44,6 @@ public class TapahtumaRestController {
                     tapahtuma.setJarjestajaId(updated.getJarjestajaId());
                     tapahtuma.setAlkamisPvm(updated.getAlkamisPvm());
                     tapahtuma.setPaattymisPvm(updated.getPaattymisPvm());
-                    tapahtuma.setHinta(updated.getHinta());
                     tapahtuma.setLisatiedot(updated.getLisatiedot());
 
                     Tapahtuma saved = tapahtumaRepository.save(tapahtuma);
