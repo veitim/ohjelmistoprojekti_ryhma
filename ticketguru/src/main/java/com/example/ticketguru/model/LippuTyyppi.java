@@ -26,8 +26,8 @@ public class LippuTyyppi {
     @Column(name = "hinta")
     private double hinta;
 
-    @JsonIgnoreProperties("tyyppi")
-    @OneToMany(mappedBy= "tyyppi", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    @JsonIgnoreProperties("lipputyyppi")
+    @OneToMany(mappedBy= "lipputyyppi", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<Lippu> liput;
 
     public LippuTyyppi() {
