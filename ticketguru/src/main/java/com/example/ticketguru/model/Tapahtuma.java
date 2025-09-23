@@ -1,12 +1,21 @@
 package com.example.ticketguru.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tapahtuma")
@@ -36,18 +45,23 @@ public class Tapahtuma {
     
     @OneToMany(mappedBy = "tapahtuma", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Lippu> liput;
+
+    @JsonIgnoreProperties("tapahtumat")
+    @ManyToOne
+    @JoinColumn(name = "jarjestaja_id")
+    private Jarjestaja jarjestaja;
     
     public Tapahtuma() {}
     
-    public Tapahtuma(String nimi, String katuosoite, long jarjestajaId, 
+    public Tapahtuma(String nimi, String katuosoite,
                     LocalDate alkamisPvm, LocalDate paattymisPvm, 
-                     String lisatiedot) {
+                     String lisatiedot, Jarjestaja jarjestaja) {
         this.nimi = nimi;
         this.katuosoite = katuosoite;
-        this.jarjestajaId = jarjestajaId;
         this.alkamisPvm = alkamisPvm;
         this.paattymisPvm = paattymisPvm;
         this.lisatiedot = lisatiedot;
+        this.jarjestaja = jarjestaja;
     }
     
     public long getTapahtuma_id() {
@@ -74,14 +88,6 @@ public class Tapahtuma {
         this.katuosoite = katuosoite;
     }
     
-    public long getJarjestajaId() {
-        return jarjestajaId;
-    }
-    
-    public void setJarjestajaId(long jarjestajaId) {
-        this.jarjestajaId = jarjestajaId;
-    }
-    
     public LocalDate getAlkamisPvm() {
         return alkamisPvm;
     }
@@ -97,8 +103,7 @@ public class Tapahtuma {
     public void setPaattymisPvm(LocalDate paattymisPvm) {
         this.paattymisPvm = paattymisPvm;
     }
-    
-    
+     
     public String getLisatiedot() {
         return lisatiedot;
     }
@@ -114,6 +119,14 @@ public class Tapahtuma {
     public void setLiput(List<Lippu> liput) {
         this.liput = liput;
     }
+
+    public Jarjestaja getJarjestaja() {
+        return jarjestaja;
+    }
+
+    public void setJarjestaja(Jarjestaja jarjestaja) {
+        this.jarjestaja = jarjestaja;
+    }
     
     @Override
     public String toString() {
@@ -121,10 +134,10 @@ public class Tapahtuma {
                 "tapahtuma_id=" + tapahtuma_id +
                 ", nimi='" + nimi + '\'' +
                 ", katuosoite='" + katuosoite + '\'' +
-                ", jarjestajaId=" + jarjestajaId +
                 ", alkamisPvm=" + alkamisPvm +
                 ", paattymisPvm=" + paattymisPvm +
                 ", lisatiedot='" + lisatiedot + '\'' +
+                ", jarjestaja=" + this.getJarjestaja() +
                 '}';
     }
 }
