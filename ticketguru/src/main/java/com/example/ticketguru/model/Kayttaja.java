@@ -47,20 +47,19 @@ public class Kayttaja {
     @JoinColumn(name= "rooli_id")
     private Rooli rooli;
 
-
     public Kayttaja() {
     }
 
-    public Kayttaja(String etunimi, String sukunimi, String katuosoite, String sahkoposti, String puhelinnro,
-            String lisatieto, String syntymaaika, Postinumero postinumero) {
+    public Kayttaja(String etunimi, String katuosoite, String lisatieto, Postinumero postinumero, String puhelinnro, Rooli rooli, String sahkoposti, String sukunimi, String syntymaaika) {
         this.etunimi = etunimi;
-        this.sukunimi = sukunimi;
         this.katuosoite = katuosoite;
-        this.syntymaaika = syntymaaika;
-        this.sahkoposti = sahkoposti;
-        this.puhelinnro = puhelinnro;
         this.lisatieto = lisatieto;
         this.postinumero = postinumero;
+        this.puhelinnro = puhelinnro;
+        this.rooli = rooli;
+        this.sahkoposti = sahkoposti;
+        this.sukunimi = sukunimi;
+        this.syntymaaika = syntymaaika;
     }
 
     public long getKayttaja_id() {
@@ -135,14 +134,19 @@ public class Kayttaja {
         this.postinumero = postinumero;
     }
 
+    public Rooli getRooli() {
+        return rooli;
+    }
+
+    public void setRooli(Rooli rooli) {
+        this.rooli = rooli;
+    }
+
     @Override
     public String toString() {
         return "kayttaja [kayttaja_id=" + kayttaja_id + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", katuosoite="
                 + katuosoite + ", syntymaaika=" + syntymaaika + ", sahkoposti=" + sahkoposti + ", puhelinnro="
-                + puhelinnro + ", lisatieto=" + lisatieto + ", postinumero=" + postinumero +"]";
+                + puhelinnro + ", lisatieto=" + lisatieto + ", postinumero=" + postinumero + ", rooli=" + rooli + "]";
     }
-
-
-
-    
+ 
 }

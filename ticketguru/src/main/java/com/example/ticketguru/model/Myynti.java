@@ -57,4 +57,12 @@ public class Myynti {
 
     public List<Myyntirivi>getMyyntirivit() {return myyntirivit;}
     public void setMyyntirivit(List<Myyntirivi> myyntirivit) {this.myyntirivit = myyntirivit;}
+
+    @Override
+    public String toString() {
+        return "Myynti [myyntiId=" + myyntiId + ", kayttaja=" + kayttaja + ", paivamaara=" + paivamaara + ", maksutapa="
+                + maksutapa + ", tyyppi=" + tyyppi + ", myyntirivit=" + myyntirivit + "]";
+    }
+
+    
 }
