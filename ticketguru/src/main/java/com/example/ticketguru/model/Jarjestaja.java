@@ -32,7 +32,7 @@ public class Jarjestaja {
     @Column(name = "puhelin", length = 20)
     private String puhelin;
     
-    @OneToMany(mappedBy = "jarjestajaId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "jarjestaja", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tapahtuma> tapahtumat;
     
     public Jarjestaja() {}

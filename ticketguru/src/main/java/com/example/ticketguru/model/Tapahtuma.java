@@ -31,9 +31,6 @@ public class Tapahtuma {
     @Column(name = "katuosoite", length = 255)
     private String katuosoite;
     
-    @Column(name = "jarjestaja_id")
-    private long jarjestajaId;
-    
     @Column(name = "alkamis_pvm")
     private LocalDate alkamisPvm;
     

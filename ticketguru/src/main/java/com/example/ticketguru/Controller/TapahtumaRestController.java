@@ -43,7 +43,7 @@ public class TapahtumaRestController {
                 .map(tapahtuma -> {
                     tapahtuma.setNimi(updated.getNimi());
                     tapahtuma.setKatuosoite(updated.getKatuosoite());
-                    tapahtuma.setJarjestajaId(updated.getJarjestajaId());
+                    tapahtuma.setJarjestaja(updated.getJarjestaja());
                     tapahtuma.setAlkamisPvm(updated.getAlkamisPvm());
                     tapahtuma.setPaattymisPvm(updated.getPaattymisPvm());
                     tapahtuma.setLisatiedot(updated.getLisatiedot());

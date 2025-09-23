@@ -1,7 +1,6 @@
 package com.example.ticketguru;
 
 import java.time.LocalDate;
-import java.util.Locale.Category;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
