@@ -2,9 +2,7 @@ package com.example.ticketguru.Controller;
 
 import java.util.List;
 
-import java.util.Optional;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +16,11 @@ import com.example.ticketguru.model.TapahtumaRepository;
 
 @RestController
 @RequestMapping("/api/tapahtumat")
-public class TicketController {
+public class TapahtumaRestController {
 
     private final TapahtumaRepository tapahtumaRepository;
 
-    public TicketController(TapahtumaRepository tapahtumaRepository) {
+    public TapahtumaRestController(TapahtumaRepository tapahtumaRepository) {
         this.tapahtumaRepository = tapahtumaRepository;
     }
 
