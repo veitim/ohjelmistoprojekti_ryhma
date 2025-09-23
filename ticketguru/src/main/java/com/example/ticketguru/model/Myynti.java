@@ -1,8 +1,18 @@
 package com.example.ticketguru.model;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "myynti")
@@ -13,8 +23,8 @@ public class Myynti {
     private Long myyntiId;
 
     @ManyToOne
-    @JoinColumn(name = "asiakasId", nullable = false)
-    private Asiakas asiakas;
+    @JoinColumn(name = "kayttajaId", nullable = false)
+    private Kayttaja kayttaja;
 
     @Column(nullable = false)
     private LocalDate paivamaara;
@@ -33,8 +43,8 @@ public class Myynti {
     public Long getMyyntiId() {return myyntiId;}
     public void setMyyntiId(Long myyntiId) {this.myyntiId = myyntiId;}
 
-    public Asiakas getAsiakas() {return asiakas;}
-    public void setAsiakas(Asiakas asiakas ) {this.asiakas = asiakas;}
+    public Kayttaja getKayttaja() {return kayttaja;}
+    public void setKayttaja(Kayttaja kayttaja ) {this.kayttaja = kayttaja;}
 
     public LocalDate getPaivamaara() {return paivamaara;}
     public void setPaivamaara(LocalDate paivamaara ) {this.paivamaara = paivamaara;}
@@ -47,4 +57,12 @@ public class Myynti {
 
     public List<Myyntirivi>getMyyntirivit() {return myyntirivit;}
     public void setMyyntirivit(List<Myyntirivi> myyntirivit) {this.myyntirivit = myyntirivit;}
+
+    @Override
+    public String toString() {
+        return "Myynti [myyntiId=" + myyntiId + ", kayttaja=" + kayttaja + ", paivamaara=" + paivamaara + ", maksutapa="
+                + maksutapa + ", tyyppi=" + tyyppi + ", myyntirivit=" + myyntirivit + "]";
+    }
+
+    
 }

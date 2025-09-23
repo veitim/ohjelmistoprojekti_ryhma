@@ -21,7 +21,7 @@ public class Postinumero {
 
     @JsonIgnoreProperties("postinumero")
     @OneToMany(mappedBy= "postinumero", cascade= CascadeType.ALL)
-    private List<Asiakas> asiakkaat;
+    private List<Kayttaja> kayttajat;
 
     public Postinumero() {}
 
@@ -46,18 +46,18 @@ public class Postinumero {
         this.postitoimipaikka = postitoimipaikka;
     }
 
-    public List<Asiakas> getAsiakkaat() {
-        return asiakkaat;
+    public List<Kayttaja> getKayttajat() {
+        return kayttajat;
     }
 
-    public void setAsiakkaat(List<Asiakas> asiakkaat) {
-        this.asiakkaat = asiakkaat;
+    public void setAsiakkaat(List<Kayttaja> kayttajat) {
+        this.kayttajat = kayttajat;
     }
 
     @Override
     public String toString() {
-        return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + ", asiakkaat="
-                + asiakkaat + "]";
+        return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + ", kayttajat="
+                + kayttajat + "]";
     }
     
 

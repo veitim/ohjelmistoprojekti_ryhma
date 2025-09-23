@@ -6,14 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Asiakas {
+public class Kayttaja {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long asiakas_id;
+    private long kayttaja_id;
     
     @Column(name = "etunimi", length = 255)
     private String etunimi;
@@ -36,33 +37,37 @@ public class Asiakas {
     @Column(name = "lisatieto", length = 255)
     private String lisatieto;
 
-    @JsonIgnoreProperties("asiakkaat")
+    @JsonIgnoreProperties("kayttajat")
     @ManyToOne
     @JoinColumn(name= "postinumero")
     private Postinumero postinumero;
 
+    @JsonIgnoreProperties("kayttajat")
+    @ManyToOne
+    @JoinColumn(name= "rooli_id")
+    private Rooli rooli;
 
-    public Asiakas() {
+    public Kayttaja() {
     }
 
-    public Asiakas(String etunimi, String sukunimi, String katuosoite, String sahkoposti, String puhelinnro,
-            String lisatieto, String syntymaaika, Postinumero postinumero) {
+    public Kayttaja(String etunimi, String katuosoite, String lisatieto, Postinumero postinumero, String puhelinnro, Rooli rooli, String sahkoposti, String sukunimi, String syntymaaika) {
         this.etunimi = etunimi;
-        this.sukunimi = sukunimi;
         this.katuosoite = katuosoite;
-        this.syntymaaika = syntymaaika;
-        this.sahkoposti = sahkoposti;
-        this.puhelinnro = puhelinnro;
         this.lisatieto = lisatieto;
         this.postinumero = postinumero;
+        this.puhelinnro = puhelinnro;
+        this.rooli = rooli;
+        this.sahkoposti = sahkoposti;
+        this.sukunimi = sukunimi;
+        this.syntymaaika = syntymaaika;
     }
 
-    public long getAsiakas_id() {
-        return asiakas_id;
+    public long getKayttaja_id() {
+        return kayttaja_id;
     }
 
-    public void setAsiakas_id(long asiakas_id) {
-        this.asiakas_id = asiakas_id;
+    public void setKayttaja_id(long kayttaja_id) {
+        this.kayttaja_id = kayttaja_id;
     }
 
     public String getEtunimi() {
@@ -129,14 +134,19 @@ public class Asiakas {
         this.postinumero = postinumero;
     }
 
-    @Override
-    public String toString() {
-        return "Asiakas [asiakas_id=" + asiakas_id + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", katuosoite="
-                + katuosoite + ", syntymaaika=" + syntymaaika + ", sahkoposti=" + sahkoposti + ", puhelinnro="
-                + puhelinnro + ", lisatieto=" + lisatieto + ", postinumero=" + postinumero +"]";
+    public Rooli getRooli() {
+        return rooli;
     }
 
+    public void setRooli(Rooli rooli) {
+        this.rooli = rooli;
+    }
 
-
-    
+    @Override
+    public String toString() {
+        return "kayttaja [kayttaja_id=" + kayttaja_id + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", katuosoite="
+                + katuosoite + ", syntymaaika=" + syntymaaika + ", sahkoposti=" + sahkoposti + ", puhelinnro="
+                + puhelinnro + ", lisatieto=" + lisatieto + ", postinumero=" + postinumero + ", rooli=" + rooli + "]";
+    }
+ 
 }
