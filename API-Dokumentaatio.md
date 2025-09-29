@@ -46,3 +46,68 @@
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/tapahtumat/1"
 
+# Lippu
+
+### Hae liput
+
+* URL: "http://localhost:8080/api/liput"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/liput"
+
+### Lisää lippu
+
+* URL: "http://localhost:8080/api/liput"
+* Metodi: POST
+* Esimerkki: http://localhost:8080/api/liput
+
+     Body: {
+"paikka": "A1",
+"tila": true,
+"tapahtuma": {
+"tapahtuma_id": 1
+},
+"lipputyyppi": {
+"tyyppi_id": 1
+},
+"myyntirivit": []
+}
+
+### Päivitä lippu
+
+* URL: "http://localhost:8080/api/liput/{id}"
+
+* Metodi: PUT
+
+* Esimerkki: "http://localhost:8080/api/liput/1"
+
+    Body: {
+"paikka": "B2",
+"tila": false,
+"tapahtuma": {
+"tapahtuma_id": 1
+},
+"lipputyyppi": {
+"tyyppi_id": 1
+},
+"myyntirivit": []
+}
+
+### Poista lippu
+
+URL: "http://localhost:8080/api/liput/{id}"
+
+Metodi: PUT
+
+Esimerkki: "http://localhost:8080/api/liput/1"
+
+Body: {
+"paikka": "B2",
+"tila": false,
+"tapahtuma": {
+"tapahtuma_id": 1
+},
+"lipputyyppi": {
+"tyyppi_id": 1
+},
+"myyntirivit": []
+}
