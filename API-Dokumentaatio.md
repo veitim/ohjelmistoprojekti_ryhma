@@ -111,3 +111,58 @@ Body: {
 },
 "myyntirivit": []
 }
+
+# Käyttäjä
+### Hae käyttäjät
+
+* URL: "http://localhost:8080/api/kayttajat"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/kayttajat"
+
+### Lisää käyttäjä
+
+* URL: "http://localhost:8080/api/kayttajat"
+* Metodi: POST
+* Esimerkki: http://localhost:8080/api/kayttajat
+    Body: {
+  "etunimi": "John",
+  "sukunimi": "Doe",
+  "katuosoite": "Street 1",
+  "syntymaaika": "2000-01-01",
+  "sahkoposti": "John@example.com",
+  "puhelinnro": "0401234567",
+  "lisatieto": "Testikäyttäjä",
+  "postinumero": {
+    "postinumero": "11111"
+  },
+  "rooli": {
+    "rooli_id": 1
+  }
+}
+
+### Päivitä käyttäjä
+
+* URL: "http://localhost:8080/api/kayttajat/{id}"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/kayttajat/1"
+    Body: {
+  "etunimi": "John",
+  "sukunimi": "DoeDoe",
+  "katuosoite": "Street 2",
+  "syntymaaika": "2000-01-01",
+  "sahkoposti": "John.updated@example.com",
+  "puhelinnro": "0409876543",
+  "lisatieto": "Päivitetty käyttäjä",
+  "postinumero": {
+    "postinumero": "11111"
+  },
+  "rooli": {
+    "rooli_id": 1
+  }
+}
+
+### Poista käyttäjä
+
+* URL: "http://localhost:8080/api/kayttajat/{id}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/kayttajat/1"
