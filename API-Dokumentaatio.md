@@ -323,3 +323,47 @@ Body:
 * URL: "http://localhost:8080/api/postinumerot/{postinumero}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/postinumerot/00980"
+
+ 
+ # Järjestäjä
+
+### Hae kaikki järjestäjät
+* URL: "http://localhost:8080/api/jarjestajat"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/jarjestajat"
+
+### Hae järjestäjä ID:llä
+* URL: "http://localhost:8080/api/jarjestajat/{id}"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/jarjestajat/1"
+
+### Lisää järjestäjä
+* URL: "http://localhost:8080/api/jarjestajat"
+* Metodi: POST
+* Esimerkki: "http://localhost:8080/api/jarjestajat"
+
+Body:
+{
+    "nimi": "Konserttiyhtiö Oy",
+    "yhteyshenkilo": "Matti Meikäläinen",
+    "sahkoposti": "matti@konserttiyhtio.fi",
+    "puhelin": "0401234567"
+}
+
+### Päivitä järjestäjä
+* URL: "http://localhost:8080/api/jarjestajat/{id}"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/jarjestajat/1"
+
+Body:
+{
+    "nimi": "Konserttiyhtiö Oy",
+    "yhteyshenkilo": "Matti Meikäläinen",
+    "sahkoposti": "matti.uusiosoite@konserttiyhtio.fi",
+    "puhelin": "0509876543"
+}
+
+### Poista järjestäjä
+* URL: "http://localhost:8080/api/jarjestajat/{id}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/jarjestajat/1"
