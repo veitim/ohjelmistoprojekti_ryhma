@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.ticketguru.model.Jarjestaja;
 import com.example.ticketguru.model.JarjestajaRepository;
+import com.example.ticketguru.model.LippuTyyppi;
+import com.example.ticketguru.model.LippuTyyppiRepository;
 import com.example.ticketguru.model.Tapahtuma;
 import com.example.ticketguru.model.TapahtumaRepository;
 
@@ -23,7 +25,7 @@ public class TicketguruApplication {
 	}
 
 	@Bean
-		public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository) {
+		public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository, LippuTyyppiRepository ltRepository) {
 		return (args) -> {
 
 			log.info("Järjestäjiä");
@@ -41,6 +43,10 @@ public class TicketguruApplication {
 			for (Tapahtuma tapahtuma : tRepository.findAll()) {
 				log.info(tapahtuma.toString());
 			}
+
+			log.info("Lipputyyppei");
+			ltRepository.save(new LippuTyyppi("Normaali", 50));
+			ltRepository.save(new LippuTyyppi("Vanha", 500));
 		};
 	}
 

@@ -104,11 +104,11 @@ Body:
 
 ### Poista lippu
 
-URL: "http://localhost:8080/api/liput/{id}"
+* URL: "http://localhost:8080/api/liput/{id}"
 
-Metodi: PUT
+* Metodi: DELETE
 
-Esimerkki: "http://localhost:8080/api/liput/1"
+* Esimerkki: "http://localhost:8080/api/liput/1"
 
 Body:
 
@@ -124,7 +124,49 @@ Body:
         "myyntirivit": []
     }
 
+# Lipputyyppi
+
+### Hae lipputyypit
+
+* URL: "http://localhost:8080/api/lipputyypit"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/lipputyypit"
+
+### Lisää lipputyyppi
+
+* URL: "http://localhost:8080/api/lipputyypit"
+* Metodi: POST
+* Esimerkki:
+
+Body:
+
+    {
+        "nimi": "1 päivän lippu",
+        "hinta": 90
+    }
+ 
+
+### Päivitä lippytyyppi
+
+* URL: "http://localhost:8080/api/lipputyypit/{id}"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/lipputyypit/1"
+
+Body:
+
+    {
+        "nimi": "normilippu",
+        "hinta": 30
+    }
+
+### Poista lipputyyppi
+
+* URL: "http://localhost:8080/api/lipputyypit/{id}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/lipputyypit/2"
+
 # Käyttäjä
+
 ### Hae käyttäjät
 
 * URL: "http://localhost:8080/api/kayttajat"
