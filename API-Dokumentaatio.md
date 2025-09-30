@@ -11,34 +11,40 @@
 * URL: "http://localhost:8080/api/tapahtumat"
 * Metodi: POST
 * Esimerkki: http://localhost:8080/api/tapahtumat
-    Body:     {
-        "nimi": "TESTAILEE2",
-        "katuosoite": "koti",
-        "alkamisPvm": "2025-01-07",
-        "paattymisPvm": "2025-01-08",
-        "lisatiedot": "ikärajaa ei ole",
-        "liput": [],
-        "jarjestaja": {
-            "jarjestaja_id": 1
+  
+  Body:
+  
+       {
+            "nimi": "TESTAILEE2",
+            "katuosoite": "koti",
+            "alkamisPvm": "2025-01-07",
+            "paattymisPvm": "2025-01-08",
+            "lisatiedot": "ikärajaa ei ole",
+            "liput": [],
+            "jarjestaja": {
+                "jarjestaja_id": 1
+              }
         }
-    }
 
 ### Päivitä tapahtuma
 
 * URL: "http://localhost:8080/api/tapahtumat/{id}"
 * Metodi: PULL
 * Esimerkki: "http://localhost:8080/api/tapahtumat/1"
-    Body:    {
-        "nimi": "hälläväliä",
-        "katuosoite": "koti",
-        "alkamisPvm": "2025-01-07",
-        "paattymisPvm": "2025-01-08",
-        "lisatiedot": "ikärajaa ei ole",
-        "liput": [],
-        "jarjestaja": {
-            "jarjestaja_id": 1
-        }
-    }
+  
+  Body:
+
+      {
+          "nimi": "hälläväliä",
+          "katuosoite": "koti",
+          "alkamisPvm": "2025-01-07",
+          "paattymisPvm": "2025-01-08",
+          "lisatiedot": "ikärajaa ei ole",
+          "liput": [],
+          "jarjestaja": {
+              "jarjestaja_id": 1
+          }
+      }
 
 ### Poista tapahtuma
 
@@ -60,17 +66,19 @@
 * Metodi: POST
 * Esimerkki: http://localhost:8080/api/liput
 
-     Body: {
-"paikka": "A1",
-"tila": true,
-"tapahtuma": {
-"tapahtuma_id": 1
-},
-"lipputyyppi": {
-"tyyppi_id": 1
-},
-"myyntirivit": []
-}
+Body:
+
+    {
+        "paikka": "A1",
+        "tila": true,
+        "tapahtuma": {
+        "tapahtuma_id": 1
+    },
+        "lipputyyppi": {
+        "tyyppi_id": 1
+    },
+        "myyntirivit": []
+    }
 
 ### Päivitä lippu
 
@@ -80,17 +88,19 @@
 
 * Esimerkki: "http://localhost:8080/api/liput/1"
 
-    Body: {
-"paikka": "B2",
-"tila": false,
-"tapahtuma": {
-"tapahtuma_id": 1
-},
-"lipputyyppi": {
-"tyyppi_id": 1
-},
-"myyntirivit": []
-}
+Body:
+
+    {
+        "paikka": "B2",
+        "tila": false,
+        "tapahtuma": {
+        "tapahtuma_id": 1
+    },
+        "lipputyyppi": {
+        "tyyppi_id": 1
+    },
+        "myyntirivit": []
+    }
 
 ### Poista lippu
 
@@ -100,17 +110,19 @@ Metodi: PUT
 
 Esimerkki: "http://localhost:8080/api/liput/1"
 
-Body: {
-"paikka": "B2",
-"tila": false,
-"tapahtuma": {
-"tapahtuma_id": 1
-},
-"lipputyyppi": {
-"tyyppi_id": 1
-},
-"myyntirivit": []
-}
+Body:
+
+    {
+        "paikka": "B2",
+        "tila": false,
+        "tapahtuma": {
+        "tapahtuma_id": 1
+    },
+        "lipputyyppi": {
+        "tyyppi_id": 1
+    },
+        "myyntirivit": []
+    }
 
 # Käyttäjä
 ### Hae käyttäjät
@@ -124,42 +136,48 @@ Body: {
 * URL: "http://localhost:8080/api/kayttajat"
 * Metodi: POST
 * Esimerkki: http://localhost:8080/api/kayttajat
-    Body: {
-  "etunimi": "John",
-  "sukunimi": "Doe",
-  "katuosoite": "Street 1",
-  "syntymaaika": "2000-01-01",
-  "sahkoposti": "John@example.com",
-  "puhelinnro": "0401234567",
-  "lisatieto": "Testikäyttäjä",
-  "postinumero": {
-    "postinumero": "11111"
-  },
-  "rooli": {
-    "rooli_id": 1
-  }
-}
+
+Body:
+
+    {
+        "etunimi": "John",
+        "sukunimi": "Doe",
+        "katuosoite": "Street 1",
+        "syntymaaika": "2000-01-01",
+        "sahkoposti": "John@example.com",
+        "puhelinnro": "0401234567",
+        "lisatieto": "Testikäyttäjä",
+        "postinumero": {
+            "postinumero": "11111"
+        },
+        "rooli": {
+            "rooli_id": 1
+        }
+    }
 
 ### Päivitä käyttäjä
 
 * URL: "http://localhost:8080/api/kayttajat/{id}"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/kayttajat/1"
-    Body: {
-  "etunimi": "John",
-  "sukunimi": "DoeDoe",
-  "katuosoite": "Street 2",
-  "syntymaaika": "2000-01-01",
-  "sahkoposti": "John.updated@example.com",
-  "puhelinnro": "0409876543",
-  "lisatieto": "Päivitetty käyttäjä",
-  "postinumero": {
-    "postinumero": "11111"
-  },
-  "rooli": {
-    "rooli_id": 1
-  }
-}
+
+  Body:
+
+      {
+          "etunimi": "John",
+          "sukunimi": "DoeDoe",
+          "katuosoite": "Street 2",
+          "syntymaaika": "2000-01-01",
+          "sahkoposti": "John.updated@example.com",
+          "puhelinnro": "0409876543",
+          "lisatieto": "Päivitetty käyttäjä",
+          "postinumero": {
+            "postinumero": "11111"
+          },
+          "rooli": {
+            "rooli_id": 1
+          }
+      }
 
 ### Poista käyttäjä
 
