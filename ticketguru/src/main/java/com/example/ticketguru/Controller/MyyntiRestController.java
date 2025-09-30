@@ -12,6 +12,8 @@ import com.example.ticketguru.model.MyyntiRepository;
 @RequestMapping("/api/myynnit")
 public class MyyntiRestController {
 
+
+    
     private final MyyntiRepository myyntiRepository;
 
     public MyyntiRestController(MyyntiRepository myyntiRepository) {
