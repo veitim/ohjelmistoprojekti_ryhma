@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.ticketguru.model.Jarjestaja;
 import com.example.ticketguru.model.JarjestajaRepository;
+import com.example.ticketguru.model.Lippu;
+import com.example.ticketguru.model.LippuRepository;
 import com.example.ticketguru.model.LippuTyyppi;
 import com.example.ticketguru.model.LippuTyyppiRepository;
 import com.example.ticketguru.model.Postinumero;
@@ -27,7 +29,8 @@ public class TicketguruApplication {
 	}
 
 	@Bean
-		public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository, LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository) {
+	public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository,
+			LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository, LippuRepository lippuRepository) {
 		return (args) -> {
 
 			log.info("Järjestäjiä");
@@ -43,9 +46,11 @@ public class TicketguruApplication {
 			}
 
 			log.info("tapahtumaa");
-			tRepository.save(new Tapahtuma("hälläväliä", "koti", LocalDate.of(2025, 1, 7), LocalDate.of(2025, 1, 8), "ikärajaa ei ole", jarjestaja1 ));
-			tRepository.save(new Tapahtuma("syljeskellään", "tori", LocalDate.of(2028, 3, 7), LocalDate.of(2028, 4, 10), "ikäraja: 67", jarjestaja2 ));
-			
+			tRepository.save(new Tapahtuma("hälläväliä", "koti", LocalDate.of(2025, 1, 7), LocalDate.of(2025, 1, 8),
+					"ikärajaa ei ole", jarjestaja1));
+			tRepository.save(new Tapahtuma("syljeskellään", "tori", LocalDate.of(2028, 3, 7), LocalDate.of(2028, 4, 10),
+					"ikäraja: 67", jarjestaja2));
+
 			log.info("Kaikki tapahtumat");
 			for (Tapahtuma tapahtuma : tRepository.findAll()) {
 				log.info(tapahtuma.toString());
@@ -64,6 +69,23 @@ public class TicketguruApplication {
 			pRepository.save(new Postinumero("00980", "Helsinki"));
 			pRepository.save(new Postinumero("00990", "Helsinki"));
 
+			Tapahtuma tapahtuma = tRepository.findAll().iterator().next();
+			LippuTyyppi lipputyyppi = ltRepository.findAll().iterator().next();
+
+			
+			Lippu lippu1 = new Lippu("Espoo", true, tapahtuma);
+			lippu1.setLipputyyppi(lipputyyppi);
+			Lippu lippu2 = new Lippu("Helsinki", false, tapahtuma);
+			lippu2.setLipputyyppi(lipputyyppi);
+
+			// Tallennetaan
+			lippuRepository.save(lippu1);
+			lippuRepository.save(lippu2);
+
+			log.info("Kaikki liput:");
+			for (Lippu lippu : lippuRepository.findAll()) {
+				log.info(lippu.toString());
+			}
 		};
 	}
 
