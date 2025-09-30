@@ -227,15 +227,71 @@ Body:
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/kayttajat/1"
 
+# Myynti
+
+### Hae kaikki myynnit
+
+* URL: "http://localhost:8080/api/myynnit"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/myynnit"
+
+### Hae myynti ID:llä
+
+* URL: "http://localhost:8080/api/myynnit/{id}"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/myynnit/1"
+
+### Lisää myynti
+
+* URL: "http://localhost:8080/api/myynnit"
+* Metodi: POST
+* Esimerkki: "http://localhost:8080/api/myynnit"
+
+Body:
+
+{
+    "kayttaja": {
+        "kayttajaId": 1
+    },
+    "paivamaara": "2025-09-30",
+    "maksutapa": "Kortti",
+    "tyyppi": "Verkkokauppa",
+    "myyntirivit": []
+}
+
+### Päivitä myynti
+
+* URL: "http://localhost:8080/api/myynnit/{id}"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/myynnit/1"
+
+Body:
+
+{
+    "kayttaja": {
+        "kayttajaId": 1
+    },
+    "paivamaara": "2025-10-01",
+    "maksutapa": "Käteinen",
+    "tyyppi": "Kassa",
+    "myyntirivit": []
+}
+
+### Poista myynti
+
+* URL: "http://localhost:8080/api/myynnit/{id}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/myynnit/1"
+
 # Postinumero
 
-### Hae postinumerot
+### Hae postinumerot/postitoimipaikat
 
 * URL: "http://localhost:8080/api/postinumerot"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/postinumerot"
 
-### Lisää lipputyyppi
+### Lisää postinumero/postitoimipaikka
 
 * URL: "http://localhost:8080/api/postinumerot"
 * Metodi: POST
@@ -249,7 +305,7 @@ Body:
     }
  
 
-### Päivitä lippytyyppi
+### Päivitä postinumero/postitoimipaikka
 
 * URL: "http://localhost:8080/api/postinumerot/{postinumero}"
 * Metodi: PUT
@@ -258,10 +314,11 @@ Body:
 Body:
 
     {
+        "postinumero": "33200",
         "postitoimipaikka": "Tampere"
     }
 
-### Poista lipputyyppi
+### Poista postinumero/postitoimipaikka
 
 * URL: "http://localhost:8080/api/postinumerot/{postinumero}"
 * Metodi: DELETE
