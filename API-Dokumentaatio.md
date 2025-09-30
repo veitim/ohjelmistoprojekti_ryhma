@@ -184,3 +184,59 @@ Body:
 * URL: "http://localhost:8080/api/kayttajat/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/kayttajat/1"
+
+# Myynti
+
+### Hae kaikki myynnit
+
+* URL: "http://localhost:8080/api/myynnit"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/myynnit"
+
+### Hae myynti ID:llä
+
+* URL: "http://localhost:8080/api/myynnit/{id}"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/myynnit/1"
+
+### Lisää myynti
+
+* URL: "http://localhost:8080/api/myynnit"
+* Metodi: POST
+* Esimerkki: "http://localhost:8080/api/myynnit"
+
+Body:
+
+{
+    "kayttaja": {
+        "kayttajaId": 1
+    },
+    "paivamaara": "2025-09-30",
+    "maksutapa": "Kortti",
+    "tyyppi": "Verkkokauppa",
+    "myyntirivit": []
+}
+
+### Päivitä myynti
+
+* URL: "http://localhost:8080/api/myynnit/{id}"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/myynnit/1"
+
+Body:
+
+{
+    "kayttaja": {
+        "kayttajaId": 1
+    },
+    "paivamaara": "2025-10-01",
+    "maksutapa": "Käteinen",
+    "tyyppi": "Kassa",
+    "myyntirivit": []
+}
+
+### Poista myynti
+
+* URL: "http://localhost:8080/api/myynnit/{id}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/myynnit/1"
