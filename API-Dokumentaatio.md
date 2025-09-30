@@ -136,7 +136,7 @@ Body:
 
 * URL: "http://localhost:8080/api/lipputyypit"
 * Metodi: POST
-* Esimerkki:
+* Esimerkki: "http://localhost:8080/api/lipputyypit"
 
 Body:
 
@@ -226,3 +226,43 @@ Body:
 * URL: "http://localhost:8080/api/kayttajat/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/kayttajat/1"
+
+# Postinumero
+
+### Hae postinumerot
+
+* URL: "http://localhost:8080/api/postinumerot"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/postinumerot"
+
+### Lisää lipputyyppi
+
+* URL: "http://localhost:8080/api/postinumerot"
+* Metodi: POST
+* Esimerkki: "http://localhost:8080/api/postinumerot"
+
+Body:
+
+    {
+        "postinumero": "33100",
+        "postitoimipaikka": "Tampere"
+    }
+ 
+
+### Päivitä lippytyyppi
+
+* URL: "http://localhost:8080/api/postinumerot/{postinumero}"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/postinumerot/00980"
+
+Body:
+
+    {
+        "postitoimipaikka": "Tampere"
+    }
+
+### Poista lipputyyppi
+
+* URL: "http://localhost:8080/api/postinumerot/{postinumero}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/postinumerot/00980"

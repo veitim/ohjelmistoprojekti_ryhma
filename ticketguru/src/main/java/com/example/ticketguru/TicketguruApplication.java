@@ -13,6 +13,8 @@ import com.example.ticketguru.model.Jarjestaja;
 import com.example.ticketguru.model.JarjestajaRepository;
 import com.example.ticketguru.model.LippuTyyppi;
 import com.example.ticketguru.model.LippuTyyppiRepository;
+import com.example.ticketguru.model.Postinumero;
+import com.example.ticketguru.model.PostinumeroRepository;
 import com.example.ticketguru.model.Tapahtuma;
 import com.example.ticketguru.model.TapahtumaRepository;
 
@@ -25,7 +27,7 @@ public class TicketguruApplication {
 	}
 
 	@Bean
-		public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository, LippuTyyppiRepository ltRepository) {
+		public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository, LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository) {
 		return (args) -> {
 
 			log.info("Järjestäjiä");
@@ -35,7 +37,12 @@ public class TicketguruApplication {
 			jRepository.save(jarjestaja1);
 			jRepository.save(jarjestaja2);
 
-			log.info("Pari tapahtumaa");
+			log.info("Järkkääjät");
+			for (Jarjestaja jarjestaja : jRepository.findAll()) {
+				log.info(jarjestaja.toString());
+			}
+
+			log.info("tapahtumaa");
 			tRepository.save(new Tapahtuma("hälläväliä", "koti", LocalDate.of(2025, 1, 7), LocalDate.of(2025, 1, 8), "ikärajaa ei ole", jarjestaja1 ));
 			tRepository.save(new Tapahtuma("syljeskellään", "tori", LocalDate.of(2028, 3, 7), LocalDate.of(2028, 4, 10), "ikäraja: 67", jarjestaja2 ));
 			
@@ -47,6 +54,16 @@ public class TicketguruApplication {
 			log.info("Lipputyyppei");
 			ltRepository.save(new LippuTyyppi("Normaali", 50));
 			ltRepository.save(new LippuTyyppi("Vanha", 500));
+
+			log.info("Lipputyyppei");
+			for (LippuTyyppi lippuTyyppi : ltRepository.findAll()) {
+				log.info(lippuTyyppi.toString());
+			}
+
+			log.info("Postitoimipaikkoi");
+			pRepository.save(new Postinumero("00980", "Helsinki"));
+			pRepository.save(new Postinumero("00990", "Helsinki"));
+
 		};
 	}
 
