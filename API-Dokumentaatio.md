@@ -367,3 +367,48 @@ Body:
 * URL: "http://localhost:8080/api/jarjestajat/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/jarjestajat/1"
+
+# Rooli
+
+### Hae kaikki roolit
+
+* URL: "http://localhost:8080/api/roolit"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/roolit"
+
+### Hae rooli ID:llä
+
+* URL: "http://localhost:8080/api/roolit/{id}"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/roolit/1"
+
+### Lisää rooli
+
+* URL: "http://localhost:8080/api/roolit"
+* Metodi: POST
+* Esimerkki: "http://localhost:8080/api/roolit"
+
+Body:
+
+    {
+        "name": "Admin"
+    }
+
+### Päivitä rooli
+
+* URL: "http://localhost:8080/api/roolit/{id}"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/roolit/1"
+
+Body:
+
+    {
+        "name": "Käyttäjä"
+    }
+
+### Poista rooli
+
+* URL: "http://localhost:8080/api/roolit/{id}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/roolit/1"
+
