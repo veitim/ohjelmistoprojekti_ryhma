@@ -24,6 +24,8 @@ import com.example.ticketguru.model.Myyntirivi;
 import com.example.ticketguru.model.MyyntiriviRepository;
 import com.example.ticketguru.model.Postinumero;
 import com.example.ticketguru.model.PostinumeroRepository;
+import com.example.ticketguru.model.Rooli;
+import com.example.ticketguru.model.RooliRepository;
 import com.example.ticketguru.model.Tapahtuma;
 import com.example.ticketguru.model.TapahtumaRepository;
 
@@ -36,8 +38,17 @@ public class TicketguruApplication {
 	}
 
 	@Bean
-	public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository,
-			LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository, LippuRepository lippuRepository, MyyntiriviRepository mrRepository, MyyntiRepository mRepository, KayttajaRepository kRepository) {
+	public CommandLineRunner ticketguru(
+			TapahtumaRepository tRepository, 
+			JarjestajaRepository jRepository,
+			LippuTyyppiRepository ltRepository, 
+			PostinumeroRepository pRepository, 
+			LippuRepository lippuRepository, 
+			MyyntiriviRepository mrRepository, 
+			MyyntiRepository mRepository, 
+			KayttajaRepository kRepository,
+			RooliRepository rRepository
+		) {
 		return (args) -> {
 
 			log.info("Järjestäjiä");
@@ -94,8 +105,15 @@ public class TicketguruApplication {
 				log.info(lippu.toString());
 			}
 
+			log.info("ROOLIA");
+			Rooli rooli1 = new Rooli("Myyjä");
+			Rooli rooli2 = new Rooli("Admin");
+		
+			rRepository.save(rooli1);
+			rRepository.save(rooli2);
+	
 			log.info("käyttäjiä");
-			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", "1800", "posti@posti", "0000000", "on oikeesti haudattu", rooli1);
+			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", "1800", "posti@posti", "0000000", "on oikeesti haudattu", "00980", rooli1);
 
 			kRepository.save(kayttaja1);
 

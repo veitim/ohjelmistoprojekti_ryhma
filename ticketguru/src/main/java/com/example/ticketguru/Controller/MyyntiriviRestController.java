@@ -27,7 +27,7 @@ public class MyyntiriviRestController {
 
     @GetMapping
     public List<Myyntirivi> getAllMyyntirivit() {
-        return myyntiriviRepository.findAll();
+        return (List<Myyntirivi>)myyntiriviRepository.findAll();
     }
 
     @GetMapping("/{id}")
