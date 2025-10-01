@@ -1,5 +1,6 @@
 package com.example.ticketguru;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.slf4j.Logger;
@@ -99,8 +100,8 @@ public class TicketguruApplication {
 			mRepository.save(myynti2);
 
 			log.info("myyntirivi");
-			Myyntirivi myyntirivi1 = new Myyntirivi(lippu1, myynti1, LocalDate.of(2025, 10, 1), 100);
-			Myyntirivi myyntirivi2 = new Myyntirivi(lippu2, myynti2, LocalDate.of(2025, 9, 2), 50);
+			Myyntirivi myyntirivi1 = new Myyntirivi(myynti1, lippu1, LocalDate.of(1870, 5, 2), BigDecimal.valueOf(20));
+			Myyntirivi myyntirivi2 = new Myyntirivi(myynti2, lippu2, LocalDate.of(1970, 5, 1), BigDecimal.valueOf(100));
 
 			mrRepository.save(myyntirivi1);
 			mrRepository.save(myyntirivi2);

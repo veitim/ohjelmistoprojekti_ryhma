@@ -1,6 +1,6 @@
 package com.example.ticketguru.model;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface MyyntiriviRepository extends JpaRepository<Myyntirivi, Long> {
+public interface MyyntiriviRepository extends CrudRepository<Myyntirivi, Long> {
 }

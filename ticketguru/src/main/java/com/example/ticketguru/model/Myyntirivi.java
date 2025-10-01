@@ -1,8 +1,16 @@
 package com.example.ticketguru.model;
 
-import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "myyntirivi")
@@ -27,7 +35,14 @@ public class Myyntirivi {
     private BigDecimal summa;
     
     public Myyntirivi() {}
-    
+
+    public Myyntirivi(Myynti myynti, Lippu lippu, LocalDate paivamaara, BigDecimal summa) {
+        this.myynti = myynti;
+        this.lippu = lippu;
+        this.paivamaara = paivamaara;
+        this.summa = summa;
+    }
+
     public Long getRiviId() { return riviId; }
     public void setRiviId(Long riviId) { this.riviId = riviId; }
 
@@ -42,4 +57,11 @@ public class Myyntirivi {
 
     public BigDecimal getSumma() { return summa; }
     public void setSumma(BigDecimal summa) { this.summa = summa; }
+
+    @Override
+    public String toString() {
+        return "Myyntirivi [riviId=" + riviId + ", myynti=" +this.getMyynti() + ", lippu=" + this.getLippu() + ", paivamaara=" + paivamaara
+                + ", summa=" + summa + "]";
+    }
+
 }
