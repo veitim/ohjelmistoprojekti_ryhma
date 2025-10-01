@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.ticketguru.model.Jarjestaja;
 import com.example.ticketguru.model.JarjestajaRepository;
+import com.example.ticketguru.model.KayttajaRepository;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
 import com.example.ticketguru.model.LippuTyyppi;
@@ -35,7 +36,7 @@ public class TicketguruApplication {
 
 	@Bean
 	public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository,
-			LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository, LippuRepository lippuRepository, MyyntiriviRepository mrRepository, MyyntiRepository mRepository) {
+			LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository, LippuRepository lippuRepository, MyyntiriviRepository mrRepository, MyyntiRepository mRepository, KayttajaRepository kRepository) {
 		return (args) -> {
 
 			log.info("Järjestäjiä");
@@ -105,6 +106,14 @@ public class TicketguruApplication {
 
 			mrRepository.save(myyntirivi1);
 			mrRepository.save(myyntirivi2);
+
+			log.info("käyttäjiä");
+			Myynti myynti1 = new Myynti(kayttaja1, LocalDate.of(2025, 10, 1), "käteinen", "turha");
+			Myynti myynti2 = new Myynti(kayttaja2, LocalDate.of(2025, 10, 1), "kortti", "hyvä");
+
+			mRepository.save(myynti1);
+			mRepository.save(myynti2);
+
 
 		};
 	}
