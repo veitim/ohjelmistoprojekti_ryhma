@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.ticketguru.model.Jarjestaja;
 import com.example.ticketguru.model.JarjestajaRepository;
+import com.example.ticketguru.model.Kayttaja;
 import com.example.ticketguru.model.KayttajaRepository;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
@@ -93,9 +94,14 @@ public class TicketguruApplication {
 				log.info(lippu.toString());
 			}
 
+			log.info("käyttäjiä");
+			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", "1800", "posti@posti", "0000000", "on oikeesti haudattu", rooli1);
+
+			kRepository.save(kayttaja1);
+
 			log.info("myynti");
 			Myynti myynti1 = new Myynti(kayttaja1, LocalDate.of(2025, 10, 1), "käteinen", "turha");
-			Myynti myynti2 = new Myynti(kayttaja2, LocalDate.of(2025, 10, 1), "kortti", "hyvä");
+			Myynti myynti2 = new Myynti(kayttaja1, LocalDate.of(2025, 10, 1), "kortti", "hyvä");
 
 			mRepository.save(myynti1);
 			mRepository.save(myynti2);
@@ -106,14 +112,6 @@ public class TicketguruApplication {
 
 			mrRepository.save(myyntirivi1);
 			mrRepository.save(myyntirivi2);
-
-			log.info("käyttäjiä");
-			Myynti myynti1 = new Myynti(kayttaja1, LocalDate.of(2025, 10, 1), "käteinen", "turha");
-			Myynti myynti2 = new Myynti(kayttaja2, LocalDate.of(2025, 10, 1), "kortti", "hyvä");
-
-			mRepository.save(myynti1);
-			mRepository.save(myynti2);
-
 
 		};
 	}

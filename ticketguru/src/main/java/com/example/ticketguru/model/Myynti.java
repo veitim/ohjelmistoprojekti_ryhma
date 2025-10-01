@@ -40,6 +40,13 @@ public class Myynti {
 
     public Myynti() {}
 
+    public Myynti(Kayttaja kayttaja, LocalDate paivamaara, String maksutapa, String tyyppi) {
+        this.kayttaja = kayttaja;
+        this.paivamaara = paivamaara;
+        this.maksutapa = maksutapa;
+        this.tyyppi = tyyppi;
+    }
+
     public Long getMyyntiId() {return myyntiId;}
     public void setMyyntiId(Long myyntiId) {this.myyntiId = myyntiId;}
 
