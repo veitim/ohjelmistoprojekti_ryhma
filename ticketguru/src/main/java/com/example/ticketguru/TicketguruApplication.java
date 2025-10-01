@@ -15,6 +15,10 @@ import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
 import com.example.ticketguru.model.LippuTyyppi;
 import com.example.ticketguru.model.LippuTyyppiRepository;
+import com.example.ticketguru.model.Myynti;
+import com.example.ticketguru.model.MyyntiRepository;
+import com.example.ticketguru.model.Myyntirivi;
+import com.example.ticketguru.model.MyyntiriviRepository;
 import com.example.ticketguru.model.Postinumero;
 import com.example.ticketguru.model.PostinumeroRepository;
 import com.example.ticketguru.model.Tapahtuma;
@@ -30,7 +34,7 @@ public class TicketguruApplication {
 
 	@Bean
 	public CommandLineRunner ticketguru(TapahtumaRepository tRepository, JarjestajaRepository jRepository,
-			LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository, LippuRepository lippuRepository) {
+			LippuTyyppiRepository ltRepository, PostinumeroRepository pRepository, LippuRepository lippuRepository, MyyntiriviRepository mrRepository, MyyntiRepository mRepository) {
 		return (args) -> {
 
 			log.info("Järjestäjiä");
@@ -86,6 +90,21 @@ public class TicketguruApplication {
 			for (Lippu lippu : lippuRepository.findAll()) {
 				log.info(lippu.toString());
 			}
+
+			log.info("myynti");
+			Myynti myynti1 = new Myynti(kayttaja1, LocalDate.of(2025, 10, 1), "käteinen", "turha");
+			Myynti myynti2 = new Myynti(kayttaja2, LocalDate.of(2025, 10, 1), "kortti", "hyvä");
+
+			mRepository.save(myynti1);
+			mRepository.save(myynti2);
+
+			log.info("myyntirivi");
+			Myyntirivi myyntirivi1 = new Myyntirivi(lippu1, myynti1, LocalDate.of(2025, 10, 1), 100);
+			Myyntirivi myyntirivi2 = new Myyntirivi(lippu2, myynti2, LocalDate.of(2025, 9, 2), 50);
+
+			mrRepository.save(myyntirivi1);
+			mrRepository.save(myyntirivi2);
+
 		};
 	}
 
