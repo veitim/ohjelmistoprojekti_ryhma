@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+
 @Entity
 public class Rooli {
 
@@ -20,7 +21,7 @@ public class Rooli {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private long rooli_id;
 
-@Column(name = "nimi", length = 50)
+@Column(name = "nimi", length = 50, nullable = false)
 private String name;
 
 @JsonIgnoreProperties("rooli")
