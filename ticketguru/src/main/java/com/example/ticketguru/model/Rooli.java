@@ -13,6 +13,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+
 
 @Entity
 public class Rooli {
@@ -21,6 +25,8 @@ public class Rooli {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private long rooli_id;
 
+@NotBlank(message = "Roolin nimi on pakollinen")
+@Size(max = 50, message = "Roolin nimi saa olla enintään 50 merkkiä")
 @Column(name = "nimi", length = 50, nullable = false)
 private String name;
 
