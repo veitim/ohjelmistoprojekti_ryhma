@@ -1,5 +1,6 @@
 package com.example.ticketguru;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.slf4j.Logger;
@@ -11,12 +12,15 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.ticketguru.model.Jarjestaja;
 import com.example.ticketguru.model.JarjestajaRepository;
+import com.example.ticketguru.model.Kayttaja;
 import com.example.ticketguru.model.KayttajaRepository;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
 import com.example.ticketguru.model.LippuTyyppi;
 import com.example.ticketguru.model.LippuTyyppiRepository;
+import com.example.ticketguru.model.Myynti;
 import com.example.ticketguru.model.MyyntiRepository;
+import com.example.ticketguru.model.Myyntirivi;
 import com.example.ticketguru.model.MyyntiriviRepository;
 import com.example.ticketguru.model.Postinumero;
 import com.example.ticketguru.model.PostinumeroRepository;
@@ -127,7 +131,7 @@ public class TicketguruApplication {
 			Myyntirivi myyntirivi2 = new Myyntirivi(myynti2, lippu2, LocalDate.of(1970, 5, 1), BigDecimal.valueOf(100));
 
 			mrRepository.save(myyntirivi1);
-			mrRepository.save(myyntirivi2); */
+			mrRepository.save(myyntirivi2);
 
 		};
 	}
