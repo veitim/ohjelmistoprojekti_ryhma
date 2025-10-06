@@ -14,6 +14,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
+
+
+
+
 @Entity
 @Table(name = "jarjestaja")
 public class Jarjestaja {
@@ -21,17 +29,24 @@ public class Jarjestaja {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long jarjestaja_id;
-    
-    @Column(name = "nimi", nullable = false, length = 255)
+
+    @NotBlank(message = "Järjestäjän nimi on pakollinen")
+    @Size(max = 150, message = "Nimi saa olla enintään 150 merkkiä")
+    @Column(name = "nimi", nullable = false, length = 150)
     private String nimi;
-    
-    @Column(name = "yhteyshenkilo", length = 255)
+
+    @Size(max = 150, message = "Yhteyshenkilö saa olla enintään 150 merkkiä")
+    @Column(name = "yhteyshenkilo", length = 150)
     private String yhteyshenkilo;
-    
-    @Column(name = "sahkoposti", length = 255)
+
+    @Email(message = "Sähköpostiosoite ei ole kelvollinen")
+    @Size(max = 150, message = "Sähköposti saa olla enintään 150 merkkiä" )
+    @Column(name = "sahkoposti", length = 150)
     private String sahkoposti;
-    
-    @Column(name = "puhelin", length = 20)
+
+    @Pattern(regexp = "^[0-9\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä")
+    @Size(max = 15, message = "Puhelinnumero saa olla enintään 15 merkkiä")
+    @Column(name = "puhelin", length = 15)
     private String puhelin;
     
     @JsonIgnoreProperties("jarjestaja")
