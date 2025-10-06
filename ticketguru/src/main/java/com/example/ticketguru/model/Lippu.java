@@ -28,7 +28,7 @@ public class Lippu {
     @Column(name = "tila")
     private boolean tila;
 
-    @JsonIgnoreProperties("liput")
+    @JsonIgnoreProperties({"liput", "jarjestaja"})
     @ManyToOne
     @JoinColumn(name = "tapahtuma_id")
     private Tapahtuma tapahtuma;

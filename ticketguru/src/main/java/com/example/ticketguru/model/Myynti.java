@@ -3,6 +3,8 @@ package com.example.ticketguru.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,6 +24,7 @@ public class Myynti {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long myyntiId;
 
+    @JsonIgnoreProperties("myynnit")
     @ManyToOne
     @JoinColumn(name = "kayttajaId", nullable = false)
     private Kayttaja kayttaja;
@@ -35,6 +38,7 @@ public class Myynti {
     @Column(length = 50)
     private String tyyppi;
 
+    @JsonIgnoreProperties("myynti")
     @OneToMany(mappedBy = "myynti", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Myyntirivi> myyntirivit;
 

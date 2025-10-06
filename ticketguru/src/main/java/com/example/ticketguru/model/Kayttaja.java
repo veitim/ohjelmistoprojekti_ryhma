@@ -50,16 +50,17 @@ public class Kayttaja {
     public Kayttaja() {
     }
 
-    public Kayttaja(String etunimi, String katuosoite, String lisatieto, Postinumero postinumero, String puhelinnro, Rooli rooli, String sahkoposti, String sukunimi, String syntymaaika) {
+    public Kayttaja(String etunimi, String sukunimi, String katuosoite, String syntymaaika, String sahkoposti,
+            String puhelinnro, String lisatieto, Postinumero postinumero, Rooli rooli) {
         this.etunimi = etunimi;
+        this.sukunimi = sukunimi;
         this.katuosoite = katuosoite;
+        this.syntymaaika = syntymaaika;
+        this.sahkoposti = sahkoposti;
+        this.puhelinnro = puhelinnro;
         this.lisatieto = lisatieto;
         this.postinumero = postinumero;
-        this.puhelinnro = puhelinnro;
         this.rooli = rooli;
-        this.sahkoposti = sahkoposti;
-        this.sukunimi = sukunimi;
-        this.syntymaaika = syntymaaika;
     }
 
     public long getKayttaja_id() {

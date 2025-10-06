@@ -89,6 +89,7 @@ public class TicketguruApplication {
 
 			Tapahtuma tapahtuma = tRepository.findAll().iterator().next();
 			LippuTyyppi lipputyyppi = ltRepository.findAll().iterator().next();
+			Postinumero postinumero = pRepository.findAll().iterator().next();
 
 			
 			Lippu lippu1 = new Lippu("Espoo", true, tapahtuma);
@@ -113,7 +114,8 @@ public class TicketguruApplication {
 			rRepository.save(rooli2);
 	
 			log.info("käyttäjiä");
-			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", "1800", "posti@posti", "0000000", "on oikeesti haudattu", "00980", rooli1);
+			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", "1800", "posti@posti", "0000000", "on oikeesti haudattu", postinumero, rooli1);
+			
 
 			kRepository.save(kayttaja1);
 

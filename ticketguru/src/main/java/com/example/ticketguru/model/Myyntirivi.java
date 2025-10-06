@@ -3,6 +3,8 @@ package com.example.ticketguru.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,10 +22,12 @@ public class Myyntirivi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long riviId;
     
+    @JsonIgnoreProperties("myyntirivit")
     @ManyToOne
     @JoinColumn(name = "myynti_id", nullable = false)
     private Myynti myynti;
     
+    @JsonIgnoreProperties("myyntirivit")
     @ManyToOne
     @JoinColumn(name = "lippu_id", nullable = false)
     private Lippu lippu;
