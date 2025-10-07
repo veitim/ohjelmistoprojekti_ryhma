@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ticketguru.model.Kayttaja;
 import com.example.ticketguru.model.KayttajaRepository;
+import com.example.ticketguru.model.PostinumeroRepository;
+import com.example.ticketguru.model.RooliRepository;
 
 import jakarta.validation.Valid;
 
@@ -22,10 +24,19 @@ import jakarta.validation.Valid;
 public class KayttajaRestController {
 
     private final KayttajaRepository kayttajaRepository;
+    private final PostinumeroRepository postinumeroRepository;
+    private final RooliRepository rooliRepository;
 
-    public KayttajaRestController(KayttajaRepository kayttajaRepository) {
-        this.kayttajaRepository = kayttajaRepository;
-    }
+    public KayttajaRestController(
+        KayttajaRepository kayttajaRepository, 
+        PostinumeroRepository postinumeroRepository, 
+        RooliRepository rooliRepository
+        ) 
+        {
+            this.kayttajaRepository = kayttajaRepository;
+            this.postinumeroRepository = postinumeroRepository;
+            this.rooliRepository = rooliRepository;
+        }
 
 
     @GetMapping
@@ -38,7 +49,7 @@ public class KayttajaRestController {
         Kayttaja tallennettu = kayttajaRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
-
+    
     @PutMapping("/{id}")
     public ResponseEntity<Kayttaja> updateKayttaja(@Valid @PathVariable Long id, @RequestBody Kayttaja updated) {
         return kayttajaRepository.findById(id)
