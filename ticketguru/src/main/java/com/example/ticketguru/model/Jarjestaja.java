@@ -13,11 +13,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 
 
@@ -44,7 +43,7 @@ public class Jarjestaja {
     @Column(name = "sahkoposti", length = 150)
     private String sahkoposti;
 
-    @Pattern(regexp = "^[0-9\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä")
+    @Pattern(regexp = "^[0-9+\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä")
     @Size(max = 15, message = "Puhelinnumero saa olla enintään 15 merkkiä")
     @Column(name = "puhelin", length = 15)
     private String puhelin;

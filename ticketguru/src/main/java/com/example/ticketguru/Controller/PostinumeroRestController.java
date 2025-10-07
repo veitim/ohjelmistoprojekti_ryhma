@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ticketguru.model.Postinumero;
 import com.example.ticketguru.model.PostinumeroRepository;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/postinumerot")
@@ -32,13 +34,13 @@ public class PostinumeroRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Postinumero> createPostinumero(@RequestBody Postinumero uusi) {
+    public ResponseEntity<Postinumero> createPostinumero(@Valid @RequestBody Postinumero uusi) {
         Postinumero tallennettu = postinumeroRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Postinumero> updatePostinumero(@PathVariable String id, @RequestBody Postinumero updated) {
+    public ResponseEntity<Postinumero> updatePostinumero(@Valid @PathVariable String id, @RequestBody Postinumero updated) {
         return postinumeroRepository.findById(id)
                 .map(postinumero -> {
                     postinumero.setPostitoimipaikka(updated.getPostitoimipaikka());

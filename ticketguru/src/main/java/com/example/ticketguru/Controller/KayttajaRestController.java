@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ticketguru.model.Kayttaja;
 import com.example.ticketguru.model.KayttajaRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/kayttajat")
 public class KayttajaRestController {
@@ -32,13 +34,13 @@ public class KayttajaRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Kayttaja> createKayttaja(@RequestBody Kayttaja uusi) {
+    public ResponseEntity<Kayttaja> createKayttaja(@Valid @RequestBody Kayttaja uusi) {
         Kayttaja tallennettu = kayttajaRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Kayttaja> updateKayttaja(@PathVariable Long id, @RequestBody Kayttaja updated) {
+    public ResponseEntity<Kayttaja> updateKayttaja(@Valid @PathVariable Long id, @RequestBody Kayttaja updated) {
         return kayttajaRepository.findById(id)
                 .map(kayttaja -> {
                     kayttaja.setEtunimi(updated.getEtunimi());

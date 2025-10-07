@@ -8,6 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Kayttaja {
@@ -16,25 +20,33 @@ public class Kayttaja {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long kayttaja_id;
     
-    @Column(name = "etunimi", length = 255)
+    @NotBlank(message = "Käyttäjällä pitää olla etunimi")
+    @Size(min = 1, max = 50, message = "Etunimen täytyy olla 1-50 merkkiä pitkä.")
+    @Column(name = "etunimi", length = 50, nullable = false)
     private String etunimi;
 
-    @Column(name = "sukunimi", length = 255)
+    @NotBlank(message = "Käyttäjällä pitää olla sukunimi")
+    @Size(min = 1, max = 50, message = "sukunimen täytyy olla 1-50 merkkiä pitkä.")
+    @Column(name = "sukunimi", length = 50, nullable = false)
     private String sukunimi;
     
-    @Column(name = "katuosoite", length = 255)
+    @Size(min = 1, max = 150, message = "Katuosoite voi olla vain 1-150 merkkiä pitkä.")
+    @Column(name = "katuosoite", length = 150, nullable = false)
     private String katuosoite;
 
-    @Column(name = "syntymaaika", length = 255)
-    private String syntymaaika;
+    @Column(name = "syntymaaika", length = 50)
+    private LocalDate syntymaaika;
 
-    @Column(name = "sahkoposti", length = 255)
+    @Email(message = "Sähköpostiosoite ei ole kelvollinen")
+    @Size(min = 1, max = 100, message = "Sähköpostin täytyy olla 1-100 merkkiä pitkä")
+    @Column(name = "sahkoposti", length = 100)
     private String sahkoposti;
 
-    @Column(name = "puhelinnro", length = 255)
+    @Pattern(regexp = "^[0-9+\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä")
+    @Column(name = "puhelinnro", length = 15)
     private String puhelinnro;
 
-    @Column(name = "lisatieto", length = 255)
+    @Column(name = "lisatieto", length = 500)
     private String lisatieto;
 
     @JsonIgnoreProperties("kayttajat")
