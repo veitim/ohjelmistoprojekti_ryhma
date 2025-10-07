@@ -1,4 +1,6 @@
 package com.example.ticketguru.model;
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -62,7 +64,7 @@ public class Kayttaja {
     public Kayttaja() {
     }
 
-    public Kayttaja(String etunimi, String sukunimi, String katuosoite, String syntymaaika, String sahkoposti,
+    public Kayttaja(String etunimi, String sukunimi, String katuosoite, LocalDate syntymaaika, String sahkoposti,
             String puhelinnro, String lisatieto, Postinumero postinumero, Rooli rooli) {
         this.etunimi = etunimi;
         this.sukunimi = sukunimi;
@@ -131,11 +133,11 @@ public class Kayttaja {
         this.lisatieto = lisatieto;
     }
 
-    public String getSyntymaaika() {
+    public LocalDate getSyntymaaika() {
         return syntymaaika;
     }
 
-    public void setSyntymaaika(String syntymaaika) {
+    public void setSyntymaaika(LocalDate syntymaaika) {
         this.syntymaaika = syntymaaika;
     }
 

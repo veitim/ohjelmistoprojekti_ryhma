@@ -114,7 +114,7 @@ public class TicketguruApplication {
 			rRepository.save(rooli2);
 	
 			log.info("käyttäjiä");
-			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", "1800", "posti@posti", "0000000", "on oikeesti haudattu", postinumero, rooli1);
+			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", LocalDate.of(1990, 9, 1), "posti@posti", "0000000", "on oikeesti haudattu", postinumero, rooli1);
 			
 
 			kRepository.save(kayttaja1);
