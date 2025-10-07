@@ -36,7 +36,7 @@ public class Kayttaja {
     @Column(name = "katuosoite", length = 150, nullable = false)
     private String katuosoite;
 
-    @Column(name = "syntymaaika", length = 50)
+    @Column(name = "syntymaaika")
     private LocalDate syntymaaika;
 
     @Email(message = "Sähköpostiosoite ei ole kelvollinen")
@@ -46,6 +46,7 @@ public class Kayttaja {
 
     @Pattern(regexp = "^[0-9+\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä")
     @Column(name = "puhelinnro", length = 15)
+    @Size(max = 15, message = "puhelinumero on enintään 15 merkkiä pitkä")
     private String puhelinnro;
 
     @Column(name = "lisatieto", length = 500)
