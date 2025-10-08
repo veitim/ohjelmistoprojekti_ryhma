@@ -2,6 +2,7 @@ package com.example.ticketguru.Controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.ticketguru.model.Kayttaja;
 import com.example.ticketguru.model.KayttajaRepository;
-import com.example.ticketguru.model.PostinumeroRepository;
+import com.example.ticketguru.model.Rooli;
 import com.example.ticketguru.model.RooliRepository;
 
 import jakarta.validation.Valid;
@@ -24,17 +26,14 @@ import jakarta.validation.Valid;
 public class KayttajaRestController {
 
     private final KayttajaRepository kayttajaRepository;
-    private final PostinumeroRepository postinumeroRepository;
     private final RooliRepository rooliRepository;
 
     public KayttajaRestController(
-        KayttajaRepository kayttajaRepository, 
-        PostinumeroRepository postinumeroRepository, 
+        KayttajaRepository kayttajaRepository,
         RooliRepository rooliRepository
         ) 
         {
             this.kayttajaRepository = kayttajaRepository;
-            this.postinumeroRepository = postinumeroRepository;
             this.rooliRepository = rooliRepository;
         }
 
@@ -45,9 +44,15 @@ public class KayttajaRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Kayttaja> createKayttaja(@Valid @RequestBody Kayttaja uusi) {
-        Kayttaja tallennettu = kayttajaRepository.save(uusi);
-        return ResponseEntity.ok(tallennettu);
+    public ResponseEntity<Kayttaja> createKayttaja(@Valid @RequestBody Kayttaja kayttaja) {
+    Long rooliId = kayttaja.getRooli().getRooli_id();
+    Rooli rooli = rooliRepository.findById(rooliId)
+            .orElseThrow(() -> new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Roolia id=" + rooliId + " ei löytynyt"));
+    kayttaja.setRooli(rooli);
+    Kayttaja tallennettu = kayttajaRepository.save(kayttaja);
+
+    return ResponseEntity.ok(tallennettu);
     }
     
     @PutMapping("/{id}")

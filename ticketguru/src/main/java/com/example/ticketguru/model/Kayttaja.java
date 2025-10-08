@@ -54,7 +54,7 @@ public class Kayttaja {
 
     @JsonIgnoreProperties("kayttajat")
     @ManyToOne
-    @JoinColumn(name= "postinumero")
+    @JoinColumn(name= "postinumero", nullable = true)
     private Postinumero postinumero;
 
     @JsonIgnoreProperties("kayttajat")
