@@ -5,14 +5,8 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "myyntirivi")
@@ -22,19 +16,25 @@ public class Myyntirivi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long riviId;
     
+    @NotNull(message = "Myynti ei voi olla tyhjä")
     @JsonIgnoreProperties("myyntirivit")
     @ManyToOne
     @JoinColumn(name = "myynti_id", nullable = false)
     private Myynti myynti;
     
+    @NotNull(message = "Lippu ei voi olla tyhjä")
     @JsonIgnoreProperties("myyntirivit")
     @ManyToOne
     @JoinColumn(name = "lippu_id", nullable = false)
     private Lippu lippu;
     
+    @NotNull(message = "Päivämäärä ei voi olla tyhjä")
     @Column(nullable = false)
     private LocalDate paivamaara;
     
+    @NotNull(message = "Summa ei voi olla tyhjä")
+    @DecimalMin(value = "0.00", inclusive = false, message = "Summan täytyy olla positiivinen")
+    @Digits(integer = 8, fraction = 2, message = "Summa voi olla max 8 numeroa ja 2 desimaalia")
     @Column(precision = 10, scale = 2)
     private BigDecimal summa;
     
