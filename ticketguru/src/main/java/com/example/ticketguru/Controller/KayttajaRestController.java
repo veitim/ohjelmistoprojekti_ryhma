@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.example.ticketguru.model.Kayttaja;
 import com.example.ticketguru.model.KayttajaRepository;
+import com.example.ticketguru.model.Postinumero;
+import com.example.ticketguru.model.PostinumeroRepository;
 import com.example.ticketguru.model.Rooli;
 import com.example.ticketguru.model.RooliRepository;
 
@@ -27,14 +29,17 @@ public class KayttajaRestController {
 
     private final KayttajaRepository kayttajaRepository;
     private final RooliRepository rooliRepository;
+    private final PostinumeroRepository postinumeroRepository;
 
     public KayttajaRestController(
         KayttajaRepository kayttajaRepository,
-        RooliRepository rooliRepository
+        RooliRepository rooliRepository,
+        PostinumeroRepository postinumeroRepository
         ) 
         {
             this.kayttajaRepository = kayttajaRepository;
             this.rooliRepository = rooliRepository;
+            this.postinumeroRepository = postinumeroRepository;
         }
 
 
@@ -50,7 +55,12 @@ public class KayttajaRestController {
             .orElseThrow(() -> new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Roolia id=" + rooliId + " ei löytynyt"));
     kayttaja.setRooli(rooli);
+    String postinumeroId = kayttaja.getPostinumero().getPostinumero();
+    Postinumero postinumero = postinumeroRepository.findByPostinumero(postinumeroId)
+            .orElseThrow(() -> new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Postinumeroa=" + postinumeroId + " ei löytynyt"));
     Kayttaja tallennettu = kayttajaRepository.save(kayttaja);
+    kayttaja.setPostinumero(postinumero);
 
     return ResponseEntity.ok(tallennettu);
     }
@@ -64,10 +74,21 @@ public class KayttajaRestController {
                             HttpStatus.BAD_REQUEST, "Rooli puuttuu päivityspyynnöstä");
                 }
 
+                if (updated.getPostinumero() == null || updated.getPostinumero().getPostinumero() == null) {
+                    throw new ResponseStatusException(
+                            HttpStatus.BAD_REQUEST, "Postinumero tarvitaan");
+                }
+
                 Long rooliId = updated.getRooli().getRooli_id();
                 Rooli rooli = rooliRepository.findById(rooliId)
                         .orElseThrow(() -> new ResponseStatusException(
                                 HttpStatus.NOT_FOUND, "Roolia id=" + rooliId + " ei löytynyt"));
+
+                String postinumeroId = updated.getPostinumero().getPostinumero();
+                Postinumero postinumero = postinumeroRepository.findByPostinumero(postinumeroId)
+                        .orElseThrow(() -> new ResponseStatusException(
+                                HttpStatus.NOT_FOUND, "postinumeroa" + postinumeroId + " ei löytynyt"));
+
                 kayttaja.setEtunimi(updated.getEtunimi());
                 kayttaja.setSukunimi(updated.getSukunimi());
                 kayttaja.setKatuosoite(updated.getKatuosoite());
@@ -75,13 +96,13 @@ public class KayttajaRestController {
                 kayttaja.setSahkoposti(updated.getSahkoposti());
                 kayttaja.setPuhelinnro(updated.getPuhelinnro());
                 kayttaja.setLisatieto(updated.getLisatieto());
-                kayttaja.setPostinumero(updated.getPostinumero());
+                kayttaja.setPostinumero(postinumero);
                 kayttaja.setRooli(rooli);
                 Kayttaja saved = kayttajaRepository.save(kayttaja);
                 return ResponseEntity.ok(saved);
             })
             .orElseThrow(() -> new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Käyttäjää id=" + id + " ei löytynyt"));
+                    HttpStatus.NOT_FOUND, "Tietoja ei löydy"));
     }
 
     @DeleteMapping("/{id}")
