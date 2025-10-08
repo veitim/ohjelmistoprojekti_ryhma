@@ -12,18 +12,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
-
 
 @Entity
 public class Rooli {
 
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-private long rooli_id;
+private Long rooli_id;
 
 @NotBlank(message = "Roolin nimi on pakollinen")
 @Size(max = 50, message = "Roolin nimi saa olla enintään 50 merkkiä")
@@ -41,11 +38,11 @@ public Rooli(String name) {
     this.name = name;
 }
 
-public long getRooli_id() {
+public Long getRooli_id() {
     return rooli_id;
 }
 
-public void setRooli_id(long rooli_id) {
+public void setRooli_id(Long rooli_id) {
     this.rooli_id = rooli_id;
 }
 

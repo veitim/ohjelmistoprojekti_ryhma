@@ -57,22 +57,31 @@ public class KayttajaRestController {
     
     @PutMapping("/{id}")
     public ResponseEntity<Kayttaja> updateKayttaja(@Valid @PathVariable Long id, @RequestBody Kayttaja updated) {
-        return kayttajaRepository.findById(id)
-                .map(kayttaja -> {
-                    kayttaja.setEtunimi(updated.getEtunimi());
-                    kayttaja.setSukunimi(updated.getSukunimi());
-                    kayttaja.setKatuosoite(updated.getKatuosoite());
-                    kayttaja.setSyntymaaika(updated.getSyntymaaika());
-                    kayttaja.setSahkoposti(updated.getSahkoposti());
-                    kayttaja.setPuhelinnro(updated.getPuhelinnro());
-                    kayttaja.setLisatieto(updated.getLisatieto());
-                    kayttaja.setPostinumero(updated.getPostinumero());
-                    kayttaja.setRooli(updated.getRooli());
+    return kayttajaRepository.findById(id)
+            .map(kayttaja -> {
+                if (updated.getRooli() == null || updated.getRooli().getRooli_id() == null) {
+                    throw new ResponseStatusException(
+                            HttpStatus.BAD_REQUEST, "Rooli puuttuu päivityspyynnöstä");
+                }
 
-                    Kayttaja saved = kayttajaRepository.save(kayttaja);
-                    return ResponseEntity.ok(saved);
-                })
-                .orElse(ResponseEntity.notFound().build());
+                Long rooliId = updated.getRooli().getRooli_id();
+                Rooli rooli = rooliRepository.findById(rooliId)
+                        .orElseThrow(() -> new ResponseStatusException(
+                                HttpStatus.NOT_FOUND, "Roolia id=" + rooliId + " ei löytynyt"));
+                kayttaja.setEtunimi(updated.getEtunimi());
+                kayttaja.setSukunimi(updated.getSukunimi());
+                kayttaja.setKatuosoite(updated.getKatuosoite());
+                kayttaja.setSyntymaaika(updated.getSyntymaaika());
+                kayttaja.setSahkoposti(updated.getSahkoposti());
+                kayttaja.setPuhelinnro(updated.getPuhelinnro());
+                kayttaja.setLisatieto(updated.getLisatieto());
+                kayttaja.setPostinumero(updated.getPostinumero());
+                kayttaja.setRooli(rooli);
+                Kayttaja saved = kayttajaRepository.save(kayttaja);
+                return ResponseEntity.ok(saved);
+            })
+            .orElseThrow(() -> new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Käyttäjää id=" + id + " ei löytynyt"));
     }
 
     @DeleteMapping("/{id}")
