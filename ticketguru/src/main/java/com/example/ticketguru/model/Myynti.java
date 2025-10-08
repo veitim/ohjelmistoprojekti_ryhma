@@ -1,6 +1,7 @@
 package com.example.ticketguru.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -49,7 +50,7 @@ public class Myynti {
     
     @JsonIgnoreProperties("myynti")
     @OneToMany(mappedBy = "myynti", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Myyntirivi> myyntirivit;
+    private List<Myyntirivi> myyntirivit = new ArrayList<>();
     
     public Myynti() {}
     

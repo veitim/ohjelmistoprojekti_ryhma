@@ -68,6 +68,8 @@ public class TicketguruApplication {
 					"ikärajaa ei ole", jarjestaja1));
 			tRepository.save(new Tapahtuma("syljeskellään", "tori", LocalDate.of(2028, 3, 7), LocalDate.of(2028, 4, 10),
 					"ikäraja: 67", jarjestaja2));
+			tRepository.save(new Tapahtuma("helvetti", "tori", LocalDate.of(2028, 3, 7), LocalDate.of(2028, 4, 10),
+					"ikäraja: 67", jarjestaja2));
 
 			log.info("Kaikki tapahtumat");
 			for (Tapahtuma tapahtuma : tRepository.findAll()) {
@@ -96,10 +98,14 @@ public class TicketguruApplication {
 			lippu1.setLipputyyppi(lipputyyppi);
 			Lippu lippu2 = new Lippu("Helsinki", false, tapahtuma);
 			lippu2.setLipputyyppi(lipputyyppi);
+			Lippu lippu3 = new Lippu("helvetti", false, tapahtuma);
+			lippu3.setLipputyyppi(lipputyyppi);
 
 			// Tallennetaan
 			lippuRepository.save(lippu1);
 			lippuRepository.save(lippu2);
+			lippuRepository.save(lippu3);
+
 
 			log.info("Kaikki liput:");
 			for (Lippu lippu : lippuRepository.findAll()) {
