@@ -6,20 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.example.ticketguru.Service.MyyntiService;
 import com.example.ticketguru.model.Myynti;
 import com.example.ticketguru.model.MyyntiRepository;
+import com.example.ticketguru.model.Myyntirivi;
+import org.springframework.dao.DataIntegrityViolationException;
+
 
 import jakarta.validation.Valid;
 
@@ -54,25 +47,48 @@ public class MyyntiRestController {
     // }
 
     @PostMapping
-    public ResponseEntity<Myynti> luoMyynti(@RequestBody Myynti myynti) {
+    public ResponseEntity<?> luoMyynti(@RequestBody Myynti myynti){
         System.out.println("DEBUG: Saapui myynti, rivit=" + myynti.getMyyntirivit().size());
+    try{
         Myynti tallennettu = myyntiService.luoMyynti(myynti);
         return ResponseEntity.ok(tallennettu);
+    } catch(org.springframework.dao.DataIntegrityViolationException e) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", "Käyttäjä ID:llä " + 
+            (myynti.getKayttaja() != null ? myynti.getKayttaja().getKayttaja_id() : "null") 
+            + " ei löytynyt");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
+}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Myynti> update(@PathVariable Long id, @Valid @RequestBody Myynti updated) {
-        return repository.findById(id)
-                .map(myynti -> {
-                    myynti.setKayttaja(updated.getKayttaja());
-                    myynti.setPaivamaara(updated.getPaivamaara());
-                    myynti.setMaksutapa(updated.getMaksutapa());
-                    myynti.setTyyppi(updated.getTyyppi());
-                    myynti.setMyyntirivit(updated.getMyyntirivit());
-                    return ResponseEntity.ok(repository.save(myynti));
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }
+@PutMapping("/{id}")
+public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynti updated) {
+    return repository.findById(id)
+            .map(existing -> {
+                try {
+                    existing.setKayttaja(updated.getKayttaja());
+                    existing.setPaivamaara(updated.getPaivamaara());
+                    existing.setMaksutapa(updated.getMaksutapa());
+                    existing.setTyyppi(updated.getTyyppi());
+
+                    existing.getMyyntirivit().clear();
+                    for (Myyntirivi rivi : updated.getMyyntirivit()) {
+                        rivi.setMyynti(existing);
+                        existing.getMyyntirivit().add(rivi);
+                    }
+                    Myynti saved = myyntiService.luoMyynti(existing);
+                    return ResponseEntity.ok(saved);
+                } catch (org.springframework.dao.DataIntegrityViolationException e) {
+                    Map<String, String> error = new HashMap<>();
+                    error.put("error", "Käyttäjä ID:llä " +
+                            (updated.getKayttaja() != null ? updated.getKayttaja().getKayttaja_id() : "null") +
+                            " ei löytynyt");
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+                }
+            })
+            .orElse(ResponseEntity.notFound().build());
+}
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

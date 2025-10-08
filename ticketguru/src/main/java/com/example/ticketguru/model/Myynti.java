@@ -6,20 +6,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 @Entity
 @Table(name = "myynti")
 public class Myynti {
@@ -33,7 +22,7 @@ public class Myynti {
     @ManyToOne
     @JoinColumn(name = "kayttajaId", nullable = false)
     private Kayttaja kayttaja;
-    
+
     @NotNull(message = "Päivämäärä ei voi olla tyhjä")
     @Column(nullable = false)
     private LocalDate paivamaara;
@@ -50,6 +39,7 @@ public class Myynti {
     
     @JsonIgnoreProperties("myynti")
     @OneToMany(mappedBy = "myynti", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Valid
     private List<Myyntirivi> myyntirivit = new ArrayList<>();
     
     public Myynti() {}
