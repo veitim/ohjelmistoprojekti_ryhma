@@ -429,32 +429,32 @@ Body:
 * Metodi: POST
 * Esimerkki:
 Body:
-{
-    "myynti": {
-        "myynti_id": 1
-    },
-    "lippu": {
-        "lippu_id": 5
-    },
-    "paivamaara": "2025-01-07",
-    "summa": 59.90
-}
+    {
+        "myynti": {
+            "myynti_id": 1
+        },
+        "lippu": {
+            "lippu_id": 5
+        },
+        "paivamaara": "2025-01-07",
+        "summa": 59.90
+    }
 
 ### Päivitä myyntirivi
 * URL: "http://localhost:8080/api/myyntirivit"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/myyntirivit"
 Body:
-{
-    "myynti": {
-        "myynti_id": 1
-    },
-    "lippu": {
-        "lippu_id": 6
-    },
-    "paivamaara": "2025-01-07",
-    "summa": 59.90
-}
+    {
+        "myynti": {
+            "myynti_id": 1
+        },
+        "lippu": {
+            "lippu_id": 6
+        },
+        "paivamaara": "2025-01-07",
+        "summa": 59.90
+    }
 
 ### Poista myyntirivi
 * URL: "http://localhost:8080/api/myyntirivit/{id}"
