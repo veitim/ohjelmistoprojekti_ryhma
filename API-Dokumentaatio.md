@@ -430,6 +430,7 @@ Body:
 * Esimerkki:
 
 Body:
+
     {
         "myynti": {
             "myynti_id": 1
@@ -447,6 +448,7 @@ Body:
 * Esimerkki: "http://localhost:8080/api/myyntirivit"
 
 Body:
+
     {
         "myynti": {
             "myynti_id": 1
