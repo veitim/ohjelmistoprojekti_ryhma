@@ -428,6 +428,7 @@ Body:
 * URL: "http://localhost:8080/api/myyntirivit"
 * Metodi: POST
 * Esimerkki:
+
 Body:
     {
         "myynti": {
@@ -444,6 +445,7 @@ Body:
 * URL: "http://localhost:8080/api/myyntirivit"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/myyntirivit"
+
 Body:
     {
         "myynti": {
