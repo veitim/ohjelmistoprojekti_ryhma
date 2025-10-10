@@ -249,15 +249,15 @@ Body:
 
 Body:
 
-{
-    "kayttaja": {
-        "kayttajaId": 1
-    },
-    "paivamaara": "2025-09-30",
-    "maksutapa": "Kortti",
-    "tyyppi": "Verkkokauppa",
-    "myyntirivit": []
-}
+      {
+          "kayttaja": {
+              "kayttajaId": 1
+          },
+          "paivamaara": "2025-09-30",
+          "maksutapa": "Kortti",
+          "tyyppi": "Verkkokauppa",
+          "myyntirivit": []
+      }
 
 ### Päivitä myynti
 
@@ -266,16 +266,16 @@ Body:
 * Esimerkki: "http://localhost:8080/api/myynnit/1"
 
 Body:
-
-{
-    "kayttaja": {
-        "kayttajaId": 1
-    },
-    "paivamaara": "2025-10-01",
-    "maksutapa": "Käteinen",
-    "tyyppi": "Kassa",
-    "myyntirivit": []
-}
+      
+      {
+          "kayttaja": {
+              "kayttajaId": 1
+          },
+          "paivamaara": "2025-10-01",
+          "maksutapa": "Käteinen",
+          "tyyppi": "Kassa",
+          "myyntirivit": []
+      }
 
 ### Poista myynti
 
@@ -412,3 +412,51 @@ Body:
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/roolit/1"
 
+# Myyntirivi
+
+### Hae kaikki myyntirivit
+* URL: "http://localhost:8080/api/myyntirivit"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/myyntirivit"
+
+### Hae myyntirivi ID:llä
+* URL: "http://localhost:8080/api/myyntirivit/{1}"
+* Metodi: GET
+* Esimerkki: "http://localhost:8080/api/myyntirivit/1"
+
+### Lisää uusi myyntirivi
+* URL: "http://localhost:8080/api/myyntirivit"
+* Metodi: POST
+* Esimerkki:
+Body:
+{
+    "myynti": {
+        "myynti_id": 1
+    },
+    "lippu": {
+        "lippu_id": 5
+    },
+    "paivamaara": "2025-01-07",
+    "summa": 59.90
+}
+
+### Päivitä myyntirivi
+* URL: "http://localhost:8080/api/myyntirivit"
+* Metodi: PUT
+* Esimerkki: "http://localhost:8080/api/myyntirivit"
+Body:
+{
+    "myynti": {
+        "myynti_id": 1
+    },
+    "lippu": {
+        "lippu_id": 6
+    },
+    "paivamaara": "2025-01-07",
+    "summa": 59.90
+}
+
+### Poista myyntirivi
+* URL: "http://localhost:8080/api/myyntirivit/{id}"
+* Metodi: DELETE
+* Esimerkki: "http://localhost:8080/api/myyntirivit/1"

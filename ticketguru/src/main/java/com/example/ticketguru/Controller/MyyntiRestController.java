@@ -11,7 +11,6 @@ import com.example.ticketguru.Service.MyyntiService;
 import com.example.ticketguru.model.Myynti;
 import com.example.ticketguru.model.MyyntiRepository;
 import com.example.ticketguru.model.Myyntirivi;
-import org.springframework.dao.DataIntegrityViolationException;
 
 
 import jakarta.validation.Valid;
