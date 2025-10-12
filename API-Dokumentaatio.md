@@ -451,10 +451,10 @@ Body:
 
     {
         "myynti": {
-            "myynti_id": 1
+            "myyntiId": 1
         },
         "lippu": {
-            "lippu_id": 6
+            "lippu_id": 1
         },
         "paivamaara": "2025-01-07",
         "summa": 59.90

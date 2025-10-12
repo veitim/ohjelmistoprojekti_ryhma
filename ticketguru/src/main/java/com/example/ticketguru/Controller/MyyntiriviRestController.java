@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ticketguru.model.Lippu;
+import com.example.ticketguru.model.LippuRepository;
+import com.example.ticketguru.model.Myynti;
+import com.example.ticketguru.model.MyyntiRepository;
 import com.example.ticketguru.model.Myyntirivi;
 import com.example.ticketguru.model.MyyntiriviRepository;
 
@@ -20,14 +24,20 @@ import com.example.ticketguru.model.MyyntiriviRepository;
 public class MyyntiriviRestController {
 
     private final MyyntiriviRepository myyntiriviRepository;
+    private final MyyntiRepository myyntiRepository;
+    private final LippuRepository lippuRepository;
 
-    public MyyntiriviRestController(MyyntiriviRepository myyntiriviRepository) {
+    public MyyntiriviRestController(MyyntiriviRepository myyntiriviRepository,
+            MyyntiRepository myyntiRepository,
+            LippuRepository lippuRepository) {
         this.myyntiriviRepository = myyntiriviRepository;
+        this.myyntiRepository = myyntiRepository;
+        this.lippuRepository = lippuRepository;
     }
 
     @GetMapping
     public List<Myyntirivi> getAllMyyntirivit() {
-        return (List<Myyntirivi>)myyntiriviRepository.findAll();
+        return (List<Myyntirivi>) myyntiriviRepository.findAll();
     }
 
     @GetMapping("/{id}")
@@ -39,24 +49,68 @@ public class MyyntiriviRestController {
 
     @PostMapping
     public ResponseEntity<Myyntirivi> createMyyntirivi(@RequestBody Myyntirivi uusi) {
+        if (uusi.getMyynti() == null || uusi.getMyynti().getMyyntiId() == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        if (uusi.getLippu() == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        Myynti myynti = myyntiRepository.findById(uusi.getMyynti().getMyyntiId())
+                .orElse(null);
+        if (myynti == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Lippu lippu = lippuRepository.findById(uusi.getLippu().getLippu_id())
+                .orElse(null);
+        if (lippu == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        uusi.setMyynti(myynti);
+        uusi.setLippu(lippu);
+
         Myyntirivi tallennettu = myyntiriviRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Myyntirivi> updateMyyntirivi(@PathVariable Long id, @RequestBody Myyntirivi updated) {
-        return myyntiriviRepository.findById(id)
-                .map(myyntirivi -> {
-                    myyntirivi.setMyynti(updated.getMyynti());
-                    myyntirivi.setLippu(updated.getLippu());
-                    myyntirivi.setPaivamaara(updated.getPaivamaara());
-                    myyntirivi.setSumma(updated.getSumma());
-
-                    Myyntirivi saved = myyntiriviRepository.save(myyntirivi);
-                    return ResponseEntity.ok(saved);
-                })
-                .orElse(ResponseEntity.notFound().build());
+@PutMapping("/{id}")
+public ResponseEntity<Myyntirivi> updateMyyntirivi(@PathVariable Long id, @RequestBody Myyntirivi updated) {
+    if (updated.getMyynti() == null || updated.getMyynti().getMyyntiId() == null) {
+        return ResponseEntity.badRequest().build();
     }
+    
+    if (updated.getLippu() == null) {
+        return ResponseEntity.badRequest().build();
+    }
+    
+    Myyntirivi myyntirivi = myyntiriviRepository.findById(id).orElse(null);
+    if (myyntirivi == null) {
+        return ResponseEntity.notFound().build();
+    }
+    
+    Myynti myynti = myyntiRepository.findById(updated.getMyynti().getMyyntiId())
+        .orElse(null);
+    if (myynti == null) {
+        return ResponseEntity.notFound().build();
+    }
+    
+    Lippu lippu = lippuRepository.findById(updated.getLippu().getLippu_id())
+        .orElse(null);
+    if (lippu == null) {
+        return ResponseEntity.notFound().build();
+    }
+    
+    myyntirivi.setMyynti(myynti);
+    myyntirivi.setLippu(lippu);
+    myyntirivi.setPaivamaara(updated.getPaivamaara());
+    myyntirivi.setSumma(updated.getSumma());
+    
+    Myyntirivi saved = myyntiriviRepository.save(myyntirivi);
+    return ResponseEntity.ok(saved);
+}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMyyntirivi(@PathVariable Long id) {
