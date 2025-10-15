@@ -47,6 +47,9 @@ public class Tapahtuma {
     
     @Column(name = "lisatiedot", columnDefinition = "TEXT")
     private String lisatiedot;
+
+    @Column(name = "paikkamaara")
+    private int paikkamaara;
     
     @OneToMany(mappedBy = "tapahtuma", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Lippu> liput;
@@ -61,13 +64,14 @@ public class Tapahtuma {
     
     public Tapahtuma(String nimi, String katuosoite,
                     LocalDate alkamisPvm, LocalDate paattymisPvm, 
-                     String lisatiedot, Jarjestaja jarjestaja) {
+                     String lisatiedot, Jarjestaja jarjestaja, int paikkamaara) {
         this.nimi = nimi;
         this.katuosoite = katuosoite;
         this.alkamisPvm = alkamisPvm;
         this.paattymisPvm = paattymisPvm;
         this.lisatiedot = lisatiedot;
         this.jarjestaja = jarjestaja;
+        this.paikkamaara = paikkamaara;
     }
     
     public long getTapahtuma_id() {
@@ -133,7 +137,15 @@ public class Tapahtuma {
     public void setJarjestaja(Jarjestaja jarjestaja) {
         this.jarjestaja = jarjestaja;
     }
-    
+
+    public int getPaikkamaara() {
+        return paikkamaara;
+    }
+
+    public void setPaikkamaara(int paikkamaara) {
+        this.paikkamaara = paikkamaara;
+    }
+
     @Override
     public String toString() {
         return "Tapahtuma{" +
@@ -143,7 +155,9 @@ public class Tapahtuma {
                 ", alkamisPvm=" + alkamisPvm +
                 ", paattymisPvm=" + paattymisPvm +
                 ", lisatiedot='" + lisatiedot + '\'' +
+                ", paikkamaara='" + paikkamaara + '\'' +
                 ", jarjestaja=" + this.getJarjestaja() +
                 '}';
     }
+
 }

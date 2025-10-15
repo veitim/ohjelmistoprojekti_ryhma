@@ -65,11 +65,11 @@ public class TicketguruApplication {
 
 			log.info("tapahtumaa");
 			tRepository.save(new Tapahtuma("hälläväliä", "koti", LocalDate.of(2025, 1, 7), LocalDate.of(2025, 1, 8),
-					"ikärajaa ei ole", jarjestaja1));
+					"ikärajaa ei ole", jarjestaja1, 200));
 			tRepository.save(new Tapahtuma("syljeskellään", "tori", LocalDate.of(2028, 3, 7), LocalDate.of(2028, 4, 10),
-					"ikäraja: 67", jarjestaja2));
+					"ikäraja: 67", jarjestaja2, 50));
 			tRepository.save(new Tapahtuma("helvetti", "tori", LocalDate.of(2028, 3, 7), LocalDate.of(2028, 4, 10),
-					"ikäraja: 67", jarjestaja2));
+					"ikäraja: 67", jarjestaja2, 10));
 
 			log.info("Kaikki tapahtumat");
 			for (Tapahtuma tapahtuma : tRepository.findAll()) {
