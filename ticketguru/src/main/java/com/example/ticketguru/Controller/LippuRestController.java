@@ -3,10 +3,19 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/liput")
@@ -25,13 +34,13 @@ public class LippuRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Lippu> createLippu(@RequestBody Lippu uusi) {
+    public ResponseEntity<Lippu> createLippu(@Valid @RequestBody Lippu uusi) {
         Lippu tallennettu = lippuRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Lippu> updateLippu(@PathVariable Long id, @RequestBody Lippu updated) {
+    public ResponseEntity<Lippu> updateLippu(@Valid @PathVariable Long id, @RequestBody Lippu updated) {
         return lippuRepository.findById(id)
                 .map(lippu -> {
                     lippu.setPaikka(updated.getPaikka());
