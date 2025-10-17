@@ -1,8 +1,10 @@
 package com.example.ticketguru.model;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -61,6 +64,10 @@ public class Kayttaja {
     @ManyToOne
     @JoinColumn(name= "rooli_id")
     private Rooli rooli;
+
+    @JsonIgnoreProperties("kayttaja")
+    @OneToMany(mappedBy= "kayttaja", cascade=CascadeType.ALL)
+    private List<Myynti> myynnit;
 
     public Kayttaja() {
     }
@@ -156,6 +163,14 @@ public class Kayttaja {
 
     public void setRooli(Rooli rooli) {
         this.rooli = rooli;
+    }
+
+    public List<Myynti> getMyynnit() {
+        return myynnit;
+    }
+
+    public void setMyynnit(List<Myynti> myynnit) {
+        this.myynnit = myynnit;
     }
 
     @Override
