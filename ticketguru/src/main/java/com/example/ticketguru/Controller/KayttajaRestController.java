@@ -22,7 +22,7 @@ import com.example.ticketguru.model.PostinumeroRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/kayttajat")
+@RequestMapping("/api/kayttajat/ADMIN")
 public class KayttajaRestController {
 
     private final KayttajaRepository kayttajaRepository;

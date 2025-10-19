@@ -33,13 +33,13 @@ public class TapahtumaRestController {
         return (List<Tapahtuma>) tapahtumaRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/ADMIN")
     public ResponseEntity<Tapahtuma> createTapahtuma(@Valid @RequestBody Tapahtuma uusi) {
         Tapahtuma tallennettu = tapahtumaRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/ADMIN/{id}")
     public ResponseEntity<Tapahtuma> updateTapahtuma(@Valid @PathVariable Long id, @RequestBody Tapahtuma updated) {
         return tapahtumaRepository.findById(id)
                 .map(tapahtuma -> {
@@ -56,7 +56,7 @@ public class TapahtumaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> deleteTapahtuma(@PathVariable Long id) {
         return tapahtumaRepository.findById(id)
                 .map(tapahtuma -> {

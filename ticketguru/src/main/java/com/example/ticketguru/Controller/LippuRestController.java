@@ -33,7 +33,7 @@ public class LippuRestController {
         return (List<Lippu>) lippuRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/ADMIN")
     public ResponseEntity<Lippu> createLippu(@Valid @RequestBody Lippu uusi) {
         Lippu tallennettu = lippuRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);

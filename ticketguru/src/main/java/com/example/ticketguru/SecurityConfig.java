@@ -21,7 +21,8 @@ public class SecurityConfig {
         http
           .csrf(csrf -> csrf.disable()) 
           .authorizeHttpRequests(auth -> auth
-              .anyRequest().authenticated()
+              .requestMatchers("/api/**").authenticated()
+              .requestMatchers("/api/tapahtumat/ADMIN**").hasRole("ADMIN")
           )
           .httpBasic(Customizer.withDefaults()); 
         return http.build();
@@ -32,7 +33,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withUsername("samuel")
             .password("{noop}salasana123") 
-            .roles("USER")
+            .roles("ADMIN")
             .build();
 
         return new InMemoryUserDetailsManager(user);
