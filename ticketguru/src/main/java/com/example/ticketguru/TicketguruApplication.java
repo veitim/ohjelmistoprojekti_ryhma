@@ -24,8 +24,6 @@ import com.example.ticketguru.model.Myyntirivi;
 import com.example.ticketguru.model.MyyntiriviRepository;
 import com.example.ticketguru.model.Postinumero;
 import com.example.ticketguru.model.PostinumeroRepository;
-import com.example.ticketguru.model.Rooli;
-import com.example.ticketguru.model.RooliRepository;
 import com.example.ticketguru.model.Tapahtuma;
 import com.example.ticketguru.model.TapahtumaRepository;
 
@@ -46,8 +44,7 @@ public class TicketguruApplication {
 			LippuRepository lippuRepository, 
 			MyyntiriviRepository mrRepository, 
 			MyyntiRepository mRepository, 
-			KayttajaRepository kRepository,
-			RooliRepository rRepository
+			KayttajaRepository kRepository
 		) {
 		return (args) -> {
 
@@ -111,16 +108,9 @@ public class TicketguruApplication {
 			for (Lippu lippu : lippuRepository.findAll()) {
 				log.info(lippu.toString());
 			}
-
-			log.info("ROOLIA");
-			Rooli rooli1 = new Rooli("Myyjä");
-			Rooli rooli2 = new Rooli("Admin");
-		
-			rRepository.save(rooli1);
-			rRepository.save(rooli2);
 	
 			log.info("käyttäjiä");
-			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", LocalDate.of(1990, 9, 1), "posti@posti", "0000000", "on oikeesti haudattu", postinumero, rooli1);
+			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", LocalDate.of(1990, 9, 1), "posti@posti", "0000000", "on oikeesti haudattu", postinumero, "Admin");
 			
 
 			kRepository.save(kayttaja1);

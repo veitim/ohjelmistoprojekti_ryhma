@@ -60,10 +60,8 @@ public class Kayttaja {
     @JoinColumn(name= "postinumero", nullable = true)
     private Postinumero postinumero;
 
-    @JsonIgnoreProperties("kayttajat")
-    @ManyToOne
-    @JoinColumn(name= "rooli_id")
-    private Rooli rooli;
+    @Column(name= "rooli", length = 50)
+    private String rooli;
 
     @JsonIgnoreProperties("kayttaja")
     @OneToMany(mappedBy= "kayttaja", cascade=CascadeType.ALL)
@@ -73,7 +71,7 @@ public class Kayttaja {
     }
 
     public Kayttaja(String etunimi, String sukunimi, String katuosoite, LocalDate syntymaaika, String sahkoposti,
-            String puhelinnro, String lisatieto, Postinumero postinumero, Rooli rooli) {
+            String puhelinnro, String lisatieto, Postinumero postinumero, String rooli) {
         this.etunimi = etunimi;
         this.sukunimi = sukunimi;
         this.katuosoite = katuosoite;
@@ -82,7 +80,8 @@ public class Kayttaja {
         this.puhelinnro = puhelinnro;
         this.lisatieto = lisatieto;
         this.postinumero = postinumero;
-        this.rooli = rooli;
+        this.rooli =rooli;
+
     }
 
     public long getKayttaja_id() {
@@ -157,11 +156,11 @@ public class Kayttaja {
         this.postinumero = postinumero;
     }
 
-    public Rooli getRooli() {
+    public String getRooli() {
         return rooli;
     }
 
-    public void setRooli(Rooli rooli) {
+    public void setRooli(String rooli) {
         this.rooli = rooli;
     }
 
