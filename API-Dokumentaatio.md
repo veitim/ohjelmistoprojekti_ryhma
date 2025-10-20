@@ -340,7 +340,7 @@ Body:
 ### Lisää järjestäjä
 * URL: "http://localhost:8080/api/jarjestajat/ADMIN"
 * Metodi: POST
-* Esimerkki: "http://localhost:8080/api/jarjestajat"
+* Esimerkki: "http://localhost:8080/api/jarjestajat/ADMIN"
 
 Body:
 {
@@ -353,7 +353,7 @@ Body:
 ### Päivitä järjestäjä
 * URL: "http://localhost:8080/api/jarjestajat/ADMIN/{id}"
 * Metodi: PUT
-* Esimerkki: "http://localhost:8080/api/jarjestajat/1"
+* Esimerkki: "http://localhost:8080/api/jarjestajat/ADMIN/1"
 
 Body:
 {
@@ -366,7 +366,7 @@ Body:
 ### Poista järjestäjä
 * URL: "http://localhost:8080/api/jarjestajat/ADMIN/{id}"
 * Metodi: DELETE
-* Esimerkki: "http://localhost:8080/api/jarjestajat/1"
+* Esimerkki: "http://localhost:8080/api/jarjestajat/ADMIN/1"
 
 # Rooli
 
