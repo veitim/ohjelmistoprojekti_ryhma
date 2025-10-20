@@ -110,7 +110,12 @@ public class TicketguruApplication {
 			}
 	
 			log.info("käyttäjiä");
-			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", LocalDate.of(1990, 9, 1), "posti@posti", "0000000", "on oikeesti haudattu", postinumero, "Admin");
+			Kayttaja kayttaja1 = new Kayttaja("urpo", "max", "manala", LocalDate.of(1990, 9, 1), "posti@posti", "0000000", "on oikeesti haudattu", postinumero, "user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			Kayttaja user1 = new Kayttaja("timo", "samuel", "manala", LocalDate.of(1990, 9, 1), "posti@posti", "0000000", "on oikeesti haudattu", postinumero, "admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			
+		
+			kRepository.save(user1);
+			
 			
 
 			kRepository.save(kayttaja1);

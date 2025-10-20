@@ -60,6 +60,12 @@ public class Kayttaja {
     @JoinColumn(name= "postinumero", nullable = true)
     private Postinumero postinumero;
 
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "password", nullable = false)
+    private String passwordHash;
+
     @Column(name= "rooli", length = 50)
     private String rooli;
 
@@ -71,7 +77,7 @@ public class Kayttaja {
     }
 
     public Kayttaja(String etunimi, String sukunimi, String katuosoite, LocalDate syntymaaika, String sahkoposti,
-            String puhelinnro, String lisatieto, Postinumero postinumero, String rooli) {
+            String puhelinnro, String lisatieto, Postinumero postinumero, String username, String passwordHash, String rooli) {
         this.etunimi = etunimi;
         this.sukunimi = sukunimi;
         this.katuosoite = katuosoite;
@@ -80,8 +86,26 @@ public class Kayttaja {
         this.puhelinnro = puhelinnro;
         this.lisatieto = lisatieto;
         this.postinumero = postinumero;
+        this.username = username;
+		this.passwordHash = passwordHash;
         this.rooli =rooli;
 
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public long getKayttaja_id() {
