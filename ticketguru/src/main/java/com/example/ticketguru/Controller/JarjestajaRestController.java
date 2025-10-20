@@ -45,13 +45,13 @@ public class JarjestajaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/ADMIN")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Jarjestaja create(@Valid @RequestBody Jarjestaja jarjestaja) {
         return repository.save(jarjestaja);
     }
 
-    @PutMapping("/ADMIN/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Jarjestaja> update(@PathVariable Long id, @Valid @RequestBody Jarjestaja updated) {
         return repository.findById(id)
                         .map(jarjestaja -> {
@@ -65,7 +65,7 @@ public class JarjestajaRestController {
     
     }
 
-    @DeleteMapping("/ADMIN/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();
