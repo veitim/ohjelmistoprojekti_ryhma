@@ -23,7 +23,7 @@ import com.example.ticketguru.model.JarjestajaRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/jarjestajat")
+@RequestMapping("/api/jarjestajat/ADMIN")
 public class JarjestajaRestController {
 
     private final JarjestajaRepository repository;
