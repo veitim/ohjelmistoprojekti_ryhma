@@ -23,7 +23,7 @@ import com.example.ticketguru.model.JarjestajaRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/jarjestajat/ADMIN")
+@RequestMapping("/api/jarjestajat")
 public class JarjestajaRestController {
 
     private final JarjestajaRepository repository;
@@ -45,13 +45,13 @@ public class JarjestajaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/ADMIN")
     @ResponseStatus(HttpStatus.CREATED)
     public Jarjestaja create(@Valid @RequestBody Jarjestaja jarjestaja) {
         return repository.save(jarjestaja);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/ADMIN/{id}")
     public ResponseEntity<Jarjestaja> update(@PathVariable Long id, @Valid @RequestBody Jarjestaja updated) {
         return repository.findById(id)
                         .map(jarjestaja -> {
@@ -65,7 +65,7 @@ public class JarjestajaRestController {
     
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();

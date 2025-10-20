@@ -30,6 +30,7 @@ public class SecurityConfig {
           .authorizeHttpRequests(auth -> auth
               .requestMatchers("/api/tapahtumat/ADMIN/**").hasRole("ADMIN")
               .requestMatchers("/api/jarjestajat/ADMIN/**").hasRole("ADMIN")
+              .requestMatchers("/api/postinumerot/ADMIN/**").hasRole("ADMIN")
               .requestMatchers("/api/**").authenticated()
           )
           .httpBasic(Customizer.withDefaults()); 

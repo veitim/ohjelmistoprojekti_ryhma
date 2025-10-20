@@ -33,13 +33,13 @@ public class PostinumeroRestController {
         return (List<Postinumero>) postinumeroRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/ADMIN")
     public ResponseEntity<Postinumero> createPostinumero(@Valid @RequestBody Postinumero uusi) {
         Postinumero tallennettu = postinumeroRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/ADMIN/{id}")
     public ResponseEntity<Postinumero> updatePostinumero(@Valid @PathVariable String id, @RequestBody Postinumero updated) {
         return postinumeroRepository.findById(id)
                 .map(postinumero -> {
@@ -51,7 +51,7 @@ public class PostinumeroRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> deletePostinumero(@PathVariable String id) {
         return postinumeroRepository.findById(id)
                 .map(postinumero -> {
