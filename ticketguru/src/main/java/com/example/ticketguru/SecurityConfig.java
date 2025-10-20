@@ -24,6 +24,7 @@ public class SecurityConfig {
           .csrf(csrf -> csrf.disable()) 
           .authorizeHttpRequests(auth -> auth
               .requestMatchers("/api/tapahtumat/ADMIN/**").hasRole("ADMIN")
+              .requestMatchers("/api/jarjestajat/ADMIN/**").hasRole("ADMIN")
               .requestMatchers("/api/**").authenticated()
           )
           .httpBasic(Customizer.withDefaults()); 
