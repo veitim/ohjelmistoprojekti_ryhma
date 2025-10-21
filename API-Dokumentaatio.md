@@ -62,9 +62,9 @@
 
 ### Lisää lippu
 
-* URL: "http://localhost:8080/api/liput"
+* URL: "http://localhost:8080/api/liput/ADMIN"
 * Metodi: POST
-* Esimerkki: http://localhost:8080/api/liput
+* Esimerkki: http://localhost:8080/api/liput/ADMIN"
 
 Body:
 
@@ -175,9 +175,9 @@ Body:
 
 ### Lisää käyttäjä
 
-* URL: "http://localhost:8080/api/kayttajat"
+* URL: "http://localhost:8080/api/kayttajat/ADMIN"
 * Metodi: POST
-* Esimerkki: http://localhost:8080/api/kayttajat
+* Esimerkki: http://localhost:8080/api/kayttajat/ADMIN"
 
 Body:
 
@@ -199,9 +199,9 @@ Body:
 
 ### Päivitä käyttäjä
 
-* URL: "http://localhost:8080/api/kayttajat/{id}"
+* URL: "http://localhost:8080/api/kayttajat/ADMIN/{id}"
 * Metodi: PUT
-* Esimerkki: "http://localhost:8080/api/kayttajat/1"
+* Esimerkki: "http://localhost:8080/api/kayttajat/ADMIN/1"
 
   Body:
 
@@ -223,9 +223,9 @@ Body:
 
 ### Poista käyttäjä
 
-* URL: "http://localhost:8080/api/kayttajat/{id}"
+* URL: "http://localhost:8080/api/kayttajat/ADMIN{id}"
 * Metodi: DELETE
-* Esimerkki: "http://localhost:8080/api/kayttajat/1"
+* Esimerkki: "http://localhost:8080/api/kayttajat/ADMIN/1"
 
 # Myynti
 
@@ -243,9 +243,9 @@ Body:
 
 ### Lisää myynti
 
-* URL: "http://localhost:8080/api/myynnit"
+* URL: "http://localhost:8080/api/myynnit/ADMIN"
 * Metodi: POST
-* Esimerkki: "http://localhost:8080/api/myynnit"
+* Esimerkki: "http://localhost:8080/api/myynnit/ADMIN"
 
 Body:
 
@@ -293,9 +293,9 @@ Body:
 
 ### Lisää postinumero/postitoimipaikka
 
-* URL: "http://localhost:8080/api/postinumerot"
+* URL: "http://localhost:8080/api/postinumerot/ADMIN"
 * Metodi: POST
-* Esimerkki: "http://localhost:8080/api/postinumerot"
+* Esimerkki: "http://localhost:8080/api/postinumerot/ADMIN"
 
 Body:
 
@@ -307,9 +307,9 @@ Body:
 
 ### Päivitä postinumero/postitoimipaikka
 
-* URL: "http://localhost:8080/api/postinumerot/{postinumero}"
+* URL: "http://localhost:8080/api/postinumerot/ADMIN/{postinumero}"
 * Metodi: PUT
-* Esimerkki: "http://localhost:8080/api/postinumerot/00980"
+* Esimerkki: "http://localhost:8080/api/postinumerot/ADMIN/00980"
 
 Body:
 
@@ -320,9 +320,9 @@ Body:
 
 ### Poista postinumero/postitoimipaikka
 
-* URL: "http://localhost:8080/api/postinumerot/{postinumero}"
+* URL: "http://localhost:8080/api/postinumerot/ADMIN/{postinumero}"
 * Metodi: DELETE
-* Esimerkki: "http://localhost:8080/api/postinumerot/00980"
+* Esimerkki: "http://localhost:8080/api/postinumerot/ADMIN/00980"
 
  
  # Järjestäjä
