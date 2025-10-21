@@ -5,8 +5,17 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "myyntirivi")
@@ -16,7 +25,7 @@ public class Myyntirivi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long riviId;
     
-    @NotNull(message = "Myynti ei voi olla tyhjä")
+    // @NotNull(message = "Myynti ei voi olla tyhjä")
     @JsonIgnoreProperties("myyntirivit")
     @ManyToOne
     @JoinColumn(name = "myynti_id", nullable = false)

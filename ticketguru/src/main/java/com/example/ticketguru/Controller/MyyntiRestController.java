@@ -48,13 +48,7 @@ public class MyyntiRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // @PostMapping
-    // @ResponseStatus(HttpStatus.CREATED)
-    // public Myynti create(@Valid @RequestBody Myynti myynti) {
-    //     return repository.save(myynti);
-    // }
-
-    @PostMapping
+    @PostMapping("/ADMIN")
     public ResponseEntity<?> luoMyynti(@Valid @RequestBody Myynti myynti){
         System.out.println("DEBUG: Saapui myynti, rivit=" + myynti.getMyyntirivit().size());
     try{
@@ -98,7 +92,7 @@ public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynt
 }
 
 
-    @DeleteMapping("ADMIN/{id}")
+    @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();

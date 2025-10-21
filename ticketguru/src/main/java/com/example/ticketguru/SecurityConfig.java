@@ -28,32 +28,19 @@ public class SecurityConfig {
         http
           .csrf(csrf -> csrf.disable()) 
           .authorizeHttpRequests(auth -> auth
-              .requestMatchers("/api/tapahtumat/ADMIN/**").hasRole("ADMIN")
-              .requestMatchers("/api/jarjestajat/ADMIN/**").hasRole("ADMIN")
-              .requestMatchers("/api/postinumerot/ADMIN/**").hasRole("ADMIN")
-              .requestMatchers("/api/myynnit/ADMIN/**").hasRole("ADMIN")
-              .requestMatchers("/api/myyntirivit/ADMIN/**").hasRole("ADMIN")
+              .requestMatchers(
+                "/api/tapahtumat/ADMIN/**", 
+                "/api/kayttajat/ADMIN/**",
+                "/api/jarjestajat/ADMIN/**",
+                "/api/postinumerot/ADMIN/**",
+                "/api/myynnit/ADMIN/**",
+                "/api/myyntirivit/ADMIN/**"
+            ).hasAuthority("ADMIN")
               .requestMatchers("/api/**").authenticated()
           )
           .httpBasic(Customizer.withDefaults()); 
         return http.build();
     }
-
-    
-   /*  @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails admin = User.withUsername("samuel")
-            .password("{noop}salasana123") 
-            .roles("ADMIN")
-            .build();
-
-        UserDetails user = User.withUsername("matti")
-            .password("{noop}salasana123")
-            .roles("USER")
-            .build();
-
-        return new InMemoryUserDetailsManager(user, admin);
-    } */
 
     @Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

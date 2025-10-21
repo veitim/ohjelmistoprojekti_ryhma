@@ -8,9 +8,9 @@
 
 ### Lisää tapahtuma
 
-* URL: "http://localhost:8080/api/tapahtumat"
+* URL: "http://localhost:8080/api/tapahtumat/ADMIN"
 * Metodi: POST
-* Esimerkki: http://localhost:8080/api/tapahtumat
+* Esimerkki: http://localhost:8080/api/tapahtumat/ADMIN
   
   Body:
   
@@ -28,9 +28,9 @@
 
 ### Päivitä tapahtuma
 
-* URL: "http://localhost:8080/api/tapahtumat/{id}"
+* URL: "http://localhost:8080/api/tapahtumat/ADMIN/{id}"
 * Metodi: PULL
-* Esimerkki: "http://localhost:8080/api/tapahtumat/1"
+* Esimerkki: "http://localhost:8080/api/tapahtumat/ADMIN/1"
   
   Body:
 
@@ -48,9 +48,9 @@
 
 ### Poista tapahtuma
 
-* URL: "http://localhost:8080/api/tapahtumat/{id}"
+* URL: "http://localhost:8080/api/tapahtumat/ADMIN/{id}"
 * Metodi: DELETE
-* Esimerkki: "http://localhost:8080/api/tapahtumat/1"
+* Esimerkki: "http://localhost:8080/api/tapahtumat/ADMIN/1"
 
 # Lippu
 

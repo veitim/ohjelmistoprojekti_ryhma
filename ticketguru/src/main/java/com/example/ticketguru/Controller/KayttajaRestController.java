@@ -22,7 +22,7 @@ import com.example.ticketguru.model.PostinumeroRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/kayttajat/ADMIN")
+@RequestMapping("/api/kayttajat")
 public class KayttajaRestController {
 
     private final KayttajaRepository kayttajaRepository;
@@ -43,7 +43,7 @@ public class KayttajaRestController {
         return (List<Kayttaja>) kayttajaRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/ADMIN")
     public ResponseEntity<Kayttaja> createKayttaja(@Valid @RequestBody Kayttaja kayttaja) {
     String postinumeroId = kayttaja.getPostinumero().getPostinumero();
     Postinumero postinumero = postinumeroRepository.findByPostinumero(postinumeroId)
@@ -55,7 +55,7 @@ public class KayttajaRestController {
     return ResponseEntity.ok(tallennettu);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/ADMIN/{id}")
     public ResponseEntity<Kayttaja> updateKayttaja(@Valid @PathVariable Long id, @RequestBody Kayttaja updated) {
     return kayttajaRepository.findById(id)
             .map(kayttaja -> {
@@ -86,7 +86,7 @@ public class KayttajaRestController {
                     HttpStatus.NOT_FOUND, "Tietoja ei löydy"));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> deleteKayttaja(@PathVariable Long id) {
         return kayttajaRepository.findById(id)
                 .map(kayttaja -> {
