@@ -47,7 +47,7 @@ public class MyyntiriviRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/ADMIN")
     public ResponseEntity<Myyntirivi> createMyyntirivi(@RequestBody Myyntirivi uusi) {
         if (uusi.getMyynti() == null || uusi.getMyynti().getMyyntiId() == null) {
             return ResponseEntity.badRequest().build();
@@ -76,7 +76,7 @@ public class MyyntiriviRestController {
         return ResponseEntity.ok(tallennettu);
     }
 
-@PutMapping("/{id}")
+@PutMapping("ADMIN/{id}/")
 public ResponseEntity<Myyntirivi> updateMyyntirivi(@PathVariable Long id, @RequestBody Myyntirivi updated) {
     if (updated.getMyynti() == null || updated.getMyynti().getMyyntiId() == null) {
         return ResponseEntity.badRequest().build();
@@ -112,7 +112,7 @@ public ResponseEntity<Myyntirivi> updateMyyntirivi(@PathVariable Long id, @Reque
     return ResponseEntity.ok(saved);
 }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> deleteMyyntirivi(@PathVariable Long id) {
         return myyntiriviRepository.findById(id)
                 .map(myyntirivi -> {

@@ -31,6 +31,8 @@ public class SecurityConfig {
               .requestMatchers("/api/tapahtumat/ADMIN/**").hasRole("ADMIN")
               .requestMatchers("/api/jarjestajat/ADMIN/**").hasRole("ADMIN")
               .requestMatchers("/api/postinumerot/ADMIN/**").hasRole("ADMIN")
+              .requestMatchers("/api/myynnit/ADMIN/**").hasRole("ADMIN")
+              .requestMatchers("/api/myyntirivit/ADMIN/**").hasRole("ADMIN")
               .requestMatchers("/api/**").authenticated()
           )
           .httpBasic(Customizer.withDefaults()); 

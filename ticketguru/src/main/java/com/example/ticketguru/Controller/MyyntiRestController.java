@@ -54,7 +54,7 @@ public class MyyntiRestController {
     //     return repository.save(myynti);
     // }
 
-    @PostMapping
+    @PostMapping ("/ADMIN")
     public ResponseEntity<?> luoMyynti(@Valid @RequestBody Myynti myynti){
         System.out.println("DEBUG: Saapui myynti, rivit=" + myynti.getMyyntirivit().size());
     try{
@@ -69,7 +69,7 @@ public class MyyntiRestController {
     }
 }
 
-@PutMapping("/{id}")
+@PutMapping("/ADMIN/{id}")
 public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynti updated) {
     return repository.findById(id)
             .map(existing -> {
@@ -98,7 +98,7 @@ public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynt
 }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("ADMIN/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();
