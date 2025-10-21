@@ -35,7 +35,8 @@ public class SecurityConfig {
                 "/api/postinumerot/ADMIN/**",
                 "/api/myynnit/ADMIN/**",
                 "/api/myyntirivit/ADMIN/**",
-                "/api/lipputyypit/ADMIN/**"
+                "/api/lipputyypit/ADMIN/**",
+                "/api/liput/ADMIN/**"
             ).hasAuthority("ADMIN")
               .requestMatchers("/api/**").authenticated()
           )
