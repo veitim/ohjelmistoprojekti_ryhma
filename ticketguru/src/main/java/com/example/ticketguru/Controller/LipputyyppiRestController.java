@@ -31,13 +31,13 @@ public class LipputyyppiRestController {
         return (List<LippuTyyppi>) lippuTyyppiRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/ADMIN")
     public ResponseEntity<LippuTyyppi> createLippu(@RequestBody LippuTyyppi uusi) {
         LippuTyyppi tallennettu = lippuTyyppiRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/ADMIN/{id}")
     public ResponseEntity<LippuTyyppi> updateLippuTyyppi(@PathVariable Long id, @RequestBody LippuTyyppi updated) {
         return lippuTyyppiRepository.findById(id)
                 .map(lippuTyyppi -> {
@@ -51,7 +51,7 @@ public class LipputyyppiRestController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> deleteLippuTyyppi(@PathVariable Long id) {
         return lippuTyyppiRepository.findById(id)
                 .map(lippuTyyppi -> {
