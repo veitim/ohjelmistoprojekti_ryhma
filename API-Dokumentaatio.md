@@ -261,9 +261,9 @@ Body:
 
 ### Päivitä myynti
 
-* URL: "http://localhost:8080/api/myynnit/{id}"
+* URL: "http://localhost:8080/api/myynnit/ADMIN/{id}"
 * Metodi: PUT
-* Esimerkki: "http://localhost:8080/api/myynnit/1"
+* Esimerkki: "http://localhost:8080/api/myynnit/ADMIN/1"
 
 Body:
       
@@ -279,9 +279,9 @@ Body:
 
 ### Poista myynti
 
-* URL: "http://localhost:8080/api/myynnit/{id}"
+* URL: "http://localhost:8080/api/myynnit/ADMIN/{id}"
 * Metodi: DELETE
-* Esimerkki: "http://localhost:8080/api/myynnit/1"
+* Esimerkki: "http://localhost:8080/api/myynnit/ADMIN/1"
 
 # Postinumero
 
@@ -420,12 +420,12 @@ Body:
 * Esimerkki: "http://localhost:8080/api/myyntirivit"
 
 ### Hae myyntirivi ID:llä
-* URL: "http://localhost:8080/api/myyntirivit/{1}"
+* URL: "http://localhost:8080/api/myyntirivit/{id}"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/myyntirivit/1"
 
 ### Lisää uusi myyntirivi
-* URL: "http://localhost:8080/api/myyntirivit"
+* URL: "http://localhost:8080/api/myyntirivit/ADMIN"
 * Metodi: POST
 * Esimerkki:
 
@@ -443,9 +443,9 @@ Body:
     }
 
 ### Päivitä myyntirivi
-* URL: "http://localhost:8080/api/myyntirivit"
+* URL: "http://localhost:8080/api/myyntirivit/ADMIN/{id}"
 * Metodi: PUT
-* Esimerkki: "http://localhost:8080/api/myyntirivit"
+* Esimerkki: "http://localhost:8080/api/myyntirivit/ADMIN/1"
 
 Body:
 
@@ -461,6 +461,6 @@ Body:
     }
 
 ### Poista myyntirivi
-* URL: "http://localhost:8080/api/myyntirivit/{id}"
+* URL: "http://localhost:8080/api/myyntirivit/ADMIN/{id}"
 * Metodi: DELETE
-* Esimerkki: "http://localhost:8080/api/myyntirivit/1"
+* Esimerkki: "http://localhost:8080/api/myyntirivit/ADMIN/1"
