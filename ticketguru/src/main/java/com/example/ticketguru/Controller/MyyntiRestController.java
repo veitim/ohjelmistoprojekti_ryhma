@@ -48,7 +48,7 @@ public class MyyntiRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/ADMIN")
+    @PostMapping
     public ResponseEntity<?> luoMyynti(@Valid @RequestBody Myynti myynti){
         System.out.println("DEBUG: Saapui myynti, rivit=" + myynti.getMyyntirivit().size());
     try{
