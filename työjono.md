@@ -9,11 +9,11 @@
 
 ### Tarina1
 
-Lipunmyyjä haluaa pystyä myymään ja tulostamaan useita lippuja yhdelle asiakkaalle, jotta myyminen olisi tehokkaampaa.
+Lipunmyyjä haluaa pystyä myymään ja tulostamaan useita lippuja yhdelle asiakkaalle, jotta myyminen on tehokasta ja asikaspalvelu sujuvaa.
 
 ### Tarina 2
 
-Asiakas haluaa, että hän pääsee lippunsa kanssa takuuvarmasti tapahtumaan.
+Asiakas haluaa, että hän pääsee lippunsa kanssa takuuvarmasti tapahtumaan ilman ongelmia.
 
 ### Tarina 3
 
@@ -21,7 +21,8 @@ Lipuntarkastaja haluaisi, että liput voidaan lukea lukulaitteella. Näin ei tar
 
 ### Tarina 4
 
-Järjestelmän ylläpitäjä haluaa kyetä jatkokehittämään järjestelmään, vaikka tämä olisi käytössä.
+Järjestelmän ylläpitäjä haluaa pystyä kehittämään ja päivittämään järjestelmää sen ollessa käytössä,
+jotta järjestelmä pysyy ajan tasalla ilman käyttökatkoja.
 
 ### Tarina 5
 
@@ -29,24 +30,20 @@ Lipunmyyjä haluaa tulostaa myymättömät liput ovelle kerralla ilman suurempaa
 
 ### Tarina 6
 
-Lipunmyyjä haluaa pystyä valita lipun tyypin. Aikuinen, lapsi tai erityisryhmä.
+Käyttäjänä haluan hallita lipputyyppejä (luoda, muokata ja valita), jotta eri asiakasryhmät voidaan huomioida lipunmyynnissä.
 
 ### Tarina 7
 
-Järjestelmän ylläpitäjä haluaa pystyä määrittämään uusia lipputyyppejä.
-
-### Tarina 8
-
 Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), jotta hänen ei tarvitse kantaa paperilippua mukanaan.
 
- ### Tarina 9
+ ### Tarina 8
 
 Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
 
- ### Tarina 10
+ ### Tarina 9
 
  Asiakas haluaa voida maksaa lippunsa eri maksutavoilla (esim. kortti, mobiilimaksu, käteinen), jotta lipun osto olisi mahdollisimman joustavaa.
 
- ### Tarina 11
+ ### Tarina 10
 
  Lipuntarkastaja haluaa pystyä tarkistamaan lipun myös ilman verkkoyhteyttä, jotta tarkastus onnistuu myös paikoissa, joissa netti ei toimi.
