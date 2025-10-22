@@ -2,12 +2,14 @@
 
 ### Hae tapahtumat
 
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/tapahtumat"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/tapahtumat"
 
 ### Lisää tapahtuma
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/tapahtumat/ADMIN"
 * Metodi: POST
 * Esimerkki: http://localhost:8080/api/tapahtumat/ADMIN
@@ -28,6 +30,7 @@
 
 ### Päivitä tapahtuma
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/tapahtumat/ADMIN/{id}"
 * Metodi: PULL
 * Esimerkki: "http://localhost:8080/api/tapahtumat/ADMIN/1"
@@ -48,6 +51,7 @@
 
 ### Poista tapahtuma
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/tapahtumat/ADMIN/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/tapahtumat/ADMIN/1"
@@ -56,12 +60,14 @@
 
 ### Hae liput
 
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/liput"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/liput"
 
 ### Lisää lippu
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/liput"
 * Metodi: POST
 * Esimerkki: http://localhost:8080/api/liput
@@ -82,10 +88,9 @@ Body:
 
 ### Päivitä lippu
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/liput/{id}"
-
 * Metodi: PUT
-
 * Esimerkki: "http://localhost:8080/api/liput/1"
 
 Body:
@@ -104,10 +109,9 @@ Body:
 
 ### Poista lippu
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/liput/{id}"
-
 * Metodi: DELETE
-
 * Esimerkki: "http://localhost:8080/api/liput/1"
 
 Body:
@@ -128,12 +132,14 @@ Body:
 
 ### Hae lipputyypit
 
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/lipputyypit"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/lipputyypit"
 
 ### Lisää lipputyyppi
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/lipputyypit"
 * Metodi: POST
 * Esimerkki: "http://localhost:8080/api/lipputyypit"
@@ -148,6 +154,7 @@ Body:
 
 ### Päivitä lippytyyppi
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/lipputyypit/{id}"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/lipputyypit/1"
@@ -161,6 +168,7 @@ Body:
 
 ### Poista lipputyyppi
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/lipputyypit/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/lipputyypit/2"
@@ -169,12 +177,14 @@ Body:
 
 ### Hae käyttäjät
 
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/kayttajat"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/kayttajat"
 
 ### Lisää käyttäjä
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/kayttajat"
 * Metodi: POST
 * Esimerkki: http://localhost:8080/api/kayttajat
@@ -199,6 +209,7 @@ Body:
 
 ### Päivitä käyttäjä
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/kayttajat/{id}"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/kayttajat/1"
@@ -223,6 +234,7 @@ Body:
 
 ### Poista käyttäjä
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/kayttajat/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/kayttajat/1"
@@ -231,18 +243,21 @@ Body:
 
 ### Hae kaikki myynnit
 
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/myynnit"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/myynnit"
 
 ### Hae myynti ID:llä
 
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/myynnit/{id}"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/myynnit/1"
 
 ### Lisää myynti
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/myynnit"
 * Metodi: POST
 * Esimerkki: "http://localhost:8080/api/myynnit"
@@ -261,6 +276,7 @@ Body:
 
 ### Päivitä myynti
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/myynnit/ADMIN/{id}"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/myynnit/ADMIN/1"
@@ -279,6 +295,7 @@ Body:
 
 ### Poista myynti
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/myynnit/ADMIN/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/myynnit/ADMIN/1"
@@ -287,12 +304,14 @@ Body:
 
 ### Hae postinumerot/postitoimipaikat
 
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/postinumerot"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/postinumerot"
 
 ### Lisää postinumero/postitoimipaikka
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/postinumerot"
 * Metodi: POST
 * Esimerkki: "http://localhost:8080/api/postinumerot"
@@ -307,6 +326,7 @@ Body:
 
 ### Päivitä postinumero/postitoimipaikka
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/postinumerot/{postinumero}"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/postinumerot/00980"
@@ -320,6 +340,7 @@ Body:
 
 ### Poista postinumero/postitoimipaikka
 
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/postinumerot/{postinumero}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/postinumerot/00980"
@@ -328,16 +349,22 @@ Body:
  # Järjestäjä
 
 ### Hae kaikki järjestäjät
+
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/jarjestajat"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/jarjestajat"
 
 ### Hae järjestäjä ID:llä
+
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/jarjestajat/{id}"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/jarjestajat/1"
 
 ### Lisää järjestäjä
+
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/jarjestajat/ADMIN"
 * Metodi: POST
 * Esimerkki: "http://localhost:8080/api/jarjestajat/ADMIN"
@@ -351,6 +378,8 @@ Body:
 }
 
 ### Päivitä järjestäjä
+
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/jarjestajat/ADMIN/{id}"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/jarjestajat/ADMIN/1"
@@ -364,67 +393,31 @@ Body:
 }
 
 ### Poista järjestäjä
+
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/jarjestajat/ADMIN/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/jarjestajat/ADMIN/1"
 
-# Rooli
-
-### Hae kaikki roolit
-
-* URL: "http://localhost:8080/api/roolit"
-* Metodi: GET
-* Esimerkki: "http://localhost:8080/api/roolit"
-
-### Hae rooli ID:llä
-
-* URL: "http://localhost:8080/api/roolit/{id}"
-* Metodi: GET
-* Esimerkki: "http://localhost:8080/api/roolit/1"
-
-### Lisää rooli
-
-* URL: "http://localhost:8080/api/roolit"
-* Metodi: POST
-* Esimerkki: "http://localhost:8080/api/roolit"
-
-Body:
-
-    {
-        "name": "Admin"
-    }
-
-### Päivitä rooli
-
-* URL: "http://localhost:8080/api/roolit/{id}"
-* Metodi: PUT
-* Esimerkki: "http://localhost:8080/api/roolit/1"
-
-Body:
-
-    {
-        "name": "Käyttäjä"
-    }
-
-### Poista rooli
-
-* URL: "http://localhost:8080/api/roolit/{id}"
-* Metodi: DELETE
-* Esimerkki: "http://localhost:8080/api/roolit/1"
-
 # Myyntirivi
 
 ### Hae kaikki myyntirivit
+
+* Vaatimus: autentikoitu käyttäjä
 * URL: "http://localhost:8080/api/myyntirivit"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/myyntirivit"
 
 ### Hae myyntirivi ID:llä
+
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/myyntirivit/{id}"
 * Metodi: GET
 * Esimerkki: "http://localhost:8080/api/myyntirivit/1"
 
 ### Lisää uusi myyntirivi
+
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/myyntirivit/ADMIN"
 * Metodi: POST
 * Esimerkki:
@@ -443,6 +436,8 @@ Body:
     }
 
 ### Päivitä myyntirivi
+
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/myyntirivit/ADMIN/{id}"
 * Metodi: PUT
 * Esimerkki: "http://localhost:8080/api/myyntirivit/ADMIN/1"
@@ -461,6 +456,8 @@ Body:
     }
 
 ### Poista myyntirivi
+
+* Vaatimus: ADMIN, oikeudet
 * URL: "http://localhost:8080/api/myyntirivit/ADMIN/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/myyntirivit/ADMIN/1"
