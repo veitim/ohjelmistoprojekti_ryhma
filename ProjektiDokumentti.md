@@ -1,4 +1,4 @@
-# TicketGuru-projekti
+# TicketGuru-projekti #
 
 Tämä projekti on tehty osana Haaga-Helian Ohjelmistoprojekti 1 - SOF005AS3A-3021 kurssia (syksy 2025).
 
@@ -15,7 +15,7 @@ Kurssitoteutuksen vetäjät (tuotteenomistajat):
 * Petteri Lappalainen
 * Markku Ruonavaara
 
-## Johdanto
+## Johdanto ##
 
 Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
 
@@ -27,26 +27,19 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 
 ## Käyttäjäroolit:
 
-### Asiakas
+### * Asiakas: 
+Ostaa lipun myyntipisteessä ja jatkossa verkkokaupassa. Haluaa varman pääsyn tapahtumaan lipulla. Voi saada lipun joko paperitulosteena tai säköisenä.
 
-* Epäsuorasti käyttää järjestelmää
+### * Lipunmyyjä: 
+Myy ja tulostaa liput myyntipisteessä. Tulostaa jäljellä olevat liput ovimyyntiä varten. Valitsee lipputyypin (aikuinen, lapsi, erityisryhmä).
 
-### Lipunmyyjä
+### * Lipuntarkastaja:
+ Skannaa lipun ovella ja merkitsee sen käytetyksi. Saa järjestelmältä välittömän tiedon, onko lippu kelvollinen.
 
-* Järjestelmän pääkäyttäjä. Eli henkilö, joka myy ja tulostaa liput asiakkaalle.
+### * Järjestelmän ylläpitäjä:
+ Lisää ja muokkaa tapahtumia, lippuja ja lipputyyppejä. Hallinnoi käyttäjätilejä ja oikeuksia. Näkee raportteja myynneistä ja tapahtumista. Vastaa järjestelmän toiminnasta ja jatkokehityksestä.
 
-### Lipuntarkastaja
-
-* Henkilö, joka tarkastaa lipun aitouden ja sen, että onko tämä käytetty.
-
-### Järjestelmän ylläpitäjä
-
-* Pitää huolen siitä, että järjestelmä toimii oikein.
-
-## Käyttötapaus
-
-
-## Käyttäjätarinat
+## Käyttäjätarinat:
 
 ### Tarina1
 
@@ -86,11 +79,14 @@ Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käyt
 
 ## Käyttöliittymä
 
-![kayttoliittyma](images/Käyttöliittymäkaava.png)
+Tärkeimmät käyttöliittymän näkymät:
+- Etusivu ja kirjautuminen
+- Käyttäjän etusivu
+- Toimintonäkymä(Myynti ja osto tilanteissa)
+- Listaus- tai hakunäkymä
+- profiilinäkymä
 
 ## Tietokanta
-
-![tietokanta](images/tietokantakaavio.png)
 
 Asiakas
 Asiakas-taulu sisältää asiakkaiden tiedot
@@ -173,4 +169,36 @@ Järjestäjä-taulu sisältää tapahtumien järjestäjät
 | Sähköposti     | C/150  | Järjestäjän sähköposti    |
 | Puhelin        | C/15   | Järjestäjän puhelinnumero |
 
+## Tekninen kuvaus
 
+Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset ratkaisut, esim.
+
+    Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma) ja komponenttien väliset yhteydet (vaikkapa tähän tyyliin: https://security.ufl.edu/it-workers/risk-assessment/creating-an-information-systemdata-flow-diagram/)
+    Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
+    Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää UML-sekvenssikaavioilla.
+    Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
+
+Tämän lisäksi
+
+    ohjelmakoodin tulee olla kommentoitua
+    luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa johdonmukaisia nimeämiskäytäntöjä
+    ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta vältytään
+
+## Testaus
+Tässä kohdin selvitetään, miten ohjelmiston oikea toiminta varmistetaan testaamalla projektin aikana: millaisia testauksia tehdään ja missä vaiheessa. Testauksen tarkemmat sisällöt ja testisuoritusten tulosten raportit kirjataan erillisiin dokumentteihin.
+
+Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu.
+## Asennustiedot
+
+Järjestelmän asennus on syytä dokumentoida kahdesta näkökulmasta:
+
+    järjestelmän kehitysympäristö: miten järjestelmän kehitysympäristön saisi rakennettua johonkin toiseen koneeseen
+
+    järjestelmän asentaminen tuotantoympäristöön: miten järjestelmän saisi asennettua johonkin uuteen ympäristöön.
+
+Asennusohjeesta tulisi ainakin käydä ilmi, miten käytettävä tietokanta ja käyttäjät tulee ohjelmistoa asentaessa määritellä (käytettävä tietokanta, käyttäjätunnus, salasana, tietokannan luonti yms.).
+## Käynnistys- ja käyttöohje
+
+Tyypillisesti tässä riittää kertoa ohjelman käynnistykseen tarvittava URL sekä mahdolliset kirjautumiseen tarvittavat tunnukset. Jos järjestelmän käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimintajärjestykseen liittyviä asioita, nekin kerrotaan tässä yhteydessä.
+
+Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat järjestelmän pariin !
