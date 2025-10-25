@@ -3,6 +3,7 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +34,15 @@ public class TapahtumaRestController {
         return (List<Tapahtuma>) tapahtumaRepository.findAll();
     }
 
-    @PostMapping("/ADMIN")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping
     public ResponseEntity<Tapahtuma> createTapahtuma(@Valid @RequestBody Tapahtuma uusi) {
         Tapahtuma tallennettu = tapahtumaRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
     
-    @PutMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/{id}")
     public ResponseEntity<Tapahtuma> updateTapahtuma(@Valid @PathVariable Long id, @RequestBody Tapahtuma updated) {
         return tapahtumaRepository.findById(id)
                 .map(tapahtuma -> {
@@ -56,7 +59,8 @@ public class TapahtumaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTapahtuma(@PathVariable Long id) {
         return tapahtumaRepository.findById(id)
                 .map(tapahtuma -> {

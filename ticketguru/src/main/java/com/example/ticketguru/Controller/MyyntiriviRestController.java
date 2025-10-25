@@ -3,6 +3,7 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,7 +48,8 @@ public class MyyntiriviRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/ADMIN")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping
     public ResponseEntity<Myyntirivi> createMyyntirivi(@RequestBody Myyntirivi uusi) {
         if (uusi.getMyynti() == null || uusi.getMyynti().getMyyntiId() == null) {
             return ResponseEntity.badRequest().build();
@@ -76,7 +78,8 @@ public class MyyntiriviRestController {
         return ResponseEntity.ok(tallennettu);
     }
 
-@PutMapping("ADMIN/{id}/")
+@PreAuthorize("hasAuthority('ADMIN')")
+@PutMapping("/{id}")
 public ResponseEntity<Myyntirivi> updateMyyntirivi(@PathVariable Long id, @RequestBody Myyntirivi updated) {
     if (updated.getMyynti() == null || updated.getMyynti().getMyyntiId() == null) {
         return ResponseEntity.badRequest().build();
@@ -112,7 +115,8 @@ public ResponseEntity<Myyntirivi> updateMyyntirivi(@PathVariable Long id, @Reque
     return ResponseEntity.ok(saved);
 }
 
-    @DeleteMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMyyntirivi(@PathVariable Long id) {
         return myyntiriviRepository.findById(id)
                 .map(myyntirivi -> {

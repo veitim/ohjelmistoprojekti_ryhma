@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,6 +49,7 @@ public class MyyntiRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<?> luoMyynti(@Valid @RequestBody Myynti myynti){
         System.out.println("DEBUG: Saapui myynti, rivit=" + myynti.getMyyntirivit().size());
@@ -63,7 +65,8 @@ public class MyyntiRestController {
     }
 }
 
-@PutMapping("/ADMIN/{id}")
+@PreAuthorize("hasAuthority('ADMIN')")
+@PutMapping("/{id}")
 public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynti updated) {
     return repository.findById(id)
             .map(existing -> {
@@ -91,8 +94,8 @@ public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynt
             .orElse(ResponseEntity.notFound().build());
 }
 
-
-    @DeleteMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();

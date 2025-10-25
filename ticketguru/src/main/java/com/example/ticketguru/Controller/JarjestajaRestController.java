@@ -2,9 +2,10 @@ package com.example.ticketguru.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.http.HttpStatus;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ticketguru.model.Jarjestaja;
 import com.example.ticketguru.model.JarjestajaRepository;
+
 import jakarta.validation.Valid;
 
 @RestController
@@ -45,13 +47,14 @@ public class JarjestajaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/ADMIN")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Jarjestaja create(@Valid @RequestBody Jarjestaja jarjestaja) {
         return repository.save(jarjestaja);
     }
-
-    @PutMapping("/ADMIN/{id}")
+    
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/{id}")
     public ResponseEntity<Jarjestaja> update(@PathVariable Long id, @Valid @RequestBody Jarjestaja updated) {
         return repository.findById(id)
                         .map(jarjestaja -> {
@@ -65,7 +68,8 @@ public class JarjestajaRestController {
     
     }
 
-    @DeleteMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!repository.existsById(id)) {
             return ResponseEntity.notFound().build();

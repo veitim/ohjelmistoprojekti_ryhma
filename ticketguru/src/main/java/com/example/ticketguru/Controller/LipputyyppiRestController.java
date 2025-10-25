@@ -3,6 +3,7 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,13 +32,15 @@ public class LipputyyppiRestController {
         return (List<LippuTyyppi>) lippuTyyppiRepository.findAll();
     }
 
-    @PostMapping("/ADMIN")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping
     public ResponseEntity<LippuTyyppi> createLippu(@RequestBody LippuTyyppi uusi) {
         LippuTyyppi tallennettu = lippuTyyppiRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
 
-    @PutMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/{id}")
     public ResponseEntity<LippuTyyppi> updateLippuTyyppi(@PathVariable Long id, @RequestBody LippuTyyppi updated) {
         return lippuTyyppiRepository.findById(id)
                 .map(lippuTyyppi -> {
@@ -50,8 +53,8 @@ public class LipputyyppiRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
-    @DeleteMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLippuTyyppi(@PathVariable Long id) {
         return lippuTyyppiRepository.findById(id)
                 .map(lippuTyyppi -> {

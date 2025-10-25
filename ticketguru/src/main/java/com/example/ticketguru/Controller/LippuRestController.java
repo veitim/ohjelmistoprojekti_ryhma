@@ -3,6 +3,7 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,12 +34,14 @@ public class LippuRestController {
         return (List<Lippu>) lippuRepository.findAll();
     }
 
-    @PostMapping("/ADMIN")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping
     public ResponseEntity<Lippu> createLippu(@Valid @RequestBody Lippu uusi) {
         Lippu tallennettu = lippuRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Lippu> updateLippu(@Valid @PathVariable Long id, @RequestBody Lippu updated) {
         return lippuRepository.findById(id)
@@ -55,7 +58,7 @@ public class LippuRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLippu(@PathVariable Long id) {
         return lippuRepository.findById(id)

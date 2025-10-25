@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,8 +43,9 @@ public class KayttajaRestController {
     public List<Kayttaja> getAllKayttajat() {
         return (List<Kayttaja>) kayttajaRepository.findAll();
     }
-
-    @PostMapping("/ADMIN")
+    
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping
     public ResponseEntity<Kayttaja> createKayttaja(@Valid @RequestBody Kayttaja kayttaja) {
     String postinumeroId = kayttaja.getPostinumero().getPostinumero();
     Postinumero postinumero = postinumeroRepository.findByPostinumero(postinumeroId)
@@ -55,7 +57,8 @@ public class KayttajaRestController {
     return ResponseEntity.ok(tallennettu);
     }
     
-    @PutMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/{id}")
     public ResponseEntity<Kayttaja> updateKayttaja(@Valid @PathVariable Long id, @RequestBody Kayttaja updated) {
     return kayttajaRepository.findById(id)
             .map(kayttaja -> {
@@ -86,7 +89,8 @@ public class KayttajaRestController {
                     HttpStatus.NOT_FOUND, "Tietoja ei löydy"));
     }
 
-    @DeleteMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteKayttaja(@PathVariable Long id) {
         return kayttajaRepository.findById(id)
                 .map(kayttaja -> {

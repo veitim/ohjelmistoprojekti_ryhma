@@ -3,6 +3,7 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +34,15 @@ public class PostinumeroRestController {
         return (List<Postinumero>) postinumeroRepository.findAll();
     }
 
-    @PostMapping("/ADMIN")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping
     public ResponseEntity<Postinumero> createPostinumero(@Valid @RequestBody Postinumero uusi) {
         Postinumero tallennettu = postinumeroRepository.save(uusi);
         return ResponseEntity.ok(tallennettu);
     }
     
-    @PutMapping("/ADMIN/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/{id}")
     public ResponseEntity<Postinumero> updatePostinumero(@Valid @PathVariable String id, @RequestBody Postinumero updated) {
         return postinumeroRepository.findById(id)
                 .map(postinumero -> {
@@ -51,6 +54,7 @@ public class PostinumeroRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/ADMIN/{id}")
     public ResponseEntity<Void> deletePostinumero(@PathVariable String id) {
         return postinumeroRepository.findById(id)
