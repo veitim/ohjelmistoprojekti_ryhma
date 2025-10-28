@@ -47,6 +47,10 @@ public class KayttajaRestController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<Kayttaja> createKayttaja(@Valid @RequestBody Kayttaja kayttaja) {
+    if (kayttajaRepository.existsByUsername(kayttaja.getUsername())) {
+        throw new ResponseStatusException(
+            HttpStatus.CONFLICT, "Käyttäjätunnus " + kayttaja.getUsername() + " on jo käytössä");
+        }
     String postinumeroId = kayttaja.getPostinumero().getPostinumero();
     Postinumero postinumero = postinumeroRepository.findByPostinumero(postinumeroId)
             .orElseThrow(() -> new ResponseStatusException(
