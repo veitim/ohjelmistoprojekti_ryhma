@@ -1,28 +1,35 @@
 package com.example.ticketguru;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.example.ticketguru.model.Postinumero;
+import com.example.ticketguru.model.PostinumeroRepository;
 
 @SpringBootApplication
 public class TicketguruApplication {
-	// private static final Logger log = LoggerFactory.getLogger(TicketguruApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(TicketguruApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(TicketguruApplication.class, args);
 	}
 
-	// @Bean
-	// public CommandLineRunner ticketguru(
-	// 		TapahtumaRepository tRepository, 
-	// 		JarjestajaRepository jRepository,
-	// 		LippuTyyppiRepository ltRepository, 
-	// 		PostinumeroRepository pRepository, 
-	// 		LippuRepository lippuRepository, 
-	// 		MyyntiriviRepository mrRepository, 
-	// 		MyyntiRepository mRepository, 
-	// 		KayttajaRepository kRepository
-	// 	) {
-	// 	return (args) -> {
+	@Bean
+	public CommandLineRunner ticketguru(
+			// TapahtumaRepository tRepository, 
+			// JarjestajaRepository jRepository,
+			// LippuTyyppiRepository ltRepository, 
+			PostinumeroRepository pRepository
+			// LippuRepository lippuRepository, 
+			// MyyntiriviRepository mrRepository, 
+			// MyyntiRepository mRepository, 
+			// KayttajaRepository kRepository
+		) {
+		return (args) -> {
 
 	// 		log.info("Järjestäjiä");
 	// 		Jarjestaja jarjestaja1 = new Jarjestaja("uber", "pekka", "uber@uber", "+3580000");
@@ -59,7 +66,7 @@ public class TicketguruApplication {
 	// 		}
 
 	// 		log.info("Postitoimipaikkoi");
-	// 		pRepository.save(new Postinumero("00980", "Helsinki"));
+			pRepository.save(new Postinumero("00720", "PERKELEE"));
 	// 		pRepository.save(new Postinumero("00990", "Helsinki"));
 
 	// 		Tapahtuma tapahtuma = tRepository.findAll().iterator().next();
@@ -106,7 +113,7 @@ public class TicketguruApplication {
 	// 		mrRepository.save(myyntirivi1);
 	// 		mrRepository.save(myyntirivi2);
 
-	// 	};
-	// }
+		};
+	}
 
 }
