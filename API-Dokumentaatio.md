@@ -299,8 +299,10 @@ Body:
 
 ### Poista myynti
 
+ENDPOINTIT MITÄ VOI KÄYTTTÄÄ  TAPAHTUMAT; LIPUT; JNE: MENEE ESIM TILALLE
+
 * Vaatimus: ADMIN, oikeudet
-* URL: "http://localhost:8080/api/myynnit/{id}"
+* URL: "http://localhost:8080/api/{ESIM}/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/myynnit/1"
 
