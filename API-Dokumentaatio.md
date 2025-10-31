@@ -1,8 +1,10 @@
-Colons can be used to align columns.
+# API-dokumentaatio
 
-| Endpoints         | Methods                      | Errors     |
+## Endpointteja
+
+| Endpoints         | Methods                      | Results     |
 | -------------     |:----------------------------:| ----------:|
-| jarjestajat       | GET, POST, PUT, DELETE       | $1600      |
+| jarjestajat       | GET, POST, PUT, DELETE       | 400      |
 | kayttajat         | GET, POST, PUT, DELETE       |   $12      |
 | liput             | GET, POST, PUT, DELETE       |    $1      |
 | lipputyypit       | GET, POST, PUT, DELETE       | $1600      |
@@ -11,8 +13,7 @@ Colons can be used to align columns.
 | postinumerot      | GET, POST, PUT, DELETE       | $1600      |
 | tapahtumat        | GET, POST, PUT, DELETE       |   $12      |
 
-
-## Endpointit
+## Käyttöesimerkki
 
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}
 * Metodit: GET, POST, PUT, DELETE
