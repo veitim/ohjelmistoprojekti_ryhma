@@ -19,6 +19,7 @@
 * Metodit: GET, POST, PUT, DELETE
 * Esimerkki: GET: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
 * Result:
+
         [
         {
             "jarjestaja_id": 1,
