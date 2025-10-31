@@ -2,6 +2,7 @@ package com.example.ticketguru.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -47,7 +48,7 @@ public class Lippu {
     private LippuTyyppi lipputyyppi;
 
 
-    @JsonIgnoreProperties("lippu")
+    @JsonIgnore
     @OneToMany(mappedBy= "lippu", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<Myyntirivi> myyntirivit;
 
