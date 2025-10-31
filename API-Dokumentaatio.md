@@ -17,9 +17,31 @@
 
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}
 * Metodit: GET, POST, PUT, DELETE
-* Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat
+* Esimerkki: GET: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
+* Result:
+        [
+        {
+            "jarjestaja_id": 1,
+            "nimi": "uber",
+            "yhteyshenkilo": "pekka",
+            "sahkoposti": "uber@uber",
+            "puhelin": "+3580000",
+            "tapahtumat": [
+            {
+                "tapahtuma_id": 1,
+                "nimi": "hälläväliä",
+                "katuosoite": "koti",
+                "alkamisPvm": "2025-01-07",
+                "paattymisPvm": "2025-01-08",
+                "lisatiedot": "ikärajaa ei ole",
+                "paikkamaara": 200,
 
-# Tapahtuma
+* PUT ja DELETE endpointteja haetaan id:n peruteella
+* URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}/{id}
+* Esimerkki: DELETE: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/3}
+* Result: 203 no content
+
+# jarjestajat
 
 ### Hae tapahtumat
 
