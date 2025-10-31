@@ -50,7 +50,10 @@
 
 # Endpoint: /jarjestajat
 
-* Method: POST
+### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
+
+### Method: POST
+
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
 * Body:
 
@@ -62,8 +65,34 @@
         }
 
 * Pakollinen arvo: "nimi"
+* Restul: 201 Created
 
-* Method: DELETE
+        {
+            "jarjestaja_id": {id},
+            "nimi": "Konserttiyhtiö Oy",
+            "yhteyshenkilo": "Matti Meikäläinen",
+            "sahkoposti": "matti@konserttiyhtio.fi",
+            "puhelin": "0401234567",
+            "tapahtumat": null
+        }
+
+
+### Method: PUT
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
+* Body:
+
+        {
+            "nimi": "MUUTOS",
+            "yhteyshenkilo": "MUUTOS",
+            "sahkoposti": "matti@konserttiyhtio.fi",
+            "puhelin": "0401234567"
+        }
+
+* Result: 200 OK   
+    
+### Method: DELETE
+
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
 
 * Results:
@@ -79,6 +108,31 @@
 # Endpoint: lipputyypit
 
 # Endpoint: myynnit
+
+### Method: POST
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
+
+Body:
+
+      {
+          "kayttaja": {
+              "kayttajaId": 1
+          },
+          "paivamaara": "2025-09-30",
+          "maksutapa": "Kortti",
+          "tyyppi": "Verkkokauppa",
+          "myyntirivit": []
+      }
+
+
+### Method: PUT
+
+
+### Method: DELETE
+
+
+
 
 # Endpoint: myyntirivit
 
