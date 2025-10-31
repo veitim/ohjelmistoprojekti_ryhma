@@ -1,3 +1,23 @@
+Colons can be used to align columns.
+
+| Endpoints         | Methods                      | Errors     |
+| -------------     |:----------------------------:| ----------:|
+| jarjestajat       | GET, POST, PUT, DELETE       | $1600      |
+| kayttajat         | GET, POST, PUT, DELETE       |   $12      |
+| liput             | GET, POST, PUT, DELETE       |    $1      |
+| lipputyypit       | GET, POST, PUT, DELETE       | $1600      |
+| myynnit           | GET, POST, PUT, DELETE       |   $12      |
+| myyntirivit       | GET, POST, PUT, DELETE       |    $1      |
+| postinumerot      | GET, POST, PUT, DELETE       | $1600      |
+| tapahtumat        | GET, POST, PUT, DELETE       |   $12      |
+
+
+## Endpointit
+
+* URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}
+* Metodit: GET, POST, PUT, DELETE
+* Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat
+
 # Tapahtuma
 
 ### Hae tapahtumat
