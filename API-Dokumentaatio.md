@@ -46,11 +46,12 @@
 * PUT ja DELETE endpointteja haetaan id:n peruteella
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}/{id}
 * Esimerkki: DELETE: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/3}
-* Result: 203 no content
+* Result: 203 no content. Käyttäjä poistettu.
 
-# Endpoint: jarjestajat
+# Endpoint: /jarjestajat
 
 * Method: POST
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
 * Body:
 
         {
@@ -61,9 +62,15 @@
         }
 
 * Pakollinen arvo: "nimi"
+
+* Method: DELETE
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
+
 * Results:
-    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
     * 201 Created. Pyyntö onnistunut.
+    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
+    * 403 Forbidden. Ei oikeuksia, eli yritetään tehdä väärillä oikeuksilla.
+    * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
 
 # Endpoint: kayttajat
 
