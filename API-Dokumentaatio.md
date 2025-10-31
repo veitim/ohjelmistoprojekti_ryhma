@@ -2,16 +2,22 @@
 
 ## Endpointteja
 
-| Endpoints         | Methods                      | Results     |
-| -------------     |:----------------------------:| ----------:|
-| jarjestajat       | GET, POST, PUT, DELETE       | 400      |
-| kayttajat         | GET, POST, PUT, DELETE       |   $12      |
-| liput             | GET, POST, PUT, DELETE       |    $1      |
-| lipputyypit       | GET, POST, PUT, DELETE       | $1600      |
-| myynnit           | GET, POST, PUT, DELETE       |   $12      |
-| myyntirivit       | GET, POST, PUT, DELETE       |    $1      |
-| postinumerot      | GET, POST, PUT, DELETE       | $1600      |
-| tapahtumat        | GET, POST, PUT, DELETE       |   $12      |
+| Endpoints         | Methods                      |
+| -------------     |:----------------------------:| 
+| jarjestajat       | GET, POST, PUT, DELETE       |
+| kayttajat         | GET, POST, PUT, DELETE       |
+| liput             | GET, POST, PUT, DELETE       |
+| lipputyypit       | GET, POST, PUT, DELETE       |
+| myynnit           | GET, POST, PUT, DELETE       |
+| myyntirivit       | GET, POST, PUT, DELETE       |
+| postinumerot      | GET, POST, PUT, DELETE       |
+| tapahtumat        | GET, POST, PUT, DELETE       |
+
+## Vaatimukset
+
+* Kaikki endpointit vaativat autentikoidun käyttäjän.
+* USER: tason käyttäjä voi tehdä GET-pyyntöjä ja luoda myyntitapahtuman POST-pyynnöllä.
+* ADMIN: Voi tehdä kaikkea.
 
 ## Käyttöesimerkki
 
@@ -42,7 +48,37 @@
 * Esimerkki: DELETE: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/3}
 * Result: 203 no content
 
-# jarjestajat
+# Endpoint: jarjestajat
+
+* Method: POST
+* Body:
+
+        {
+            "nimi": "Konserttiyhtiö Oy",
+            "yhteyshenkilo": "Matti Meikäläinen",
+            "sahkoposti": "matti@konserttiyhtio.fi",
+            "puhelin": "0401234567"
+        }
+
+* Pakollinen arvo: "nimi"
+* Results:
+    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
+    * 201 Created. Pyyntö onnistunut.
+
+# Endpoint: kayttajat
+
+# Endpoint: liput
+
+# Endpoint: lipputyypit
+
+# Endpoint: myynnit
+
+# Endpoint: myyntirivit
+
+# Endpoint: postinumerot
+
+# Endpoint: tapahtumat
+
 
 ### Hae tapahtumat
 
