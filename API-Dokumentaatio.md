@@ -102,8 +102,146 @@
     * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
 
 # Endpoint: kayttajat
+### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
+### Method: POST
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat
+* Body:
+
+        {
+            "etunimi": "Matti",
+            "sukunimi": "Meikäläinen",
+            "katuosoite": "Esimerkkikatu 1",
+            "syntymaaika": "1995-05-15",
+            "sahkoposti": "matti@example.com",
+            "puhelinnro": "0401234567",
+            "lisatieto": "Ei lisätietoja",
+            "postinumero": {
+                "postinumero": "00100"
+            },
+            "username": "matti123",
+            "password": "salasana123",
+            "rooli": "USER"
+        }
+
+* Pakolliset arvot: "etunimi", "sukunimi", "sahkoposti", "username", "password", "rooli"
+* Result: 201 Created
+
+        {
+            "kayttaja_id": {id},
+            "etunimi": "Matti",
+            "sukunimi": "Meikäläinen",
+            "katuosoite": "Esimerkkikatu 1",
+            "syntymaaika": "1995-05-15",
+            "sahkoposti": "matti@example.com",
+            "puhelinnro": "0401234567",
+            "lisatieto": "Ei lisätietoja",
+            "postinumero": {
+                "postinumero": "00100",
+                "postitoimipaikka": "Helsinki"
+            },
+            "username": "matti123",
+            "passwordHash": "$2a$10$...",
+            "rooli": "USER",
+            "myynnit": []
+        }
+
+### Method: PUT
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/{id}
+* Body:
+
+        {
+            "etunimi": "MUUTOS",
+            "sukunimi": "MUUTOS",
+            "katuosoite": "Esimerkkikatu 1",
+            "syntymaaika": "1995-05-15",
+            "sahkoposti": "matti@example.com",
+            "puhelinnro": "0401234567",
+            "lisatieto": "Päivitetty",
+            "postinumero": {
+                "postinumero": "00100"
+            },
+            "username": "matti123",
+            "rooli": "USER"
+        }
+
+Result: 200 OK
+
+### Method: DELETE
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/{id}
+
+
+* Results:
+    * 201 Created. Pyyntö onnistunut.
+    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
+    * 403 Forbidden. Ei oikeuksia, eli yritetään tehdä väärillä oikeuksilla.
+    * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
 
 # Endpoint: liput
+### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
+### Method: POST
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
+* Body: 
+
+        {
+            "paikka": "Helsinki",
+            "tila": true,
+            "tapahtuma": {
+                "tapahtuma_id": 1
+            },
+            "lipputyyppi": {
+                "tyyppi_id": 1
+            }
+        }
+
+* Pakolliset arvot: "tapahtuma", "lipputyyppi"
+* Result: 201 Created
+
+        {
+        "lippu_id": {id},
+        "paikka": "Helsinki",
+        "tila": true,
+        "tapahtuma": {
+            "tapahtuma_id": 1,
+            "nimi": "hälläväliä",
+            "katuosoite": "koti",
+            "alkamisPvm": "2025-01-07",
+            "paattymisPvm": "2025-01-08",
+            "lisatiedot": "ikärajaa ei ole",
+            "paikkamaara": 200
+        },
+        "lipputyyppi": {
+            "tyyppi_id": 1,
+            "nimi": "Normaali",
+            "hinta": 50
+        },
+        "myyntirivit": null
+        }
+
+### Method: PUT
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+* Body:
+
+        {
+        "paikka": "MUUTOS",
+        "tila": false,
+        "tapahtuma": {
+            "tapahtuma_id": 1
+        },
+        "lipputyyppi": {
+            "tyyppi_id": 2
+        }
+        }
+
+### Method: DELETE
+
+URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+
+* Results:
+    * 201 Created. Pyyntö onnistunut.
+    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
+    * 403 Forbidden. Ei oikeuksia, eli yritetään tehdä väärillä oikeuksilla.
+    * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
 
 # Endpoint: lipputyypit
 
