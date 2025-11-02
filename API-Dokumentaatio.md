@@ -6,7 +6,7 @@
 | -------------     |:----------------------------:| 
 | jarjestajat       | GET, POST, PUT, DELETE       |
 | kayttajat         | GET, POST, PUT, DELETE       |
-| liput             | GET, POST, PUT, DELETE       |
+| liput             | GET, POST, PUT, PATCH, DELETE       |
 | lipputyypit       | GET, POST, PUT, DELETE       |
 | myynnit           | GET, POST, PUT, DELETE       |
 | myyntirivit       | GET, POST, PUT, DELETE       |
@@ -22,7 +22,7 @@
 ## Käyttöesimerkki
 
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}
-* Metodit: GET, POST, PUT, DELETE
+* Metodit: GET, POST, PUT, PATCH, DELETE
 * Esimerkki: GET: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
 * Result:
 
@@ -180,6 +180,7 @@ Result: 200 OK
 # Endpoint: liput
 ### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
 ### Method: POST
+
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
 * Body: 
 
@@ -201,6 +202,7 @@ Result: 200 OK
         "lippu_id": {id},
         "paikka": "Helsinki",
         "tila": true,
+        "kaytetty": false,
         "tapahtuma": {
             "tapahtuma_id": 1,
             "nimi": "hälläväliä",
@@ -219,12 +221,14 @@ Result: 200 OK
         }
 
 ### Method: PUT
+
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
 * Body:
 
         {
         "paikka": "MUUTOS",
         "tila": false,
+        "kaytetty": true,
         "tapahtuma": {
             "tapahtuma_id": 1
         },
@@ -232,6 +236,18 @@ Result: 200 OK
             "tyyppi_id": 2
         }
         }
+
+### Method: PATCH
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+* Body:
+
+        {
+            "kaytetty": true
+        }
+
+* Response: 200 OK
+* Tämä asettaa false tilan trueksi (eli lippu käytetty)
 
 ### Method: DELETE
 
