@@ -29,10 +29,16 @@ public class LippuRestController {
         this.lippuRepository = lippuRepository;
     }
 
-
     @GetMapping
     public List<Lippu> getAllLiput() {
         return (List<Lippu>) lippuRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Lippu> getLippuById(@PathVariable Long id) {
+        return lippuRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")

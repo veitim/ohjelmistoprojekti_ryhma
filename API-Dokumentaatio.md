@@ -102,8 +102,11 @@
     * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
 
 # Endpoint: kayttajat
+
 ### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
+
 ### Method: POST
+
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat
 * Body:
 
@@ -146,6 +149,7 @@
         }
 
 ### Method: PUT
+
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/{id}
 * Body:
 
@@ -178,7 +182,13 @@ Result: 200 OK
     * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
 
 # Endpoint: liput
-### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
+
+### HUOM POST, PUT, PATCH ja DELETE vaativat ADMIN oikeudet.
+
+### Method: GET
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+
 ### Method: POST
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
