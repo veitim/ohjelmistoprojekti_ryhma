@@ -49,6 +49,7 @@ public class LippuRestController {
                 .map(lippu -> {
                     lippu.setPaikka(updated.getPaikka());
                     lippu.setTila(updated.isTila());
+                    lippu.setKaytetty(updated.isKaytetty());
                     lippu.setTapahtuma(updated.getTapahtuma());
                     lippu.setLipputyyppi(updated.getLipputyyppi());
 
