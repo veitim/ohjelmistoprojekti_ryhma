@@ -35,6 +35,9 @@ public class Lippu {
     @Column(name = "tila", nullable = false)
     private boolean tila;
 
+    @Column(name = "kaytetty", nullable = false)
+    private boolean kaytetty;
+
     @NotNull(message = "Tapahtuma ei voi olla tyhjä")
     @JsonIgnoreProperties({"liput", "jarjestaja"})
     @ManyToOne
@@ -55,10 +58,11 @@ public class Lippu {
         super();
     }
 
-    public Lippu(String paikka, boolean tila, Tapahtuma tapahtuma) {
+    public Lippu(String paikka, boolean tila, boolean kaytetty, Tapahtuma tapahtuma) {
         super();
         this.paikka = paikka;
         this.tila = tila;
+        this.kaytetty = kaytetty;
         this.tapahtuma = tapahtuma;
     }
 
@@ -72,6 +76,14 @@ public class Lippu {
 
     public String getPaikka() {
         return paikka;
+    }
+
+    public boolean isKaytetty() {
+        return kaytetty;
+    }
+
+    public void setKaytetty(boolean kaytetty) {
+        this.kaytetty = kaytetty;
     }
 
     public void setPaikka(String paikka) {
@@ -112,7 +124,7 @@ public class Lippu {
 
     @Override
     public String toString() {
-        return "Lippu [lippu_id=" + lippu_id + ", paikka=" + paikka + ", tila=" + tila + ", tapahtuma=" + tapahtuma
+        return "Lippu [lippu_id=" + lippu_id + ", paikka=" + paikka + ", tila=" + tila + ", kaytetty=" + kaytetty + ", tapahtuma=" + tapahtuma
                 + "]";
     }
 
