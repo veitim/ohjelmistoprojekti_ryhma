@@ -47,6 +47,7 @@ public class JarjestajaRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Jarjestaja create(@Valid @RequestBody Jarjestaja jarjestaja) {
