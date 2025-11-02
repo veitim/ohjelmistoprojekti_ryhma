@@ -47,7 +47,6 @@ public class Lippu {
     @JoinColumn(name = "tyyppi_id", nullable = false)
     private LippuTyyppi lipputyyppi;
 
-
     @JsonIgnore
     @OneToMany(mappedBy= "lippu", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<Myyntirivi> myyntirivit;
