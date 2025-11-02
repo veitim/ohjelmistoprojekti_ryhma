@@ -50,7 +50,6 @@ public class LippuRestController {
                     lippu.setTila(updated.isTila());
                     lippu.setTapahtuma(updated.getTapahtuma());
                     lippu.setLipputyyppi(updated.getLipputyyppi());
-                    lippu.setMyyntirivit(updated.getMyyntirivit());
 
                     Lippu saved = lippuRepository.save(lippu);
                     return ResponseEntity.ok(saved);
