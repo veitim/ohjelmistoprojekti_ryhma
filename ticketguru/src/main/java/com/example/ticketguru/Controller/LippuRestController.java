@@ -2,6 +2,7 @@ package com.example.ticketguru.Controller;
 
 import java.util.List;
 
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
-
+import com.example.ticketguru.Service.QrService;
+import org.springframework.http.MediaType;
 import jakarta.validation.Valid;
 
 @RestController
@@ -24,9 +26,11 @@ import jakarta.validation.Valid;
 public class LippuRestController {
 
     private final LippuRepository lippuRepository;
+    private final QrService qrService;
 
-    public LippuRestController(LippuRepository lippuRepository) {
+    public LippuRestController(LippuRepository lippuRepository, QrService qrService) {
         this.lippuRepository = lippuRepository;
+          this.qrService = qrService;
     }
 
     @GetMapping
@@ -88,5 +92,33 @@ public class LippuRestController {
             })
             .orElse(ResponseEntity.notFound().build());
     }
+
+ @GetMapping("/{id}/qr")
+public ResponseEntity<ByteArrayResource> getLippuQr(@PathVariable Long id) {
+    var optionalLippu = lippuRepository.findById(id);
+
+    if (optionalLippu.isEmpty()) {
+        return ResponseEntity.notFound().build();
+    }
+
+    var lippu = optionalLippu.get();
+
+    try {
+        String qrContent = "https://app.example.com/redeem?lippuId=" + lippu.getLippu_id();
+
+        byte[] qrBytes = qrService.generateQrPng(qrContent, 400);
+        ByteArrayResource resource = new ByteArrayResource(qrBytes);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_PNG)
+                .contentLength(qrBytes.length)
+                .body(resource);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return ResponseEntity.internalServerError().build();
+    }
 }
+}
+
 
