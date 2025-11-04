@@ -93,7 +93,7 @@ public class LippuRestController {
             })
             .orElse(ResponseEntity.notFound().build());
     }
- @GetMapping("/{id}/qr", produces = MediaType.IMAGE_PNG_VALUE)
+ @GetMapping("/{id}/qr")
 public ResponseEntity<ByteArrayResource> getLippuQr(@PathVariable Long id) {
     var optionalLippu = lippuRepository.findById(id);
 
