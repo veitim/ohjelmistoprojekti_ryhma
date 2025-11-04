@@ -38,6 +38,7 @@ public class LippuRestController {
         return (List<Lippu>) lippuRepository.findAll();
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Lippu> getLippuById(@PathVariable Long id) {
         return lippuRepository.findById(id)
@@ -92,8 +93,7 @@ public class LippuRestController {
             })
             .orElse(ResponseEntity.notFound().build());
     }
-
- @GetMapping("/{id}/qr")
+ @GetMapping("/{id}/qr", produces = MediaType.IMAGE_PNG_VALUE)
 public ResponseEntity<ByteArrayResource> getLippuQr(@PathVariable Long id) {
     var optionalLippu = lippuRepository.findById(id);
 
@@ -120,5 +120,6 @@ public ResponseEntity<ByteArrayResource> getLippuQr(@PathVariable Long id) {
     }
 }
 }
+    
 
 
