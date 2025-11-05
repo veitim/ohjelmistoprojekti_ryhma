@@ -1,7 +1,5 @@
 package com.example.ticketguru.Controller;
 
-import java.util.List;
-
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,12 +33,6 @@ public class LippuRestController {
           this.qrService = qrService;
     }
 
-    @GetMapping
-    public List<Lippu> getAllLiput() {
-        return (List<Lippu>) lippuRepository.findAll();
-    }
-
-
     @GetMapping("/{id}")
     public ResponseEntity<Lippu> getLippuById(@PathVariable Long id) {
         return lippuRepository.findById(id)
@@ -48,7 +40,7 @@ public class LippuRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{koodi}")
+    @GetMapping
         public ResponseEntity<?> getLippuByKoodi(@RequestParam(required = false) String koodi) {
         if (koodi != null) {
             return lippuRepository.findByKoodi(koodi)
