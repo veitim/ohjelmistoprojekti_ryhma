@@ -3,6 +3,7 @@ package com.example.ticketguru.Controller;
 import java.util.List;
 
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ticketguru.Service.QrService;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
-import com.example.ticketguru.Service.QrService;
-import org.springframework.http.MediaType;
+
 import jakarta.validation.Valid;
 
 @RestController
@@ -44,6 +46,16 @@ public class LippuRestController {
         return lippuRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+        public ResponseEntity<?> getLippuByKoodi(@RequestParam(required = false) String koodi) {
+        if (koodi != null) {
+            return lippuRepository.findByKoodi(koodi)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+        }
+        return ResponseEntity.ok(lippuRepository.findAll());
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")

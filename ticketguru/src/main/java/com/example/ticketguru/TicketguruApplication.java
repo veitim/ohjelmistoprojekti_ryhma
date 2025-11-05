@@ -16,7 +16,7 @@ public class TicketguruApplication {
 	// 		// TapahtumaRepository tRepository, 
 	// 		// JarjestajaRepository jRepository,
 	// 		// LippuTyyppiRepository ltRepository, 
-	// 		PostinumeroRepository pRepository
+	// 		PostinumeroRepository pRepository,
 	// 		// LippuRepository lippuRepository, 
 	// 		// MyyntiriviRepository mrRepository, 
 	// 		// MyyntiRepository mRepository, 

@@ -31,12 +31,14 @@ public class Lippu {
     @Column(name = "paikka", nullable = false, length = 15)
     private String paikka;
 
-
     @Column(name = "tila", nullable = false)
     private boolean tila;
 
     @Column(name = "kaytetty", nullable = false)
     private boolean kaytetty;
+
+    @Column(name = "koodi", nullable = false)
+    private String koodi;
 
     @NotNull(message = "Tapahtuma ei voi olla tyhjä")
     @JsonIgnoreProperties({"liput", "jarjestaja"})
@@ -58,12 +60,13 @@ public class Lippu {
         super();
     }
 
-    public Lippu(String paikka, boolean tila, boolean kaytetty, Tapahtuma tapahtuma) {
+    public Lippu(String paikka, boolean tila, boolean kaytetty, Tapahtuma tapahtuma, String koodi) {
         super();
         this.paikka = paikka;
         this.tila = tila;
         this.kaytetty = kaytetty;
         this.tapahtuma = tapahtuma;
+        this.koodi = koodi;
     }
 
     public long getLippu_id() {
@@ -120,6 +123,14 @@ public class Lippu {
 
     public void setLipputyyppi(LippuTyyppi lipputyyppi) {
         this.lipputyyppi = lipputyyppi;
+    }
+
+    public String getKoodi() {
+        return koodi;
+    }
+
+    public void setKoodi(String koodi) {
+        this.koodi = koodi;
     }
 
     @Override
