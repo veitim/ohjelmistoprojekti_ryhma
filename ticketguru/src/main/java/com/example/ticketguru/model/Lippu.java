@@ -136,7 +136,7 @@ public class Lippu {
     @Override
     public String toString() {
         return "Lippu [lippu_id=" + lippu_id + ", paikka=" + paikka + ", tila=" + tila + ", kaytetty=" + kaytetty + ", tapahtuma=" + tapahtuma
-                + "]";
+                + ", koodi=" + koodi + "]";
     }
 
 }

@@ -48,7 +48,7 @@ public class LippuRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping
+    @GetMapping("/{koodi}")
         public ResponseEntity<?> getLippuByKoodi(@RequestParam(required = false) String koodi) {
         if (koodi != null) {
             return lippuRepository.findByKoodi(koodi)
