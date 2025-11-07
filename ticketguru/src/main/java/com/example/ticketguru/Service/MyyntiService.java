@@ -34,7 +34,7 @@ public class MyyntiService {
         !kayttajaRepository.existsById(myynti.getKayttaja().getKayttaja_id())) {
         throw new EntityNotFoundException("Käyttäjää ei löytynyt annetulla ID:llä");
         }
-
+        
         // Asetetaan myyntipäivämäärä
         myynti.setPaivamaara(LocalDate.now());
 
@@ -46,6 +46,10 @@ public class MyyntiService {
             // Päivitä lipun tila myydyksi
             Lippu lippu = lippuRepository.findById(r.getLippu().getLippu_id())
                                    .orElseThrow();
+
+            if (lippu.isTila()) {
+            throw new IllegalStateException("Lippu on jo myyty!");}
+                                   
             lippu.setTila(true);
             lippuRepository.save(lippu);
         }
