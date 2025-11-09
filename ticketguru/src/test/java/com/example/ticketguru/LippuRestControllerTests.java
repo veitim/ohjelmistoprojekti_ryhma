@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,7 @@ import com.example.ticketguru.Controller.LippuRestController;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
 
-class LippuRestControllerTests {
+class LippuRestControllerTest {
 
     @Mock
     private LippuRepository lippuRepository;
@@ -31,16 +30,23 @@ class LippuRestControllerTests {
     @InjectMocks
     private LippuRestController lippuRestController;
 
+    private Lippu lippu;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+
+        lippu = new Lippu();
+        lippu.setLippu_id(1L);
+        lippu.setPaikka("A1");
+        lippu.setTila(false);
+        lippu.setKaytetty(false);
+        lippu.setKoodi("ABC123");
     }
 
-    // ✅ Testi 1: getLippuById palauttaa löytyneen lipun
+    // ✅ 1: lipun haku ID:llä onnistuu
     @Test
     void testGetLippuById_Found() {
-        Lippu lippu = new Lippu();
-        lippu.setLippu_id(1L);
         when(lippuRepository.findById(1L)).thenReturn(Optional.of(lippu));
 
         ResponseEntity<Lippu> response = lippuRestController.getLippuById(1L);
@@ -50,23 +56,20 @@ class LippuRestControllerTests {
         verify(lippuRepository, times(1)).findById(1L);
     }
 
-    // ❌ Testi 2: getLippuById palauttaa 404 jos ei löydy
+    // ❌ 2: lipun haku ID:llä epäonnistuu
     @Test
     void testGetLippuById_NotFound() {
-        when(lippuRepository.findById(2L)).thenReturn(Optional.empty());
+        when(lippuRepository.findById(1L)).thenReturn(Optional.of(lippu));
 
-        ResponseEntity<Lippu> response = lippuRestController.getLippuById(2L);
+        ResponseEntity<Lippu> response = lippuRestController.getLippuById(99L);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertNull(response.getBody());
+        verify(lippuRepository, times(1)).findById(99L);
     }
 
-    // ✅ Testi 3: getLippuByKoodi palauttaa lipun jos koodi löytyy
+    // ✅ 3: lipun haku koodilla onnistuu
     @Test
     void testGetLippuByKoodi_Found() {
-        Lippu lippu = new Lippu();
-        lippu.setKoodi("ABC123");
-
         when(lippuRepository.findByKoodi("ABC123")).thenReturn(Optional.of(lippu));
 
         ResponseEntity<?> response = lippuRestController.getLippuByKoodi("ABC123");
@@ -76,71 +79,109 @@ class LippuRestControllerTests {
         verify(lippuRepository, times(1)).findByKoodi("ABC123");
     }
 
-    // ❌ Testi 4: getLippuByKoodi palauttaa kaikki liput jos parametri puuttuu
+    // ✅ 4: kaikkien lippujen haku ilman koodia
     @Test
-    void testGetLippuByKoodi_All() {
-        when(lippuRepository.findAll()).thenReturn(List.of(new Lippu(), new Lippu()));
+    void testGetAllLiput() {
+        when(lippuRepository.findAll()).thenReturn(List.of(lippu));
 
         ResponseEntity<?> response = lippuRestController.getLippuByKoodi(null);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertTrue(response.getBody() instanceof List);
+        assertEquals(List.of(lippu), response.getBody());
         verify(lippuRepository, times(1)).findAll();
     }
 
-    // ✅ Testi 5: createLippu tallentaa lipun
+    // ✅ 5: lipun luominen
     @Test
     void testCreateLippu() {
-        Lippu uusi = new Lippu();
-        uusi.setPaikka("A1");
-        when(lippuRepository.save(uusi)).thenReturn(uusi);
+        when(lippuRepository.save(any(Lippu.class))).thenReturn(lippu);
 
-        ResponseEntity<Lippu> response = lippuRestController.createLippu(uusi);
+        ResponseEntity<Lippu> response = lippuRestController.createLippu(lippu);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(uusi, response.getBody());
-        verify(lippuRepository, times(1)).save(uusi);
+        assertEquals(lippu, response.getBody());
+        verify(lippuRepository, times(1)).save(lippu);
     }
 
-    // ✅ Testi 6: deleteLippu poistaa jos löytyy
+    // ✅ 6: lipun päivitys onnistuu
+    @Test
+    void testUpdateLippu_Found() {
+        Lippu updated = new Lippu();
+        updated.setPaikka("B2");
+        updated.setTila(true);
+        updated.setKaytetty(true);
+        updated.setLippu_id(1L);
+
+        when(lippuRepository.findById(1L)).thenReturn(Optional.of(lippu));
+        when(lippuRepository.save(any(Lippu.class))).thenReturn(updated);
+
+        ResponseEntity<Lippu> response = lippuRestController.updateLippu(1L, updated);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("B2", response.getBody().getPaikka());
+        verify(lippuRepository, times(1)).save(any(Lippu.class));
+    }
+
+    // ❌ 7: lipun päivitys epäonnistuu, jos ei löydy
+    @Test
+    void testUpdateLippu_NotFound() {
+        when(lippuRepository.findById(2L)).thenReturn(Optional.empty());
+
+        ResponseEntity<Lippu> response = lippuRestController.updateLippu(2L, lippu);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(lippuRepository, never()).save(any());
+    }
+
+    // ✅ 8: lipun poistaminen onnistuu
     @Test
     void testDeleteLippu_Found() {
-        Lippu lippu = new Lippu();
-        lippu.setLippu_id(3L);
-        when(lippuRepository.findById(3L)).thenReturn(Optional.of(lippu));
+        when(lippuRepository.findById(1L)).thenReturn(Optional.of(lippu));
 
-        ResponseEntity<Void> response = lippuRestController.deleteLippu(3L);
+        ResponseEntity<Void> response = lippuRestController.deleteLippu(1L);
 
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         verify(lippuRepository, times(1)).delete(lippu);
     }
 
-    // ❌ Testi 7: deleteLippu palauttaa 404 jos ei löydy
+    // ❌ 9: lipun poistaminen epäonnistuu
     @Test
     void testDeleteLippu_NotFound() {
-        when(lippuRepository.findById(99L)).thenReturn(Optional.empty());
+        when(lippuRepository.findById(5L)).thenReturn(Optional.empty());
 
-        ResponseEntity<Void> response = lippuRestController.deleteLippu(99L);
+        ResponseEntity<Void> response = lippuRestController.deleteLippu(5L);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         verify(lippuRepository, never()).delete(any());
     }
 
-    // ✅ Testi 8: patchLippu päivittää kaytetty-arvon
+    // ✅ 10: lipun patch (päivittää vain kaytetty)
     @Test
     void testPatchLippu() {
-        Lippu lippu = new Lippu();
-        lippu.setKaytetty(false);
+        when(lippuRepository.findById(1L)).thenReturn(Optional.of(lippu));
+        when(lippuRepository.save(any(Lippu.class))).thenReturn(lippu);
 
         Lippu patched = new Lippu();
         patched.setKaytetty(true);
-
-        when(lippuRepository.findById(1L)).thenReturn(Optional.of(lippu));
-        when(lippuRepository.save(any(Lippu.class))).thenReturn(lippu);
 
         ResponseEntity<Lippu> response = lippuRestController.patchLippu(1L, patched);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response.getBody().isKaytetty());
+        verify(lippuRepository).save(any(Lippu.class));
+    }
+
+    // ❌ 11: patch epäonnistuu jos lippua ei löydy
+    @Test
+    void testPatchLippu_NotFound() {
+        when(lippuRepository.findById(10L)).thenReturn(Optional.empty());
+
+        Lippu patched = new Lippu();
+        patched.setKaytetty(true);
+
+        ResponseEntity<Lippu> response = lippuRestController.patchLippu(10L, patched);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(lippuRepository, never()).save(any());
     }
 }
