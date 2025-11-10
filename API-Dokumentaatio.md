@@ -187,6 +187,18 @@ Result: 200 OK
 
 ### Method: GET
 
+### Kaikki liput
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
+
+### Lipun haku koodin perusteella
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput?koodi={koodi}
+* Esim: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput?koodi=3b5dab83
+* Result: 200 OK! (onnistui), 404 Not Found (Lippua ei löydy kyseisellä koodilla)
+
+### Lipun haku id:n perusteella
+
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
 
 ### Method: POST

@@ -28,8 +28,6 @@ import com.example.ticketguru.model.Kayttaja;
 import com.example.ticketguru.model.Myynti;
 import com.example.ticketguru.model.MyyntiRepository;
 
-
-
 class MyyntiRestControllerTest {
 
     @Mock
@@ -77,7 +75,7 @@ class MyyntiRestControllerTest {
 
     @Test
     void testGetMyyntiById_NotFound() {
-        when(repository.findById(99L)).thenReturn(Optional.empty());
+        when(repository.findById(1L)).thenReturn(Optional.of(myynti));
 
         ResponseEntity<Myynti> vastaus = controller.getMyyntiById(99L);
 
@@ -136,9 +134,9 @@ class MyyntiRestControllerTest {
 
     @Test
     void testUpdate_NotFound() {
-        when(repository.findById(99L)).thenReturn(Optional.empty());
+        when(repository.findById(1L)).thenReturn(Optional.of(myynti));
 
-        ResponseEntity<?> vastaus = controller.update(99L, myynti);
+        ResponseEntity<?> vastaus = controller.update(2L, myynti);
 
         assertEquals(HttpStatus.NOT_FOUND, vastaus.getStatusCode());
         verify(myyntiService, never()).luoMyynti(any());
