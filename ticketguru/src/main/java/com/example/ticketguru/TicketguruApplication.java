@@ -40,13 +40,17 @@ public class TicketguruApplication {
 			TapahtumaRepository tRepository, 
 			JarjestajaRepository jRepository,
 			LippuTyyppiRepository ltRepository, 
-			PostinumeroRepository pRepository, 
+			PostinumeroRepository pRepository,
 			LippuRepository lippuRepository, 
 			MyyntiriviRepository mrRepository, 
 			MyyntiRepository mRepository, 
 			KayttajaRepository kRepository
 		) {
 		return (args) -> {
+
+			if (jRepository.count() > 0) {
+            return;
+        	}
 
 			log.info("Järjestäjiä");
 			Jarjestaja jarjestaja1 = new Jarjestaja("uber", "pekka", "uber@uber", "+3580000");
@@ -83,7 +87,7 @@ public class TicketguruApplication {
 			}
 
 			log.info("Postitoimipaikkoi");
-			pRepository.save(new Postinumero("00980", "Helsinki"));
+			pRepository.save(new Postinumero("00720", "PERKELEE"));
 			pRepository.save(new Postinumero("00990", "Helsinki"));
 
 			Tapahtuma tapahtuma = tRepository.findAll().iterator().next();
@@ -91,11 +95,11 @@ public class TicketguruApplication {
 			Postinumero postinumero = pRepository.findAll().iterator().next();
 
 			
-			Lippu lippu1 = new Lippu("Espoo", true, tapahtuma);
+			Lippu lippu1 = new Lippu("Espoo", true, true, tapahtuma, "12345a");
 			lippu1.setLipputyyppi(lipputyyppi);
-			Lippu lippu2 = new Lippu("Helsinki", false, tapahtuma);
+			Lippu lippu2 = new Lippu("manala", true, false, tapahtuma, "12345b");
 			lippu2.setLipputyyppi(lipputyyppi);
-			Lippu lippu3 = new Lippu("helvetti", false, tapahtuma);
+			Lippu lippu3 = new Lippu("lessinki", false, false, tapahtuma, "12345c");
 			lippu3.setLipputyyppi(lipputyyppi);
 
 			// Tallennetaan

@@ -43,12 +43,12 @@ public class Jarjestaja {
     @Column(name = "sahkoposti", length = 150)
     private String sahkoposti;
 
-    @Pattern(regexp = "^[0-9+\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä")
+    @Pattern(regexp = "^[0-9+\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä. Merkit voivat olla: 0-9, + ja -")
     @Size(max = 15, message = "Puhelinnumero saa olla enintään 15 merkkiä")
     @Column(name = "puhelin", length = 15)
     private String puhelin;
     
-    @JsonIgnoreProperties("jarjestaja")
+    @JsonIgnoreProperties("tapahtumat")
     @OneToMany(mappedBy = "jarjestaja", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tapahtuma> tapahtumat;
     

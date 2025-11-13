@@ -1,4 +1,321 @@
-# Tapahtuma
+# API-dokumentaatio
+
+## Endpointteja
+
+| Endpoints         | Methods                      |
+| -------------     |:----------------------------:| 
+| jarjestajat       | GET, POST, PUT, DELETE       |
+| kayttajat         | GET, POST, PUT, DELETE       |
+| liput             | GET, POST, PUT, PATCH, DELETE       |
+| lipputyypit       | GET, POST, PUT, DELETE       |
+| myynnit           | GET, POST, PUT, DELETE       |
+| myyntirivit       | GET, POST, PUT, DELETE       |
+| postinumerot      | GET, POST, PUT, DELETE       |
+| tapahtumat        | GET, POST, PUT, DELETE       |
+
+## Vaatimukset
+
+* Kaikki endpointit vaativat autentikoidun käyttäjän.
+* USER: tason käyttäjä voi tehdä GET-pyyntöjä ja luoda myyntitapahtuman POST-pyynnöllä.
+* ADMIN: Voi tehdä kaikkea.
+
+## Käyttöesimerkki
+
+* URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}
+* Metodit: GET, POST, PUT, PATCH, DELETE
+* Esimerkki: GET: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
+* Result:
+
+        [
+        {
+            "jarjestaja_id": 1,
+            "nimi": "uber",
+            "yhteyshenkilo": "pekka",
+            "sahkoposti": "uber@uber",
+            "puhelin": "+3580000",
+            "tapahtumat": [
+            {
+                "tapahtuma_id": 1,
+                "nimi": "hälläväliä",
+                "katuosoite": "koti",
+                "alkamisPvm": "2025-01-07",
+                "paattymisPvm": "2025-01-08",
+                "lisatiedot": "ikärajaa ei ole",
+                "paikkamaara": 200,
+
+* PUT ja DELETE endpointteja haetaan id:n peruteella
+* URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{endpoint}/{id}
+* Esimerkki: DELETE: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/3}
+* Result: 203 no content. Käyttäjä poistettu.
+
+# Endpoint: /jarjestajat
+
+### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
+
+### Method: POST
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
+* Body:
+
+        {
+            "nimi": "Konserttiyhtiö Oy",
+            "yhteyshenkilo": "Matti Meikäläinen",
+            "sahkoposti": "matti@konserttiyhtio.fi",
+            "puhelin": "0401234567"
+        }
+
+* Pakollinen arvo: "nimi"
+* Restul: 201 Created
+
+        {
+            "jarjestaja_id": {id},
+            "nimi": "Konserttiyhtiö Oy",
+            "yhteyshenkilo": "Matti Meikäläinen",
+            "sahkoposti": "matti@konserttiyhtio.fi",
+            "puhelin": "0401234567",
+            "tapahtumat": null
+        }
+
+
+### Method: PUT
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
+* Body:
+
+        {
+            "nimi": "MUUTOS",
+            "yhteyshenkilo": "MUUTOS",
+            "sahkoposti": "matti@konserttiyhtio.fi",
+            "puhelin": "0401234567"
+        }
+
+* Result: 200 OK   
+    
+### Method: DELETE
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
+
+* Results:
+    * 201 Created. Pyyntö onnistunut.
+    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
+    * 403 Forbidden. Ei oikeuksia, eli yritetään tehdä väärillä oikeuksilla.
+    * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
+
+# Endpoint: kayttajat
+
+### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
+
+### Method: POST
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat
+* Body:
+
+        {
+            "etunimi": "Matti",
+            "sukunimi": "Meikäläinen",
+            "katuosoite": "Esimerkkikatu 1",
+            "syntymaaika": "1995-05-15",
+            "sahkoposti": "matti@example.com",
+            "puhelinnro": "0401234567",
+            "lisatieto": "Ei lisätietoja",
+            "postinumero": {
+                "postinumero": "00100"
+            },
+            "username": "matti123",
+            "password": "salasana123",
+            "rooli": "USER"
+        }
+
+* Pakolliset arvot: "etunimi", "sukunimi", "sahkoposti", "username", "password", "rooli"
+* Result: 201 Created
+
+        {
+            "kayttaja_id": {id},
+            "etunimi": "Matti",
+            "sukunimi": "Meikäläinen",
+            "katuosoite": "Esimerkkikatu 1",
+            "syntymaaika": "1995-05-15",
+            "sahkoposti": "matti@example.com",
+            "puhelinnro": "0401234567",
+            "lisatieto": "Ei lisätietoja",
+            "postinumero": {
+                "postinumero": "00100",
+                "postitoimipaikka": "Helsinki"
+            },
+            "username": "matti123",
+            "passwordHash": "$2a$10$...",
+            "rooli": "USER",
+            "myynnit": []
+        }
+
+### Method: PUT
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/{id}
+* Body:
+
+        {
+            "etunimi": "MUUTOS",
+            "sukunimi": "MUUTOS",
+            "katuosoite": "Esimerkkikatu 1",
+            "syntymaaika": "1995-05-15",
+            "sahkoposti": "matti@example.com",
+            "puhelinnro": "0401234567",
+            "lisatieto": "Päivitetty",
+            "postinumero": {
+                "postinumero": "00100"
+            },
+            "username": "matti123",
+            "rooli": "USER"
+        }
+
+Result: 200 OK
+
+### Method: DELETE
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/{id}
+
+
+* Results:
+    * 201 Created. Pyyntö onnistunut.
+    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
+    * 403 Forbidden. Ei oikeuksia, eli yritetään tehdä väärillä oikeuksilla.
+    * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
+
+# Endpoint: liput
+
+### HUOM POST, PUT, PATCH ja DELETE vaativat ADMIN oikeudet.
+
+### Method: GET
+
+### Kaikki liput
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
+
+### Lipun haku koodin perusteella
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput?koodi={koodi}
+* Esim: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput?koodi=3b5dab83
+* Result: 200 OK! (onnistui), 404 Not Found (Lippua ei löydy kyseisellä koodilla)
+
+### Lipun haku id:n perusteella
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+
+### Method: POST
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
+* Body: 
+
+        {
+            "paikka": "Helsinki",
+            "tila": true,
+            "tapahtuma": {
+                "tapahtuma_id": 1
+            },
+            "lipputyyppi": {
+                "tyyppi_id": 1
+            }
+        }
+
+* Pakolliset arvot: "tapahtuma", "lipputyyppi"
+* Result: 201 Created
+
+        {
+        "lippu_id": {id},
+        "paikka": "Helsinki",
+        "tila": true,
+        "kaytetty": false,
+        "tapahtuma": {
+            "tapahtuma_id": 1,
+            "nimi": "hälläväliä",
+            "katuosoite": "koti",
+            "alkamisPvm": "2025-01-07",
+            "paattymisPvm": "2025-01-08",
+            "lisatiedot": "ikärajaa ei ole",
+            "paikkamaara": 200
+        },
+        "lipputyyppi": {
+            "tyyppi_id": 1,
+            "nimi": "Normaali",
+            "hinta": 50
+        },
+        "myyntirivit": null
+        }
+
+### Method: PUT
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+* Body:
+
+        {
+        "paikka": "MUUTOS",
+        "tila": false,
+        "kaytetty": true,
+        "tapahtuma": {
+            "tapahtuma_id": 1
+        },
+        "lipputyyppi": {
+            "tyyppi_id": 2
+        }
+        }
+
+### Method: PATCH
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+* Body:
+
+        {
+            "kaytetty": true
+        }
+
+* Response: 200 OK
+* Tämä asettaa false tilan trueksi (eli lippu käytetty)
+
+### Method: DELETE
+
+URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+
+* Results:
+    * 201 Created. Pyyntö onnistunut.
+    * 400 Bad Request. Pyyntö tehty väärin tai nimi puuttuu.
+    * 403 Forbidden. Ei oikeuksia, eli yritetään tehdä väärillä oikeuksilla.
+    * 404 Not Found. Jarjestajaa ei löydy (ID:tä ei ole)
+
+# Endpoint: lipputyypit
+
+# Endpoint: myynnit
+
+### Method: POST
+
+* URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
+
+Body:
+
+      {
+          "kayttaja": {
+              "kayttajaId": 1
+          },
+          "paivamaara": "2025-09-30",
+          "maksutapa": "Kortti",
+          "tyyppi": "Verkkokauppa",
+          "myyntirivit": []
+      }
+
+
+### Method: PUT
+
+
+### Method: DELETE
+
+
+
+
+# Endpoint: myyntirivit
+
+# Endpoint: postinumerot
+
+# Endpoint: tapahtumat
+
 
 ### Hae tapahtumat
 
@@ -299,8 +616,10 @@ Body:
 
 ### Poista myynti
 
+ENDPOINTIT MITÄ VOI KÄYTTTÄÄ  TAPAHTUMAT; LIPUT; JNE: MENEE ESIM TILALLE
+
 * Vaatimus: ADMIN, oikeudet
-* URL: "http://localhost:8080/api/myynnit/{id}"
+* URL: "http://localhost:8080/api/{ESIM}/{id}"
 * Metodi: DELETE
 * Esimerkki: "http://localhost:8080/api/myynnit/1"
 

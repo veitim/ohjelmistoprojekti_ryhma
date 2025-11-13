@@ -49,25 +49,19 @@ public class MyyntiRestController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<?> luoMyynti(@Valid @RequestBody Myynti myynti){
-        System.out.println("DEBUG: Saapui myynti, rivit=" + myynti.getMyyntirivit().size());
-    try{
-        Myynti tallennettu = myyntiService.luoMyynti(myynti);
-        return ResponseEntity.ok(tallennettu);
-    } catch(org.springframework.dao.DataIntegrityViolationException e) {
-        Map<String, String> error = new HashMap<>();
-        error.put("error", "Käyttäjä ID:llä " + 
-            (myynti.getKayttaja() != null ? myynti.getKayttaja().getKayttaja_id() : "null") 
-            + " ei löytynyt");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        try {
+            Myynti tallennettu = myyntiService.luoMyynti(myynti);
+            return ResponseEntity.ok(tallennettu);
+        } catch (IllegalStateException virhe) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(virhe.getMessage());
+        }
     }
-}
 
-@PreAuthorize("hasAuthority('ADMIN')")
-@PutMapping("/{id}")
-public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynti updated) {
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Myynti updated) {
     return repository.findById(id)
             .map(existing -> {
                 try {

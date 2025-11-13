@@ -2,6 +2,7 @@ package com.example.ticketguru.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -30,9 +31,14 @@ public class Lippu {
     @Column(name = "paikka", nullable = false, length = 15)
     private String paikka;
 
-
     @Column(name = "tila", nullable = false)
     private boolean tila;
+
+    @Column(name = "kaytetty", nullable = false)
+    private boolean kaytetty;
+
+    @Column(name = "koodi", nullable = false)
+    private String koodi;
 
     @NotNull(message = "Tapahtuma ei voi olla tyhjä")
     @JsonIgnoreProperties({"liput", "jarjestaja"})
@@ -46,8 +52,7 @@ public class Lippu {
     @JoinColumn(name = "tyyppi_id", nullable = false)
     private LippuTyyppi lipputyyppi;
 
-
-    @JsonIgnoreProperties("lippu")
+    @JsonIgnore
     @OneToMany(mappedBy= "lippu", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<Myyntirivi> myyntirivit;
 
@@ -55,11 +60,13 @@ public class Lippu {
         super();
     }
 
-    public Lippu(String paikka, boolean tila, Tapahtuma tapahtuma) {
+    public Lippu(String paikka, boolean tila, boolean kaytetty, Tapahtuma tapahtuma, String koodi) {
         super();
         this.paikka = paikka;
         this.tila = tila;
+        this.kaytetty = kaytetty;
         this.tapahtuma = tapahtuma;
+        this.koodi = koodi;
     }
 
     public long getLippu_id() {
@@ -72,6 +79,14 @@ public class Lippu {
 
     public String getPaikka() {
         return paikka;
+    }
+
+    public boolean isKaytetty() {
+        return kaytetty;
+    }
+
+    public void setKaytetty(boolean kaytetty) {
+        this.kaytetty = kaytetty;
     }
 
     public void setPaikka(String paikka) {
@@ -110,10 +125,18 @@ public class Lippu {
         this.lipputyyppi = lipputyyppi;
     }
 
+    public String getKoodi() {
+        return koodi;
+    }
+
+    public void setKoodi(String koodi) {
+        this.koodi = koodi;
+    }
+
     @Override
     public String toString() {
-        return "Lippu [lippu_id=" + lippu_id + ", paikka=" + paikka + ", tila=" + tila + ", tapahtuma=" + tapahtuma
-                + "]";
+        return "Lippu [lippu_id=" + lippu_id + ", paikka=" + paikka + ", tila=" + tila + ", kaytetty=" + kaytetty + ", tapahtuma=" + tapahtuma
+                + ", koodi=" + koodi + "]";
     }
 
 }
