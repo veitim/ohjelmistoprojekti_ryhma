@@ -16,7 +16,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -40,16 +39,9 @@ public class Lippu {
     @Column(name = "koodi", nullable = false)
     private String koodi;
 
-    @NotNull(message = "Tapahtuma ei voi olla tyhjä")
-    @JsonIgnoreProperties({"liput", "jarjestaja"})
+    @JsonIgnoreProperties({"lippu", "tapahtuma"})
     @ManyToOne
-    @JoinColumn(name = "tapahtuma_id")
-    private Tapahtuma tapahtuma;
-
-    @NotNull(message = "LippuTyyppi ei saa olla tyhjä")
-    @JsonIgnoreProperties("liput")
-    @ManyToOne
-    @JoinColumn(name = "tyyppi_id", nullable = false)
+    @JoinColumn
     private LippuTyyppi lipputyyppi;
 
     @JsonIgnore
@@ -60,12 +52,12 @@ public class Lippu {
         super();
     }
 
-    public Lippu(String paikka, boolean tila, boolean kaytetty, Tapahtuma tapahtuma, String koodi) {
+    public Lippu(String paikka, boolean tila, boolean kaytetty, LippuTyyppi lipputyyppi, String koodi) {
         super();
         this.paikka = paikka;
         this.tila = tila;
         this.kaytetty = kaytetty;
-        this.tapahtuma = tapahtuma;
+        this.lipputyyppi = lipputyyppi;
         this.koodi = koodi;
     }
 
@@ -101,14 +93,6 @@ public class Lippu {
         this.tila = tila;
     }
 
-    public Tapahtuma getTapahtuma() {
-        return tapahtuma;
-    }
-
-    public void setTapahtuma(Tapahtuma tapahtuma) {
-        this.tapahtuma = tapahtuma;
-    }
-
     public List<Myyntirivi> getMyyntirivit() {
         return myyntirivit;
     }
@@ -125,6 +109,7 @@ public class Lippu {
         this.lipputyyppi = lipputyyppi;
     }
 
+
     public String getKoodi() {
         return koodi;
     }
@@ -135,8 +120,12 @@ public class Lippu {
 
     @Override
     public String toString() {
-        return "Lippu [lippu_id=" + lippu_id + ", paikka=" + paikka + ", tila=" + tila + ", kaytetty=" + kaytetty + ", tapahtuma=" + tapahtuma
-                + ", koodi=" + koodi + "]";
+        return "Lippu [lippu_id=" + lippu_id + 
+        ", paikka=" + paikka + 
+        ", tila=" + tila + 
+        ", kaytetty=" + kaytetty +
+        ", lipputyyppi=" + this.getLipputyyppi() +
+        ", koodi=" + koodi + "]";
     }
 
 }

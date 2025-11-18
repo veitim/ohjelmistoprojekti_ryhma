@@ -65,7 +65,6 @@ public class LippuRestController {
                     lippu.setPaikka(updated.getPaikka());
                     lippu.setTila(updated.isTila());
                     lippu.setKaytetty(updated.isKaytetty());
-                    lippu.setTapahtuma(updated.getTapahtuma());
                     lippu.setLipputyyppi(updated.getLipputyyppi());
 
                     Lippu saved = lippuRepository.save(lippu);
