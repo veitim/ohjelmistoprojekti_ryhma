@@ -37,10 +37,6 @@ public class Myyntirivi {
     @JoinColumn(name = "lippu_id", nullable = false)
     private Lippu lippu;
     
-    @NotNull(message = "Päivämäärä ei voi olla tyhjä")
-    @Column(nullable = false)
-    private LocalDate paivamaara;
-    
     @NotNull(message = "Summa ei voi olla tyhjä")
     @DecimalMin(value = "0.00", inclusive = false, message = "Summan täytyy olla positiivinen")
     @Digits(integer = 8, fraction = 2, message = "Summa voi olla max 8 numeroa ja 2 desimaalia")
@@ -52,7 +48,6 @@ public class Myyntirivi {
     public Myyntirivi(Myynti myynti, Lippu lippu, LocalDate paivamaara, BigDecimal summa) {
         this.myynti = myynti;
         this.lippu = lippu;
-        this.paivamaara = paivamaara;
         this.summa = summa;
     }
 
@@ -65,16 +60,13 @@ public class Myyntirivi {
     public Lippu getLippu() { return lippu; }
     public void setLippu(Lippu lippu) { this.lippu = lippu; }
 
-    public LocalDate getPaivamaara() { return paivamaara; }
-    public void setPaivamaara(LocalDate paivamaara) { this.paivamaara = paivamaara; }
-
     public BigDecimal getSumma() { return summa; }
     public void setSumma(BigDecimal summa) { this.summa = summa; }
 
     @Override
     public String toString() {
-        return "Myyntirivi [riviId=" + riviId + ", myynti=" +this.getMyynti() + ", lippu=" + this.getLippu() + ", paivamaara=" + paivamaara
-                + ", summa=" + summa + "]";
+        return "Myyntirivi [riviId=" + riviId + ", myynti=" +this.getMyynti() + ", lippu=" + this.getLippu() +
+                 ", summa=" + summa + "]";
     }
 
 }
