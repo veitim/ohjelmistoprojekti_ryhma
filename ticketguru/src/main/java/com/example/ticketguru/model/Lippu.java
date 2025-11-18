@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -26,9 +25,8 @@ public class Lippu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long lippu_id;
 
-    @NotBlank(message = "Paikka on pakollinen tieto")
     @Size(max = 15, message = "Paikan nimi saa olla enintään 15 merkkiä")
-    @Column(name = "paikka", nullable = false, length = 15)
+    @Column(name = "paikka", length = 15)
     private String paikka;
 
     @Column(name = "tila", nullable = false)
