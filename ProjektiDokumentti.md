@@ -41,7 +41,7 @@ Myy ja tulostaa liput myyntipisteessä. Tulostaa jäljellä olevat liput ovimyyn
 
 ## Käyttäjätarinat:
 
-### Tarina1
+### Tarina 1
 
 Lipunmyyjä haluaa pystyä myymään ja tulostamaan useita lippuja yhdelle asiakkaalle, jotta myyminen olisi tehokkaampaa.
 
@@ -76,6 +76,21 @@ Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), 
 ### Tarina 9
 
 Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
+
+## Käyttötapaukset
+
+### Lippujen myynti
+    Myyjä valitsee oikeat liput ja lipputyypit, järjestelmä tekee tarkastukseen lippujen myyntitilasta ja merkitsee ne myydyiksi tietokantaan. 
+### Myyntien selaaminen
+    Admin ja myyjä pääsevät selaamaan myyntejä.
+### Myyntien muokkaaminen ja poistaminen
+    Admin voi muokata ja poistaa myyntejä tietokannasta.
+### Kirjautuminen ja tunnistautuminen
+    Myyjä ja admin kirjautuvat järjestelmään omilla tunnuksillaan ja pääsevät käsiksi heidän rooleille asetettuihin API-päätteisiin. 
+### Lipputyyppien ja tapahtumien hallinta
+    Admin pääsee hallinnoimaan tapahtumia ja lipputyyppejä.
+
+
 
 ## Käyttöliittymä
 
@@ -171,23 +186,31 @@ Järjestäjä-taulu sisältää tapahtumien järjestäjät
 
 ## Tekninen kuvaus
 
-Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset ratkaisut, esim.
+Spring Bootilla toteutettu sovellus, jossa käytetään RESTia backendin ja frontendin kommunikoinnissa. Frontend toimii erillisenä React-projektina. React kommunikoi RESTin kanssa ja tallentaa tapahtumat MySQL. 
+Käytetyt teknologiat: Spring Boot, Java, Spring Data JPA, Spring Security, React, MySQL.
 
-    Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma) ja komponenttien väliset yhteydet (vaikkapa tähän tyyliin: https://security.ufl.edu/it-workers/risk-assessment/creating-an-information-systemdata-flow-diagram/)
-    Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
-    Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää UML-sekvenssikaavioilla.
-    Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
+React toimii käyttäjän selaimessa, eli näyttää myyntinäkymän ja tekee REST-kutsuja.
+REST vastaanottaa pyynnöt ja syöttäää ne Service-kerrokselle.
+Service-kerros tarkastaa käyttäjän, varaa lipun ja hoitaa myyntitapahtuman.
+Model ja Repository- kerrokset hallitsevat tietokantaa CRUD toiminnoilla olioille. 
+Security-kerros autentikoi, auktorisoi ja valvoo CORS-säännöksiä. 
+Tietokanta-kerros tallentaa kaikki tiedot. 
 
-Tämän lisäksi
+Järjestely:
+    Model: Entiteetit
+    Service: Toiminnot
+    Controller: REST-kontrollerit
+    SecurityConfig: autentikaatio ja auktorisaatio
 
-    ohjelmakoodin tulee olla kommentoitua
-    luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa johdonmukaisia nimeämiskäytäntöjä
-    ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta vältytään
+Kommentointi:
+    Kommentointi suoraan koodin pätkän eteen. 
 
 ## Testaus
-Tässä kohdin selvitetään, miten ohjelmiston oikea toiminta varmistetaan testaamalla projektin aikana: millaisia testauksia tehdään ja missä vaiheessa. Testauksen tarkemmat sisällöt ja testisuoritusten tulosten raportit kirjataan erillisiin dokumentteihin.
 
-Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu.
+Ohjelmaa testataan yksikkö, integraatio ja E2E testeillä. Testejä luodaan tuotetta kehittäessä/heti kun sitä voi testata. Testausta suoritetaan myös manuaalisesti.
+Testien tavoite on varmentaa ohjelman tai sen osien toiminta, sekä löytää virheet.
+Testaukseen käytettävät teknologiat: JUnit, Mockito, Spring Data JPA, Spring Boot Test, MockMvc.
+
 ## Asennustiedot
 
 Järjestelmän asennus on syytä dokumentoida kahdesta näkökulmasta:
