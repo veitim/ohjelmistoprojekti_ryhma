@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 
 import com.example.ticketguru.model.KayttajaRepository;
-import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
 import com.example.ticketguru.model.Myynti;
 import com.example.ticketguru.model.MyyntiRepository;
@@ -41,17 +40,17 @@ public class MyyntiService {
 
         for (Myyntirivi r : myynti.getMyyntirivit()) {
 
-            Lippu lippu = lippuRepository.findById(r.getLippu().getLippu_id())
-                .orElseThrow();
+            // Lippu lippu = lippuRepository.findById(r.getLippu().getLippu_id())
+            //     .orElseThrow();
 
-            if (lippu.isTila()) {
-                throw new IllegalStateException("Lippu on jo myyty!");
-            }
+            // if (lippu.isTila()) {
+            //     throw new IllegalStateException("Lippu on jo myyty!");
+            // } 
             
             r.setMyynti(myynti);
                            
-            lippu.setTila(true);
-            lippuRepository.save(lippu);
+            // lippu.setTila(true);  TÄTÄ EI PITÄISI TARVITA, SILLÄ LIPPUJA EI LUODA ENNAKKOON!
+            // lippuRepository.save(lippu);
         }
 
         return myyntiRepository.save(myynti);
