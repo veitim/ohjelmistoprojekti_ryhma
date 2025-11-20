@@ -51,6 +51,7 @@ public class Tapahtuma {
     @Column(name = "paikkamaara")
     private int paikkamaara;
     
+    @NotNull(message = "tapahtumalla täytyy olla lipputyyppi")
     @OneToMany(mappedBy = "tapahtuma", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<LippuTyyppi> lipputyyppi;
 
