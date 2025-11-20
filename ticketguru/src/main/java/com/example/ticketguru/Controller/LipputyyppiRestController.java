@@ -46,7 +46,7 @@ public class LipputyyppiRestController {
                 .map(lippuTyyppi -> {
                     lippuTyyppi.setNimi(updated.getNimi());
                     lippuTyyppi.setHinta(updated.getHinta());
-
+                    lippuTyyppi.setTapahtuma(updated.getTapahtuma());
                     LippuTyyppi saved = lippuTyyppiRepository.save(lippuTyyppi);
                     return ResponseEntity.ok(saved);
                 })
