@@ -34,7 +34,6 @@ public class Myyntirivi {
     @JoinColumn(name = "lippu_id", nullable = false)
     private Lippu lippu;
 
-    
     public Myyntirivi() {}
 
     public Myyntirivi(Myynti myynti, Lippu lippu, LocalDate paivamaara, BigDecimal summa) {
