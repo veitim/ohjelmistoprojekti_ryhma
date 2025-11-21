@@ -51,8 +51,9 @@ public class Tapahtuma {
     @Column(name = "paikkamaara")
     private int paikkamaara;
     
-    @OneToMany(mappedBy = "tapahtuma", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Lippu> liput;
+    @NotNull(message = "tapahtumalla täytyy olla lipputyyppi")
+    @OneToMany(mappedBy = "tapahtuma", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    private List<LippuTyyppi> lipputyyppi;
 
     @NotNull(message = "Tapahtumalla täytyy olla järjestäjä")
     @JsonIgnoreProperties("tapahtumat")
@@ -122,14 +123,6 @@ public class Tapahtuma {
         this.lisatiedot = lisatiedot;
     }
     
-    public List<Lippu> getLiput() {
-        return liput;
-    }
-    
-    public void setLiput(List<Lippu> liput) {
-        this.liput = liput;
-    }
-
     public Jarjestaja getJarjestaja() {
         return jarjestaja;
     }
@@ -145,6 +138,14 @@ public class Tapahtuma {
     public void setPaikkamaara(int paikkamaara) {
         this.paikkamaara = paikkamaara;
     }
+    
+    public List<LippuTyyppi> getLipputyyppi() {
+        return lipputyyppi;
+    }
+
+    public void setLipputyyppi(List<LippuTyyppi> lipputyyppi) {
+        this.lipputyyppi = lipputyyppi;
+    }
 
     @Override
     public String toString() {
@@ -159,5 +160,4 @@ public class Tapahtuma {
                 ", jarjestaja=" + this.getJarjestaja() +
                 '}';
     }
-
 }
