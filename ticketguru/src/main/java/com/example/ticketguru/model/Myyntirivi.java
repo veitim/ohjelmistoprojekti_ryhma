@@ -1,8 +1,5 @@
 package com.example.ticketguru.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -37,7 +34,7 @@ public class Myyntirivi {
     
     public Myyntirivi() {}
 
-    public Myyntirivi(Myynti myynti, Lippu lippu, LocalDate paivamaara, BigDecimal summa) {
+    public Myyntirivi(Myynti myynti, Lippu lippu) {
         this.myynti = myynti;
         this.lippu = lippu;
     }
