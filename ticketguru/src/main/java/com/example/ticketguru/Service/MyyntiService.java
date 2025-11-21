@@ -29,6 +29,8 @@ public class MyyntiService {
     @Transactional
     public Myynti luoMyynti(Myynti myynti) {
 
+        // Tänne pitää laittaa asiat siten, että service luo myytävät liput sekä myyntirivit. Liput sidotaan haluttuihin lipputyyppeihin ja myyntirivit yhteen myyntiin.
+
         if (myynti.getKayttaja() == null || 
         !kayttajaRepository.existsById(myynti.getKayttaja().getKayttaja_id())) {
         throw new EntityNotFoundException("Käyttäjää ei löytynyt annetulla ID:llä");
