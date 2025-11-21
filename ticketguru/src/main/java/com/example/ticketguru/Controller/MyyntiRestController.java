@@ -68,7 +68,6 @@ public class MyyntiRestController {
                     existing.setKayttaja(updated.getKayttaja());
                     existing.setPaivamaara(updated.getPaivamaara());
                     existing.setMaksutapa(updated.getMaksutapa());
-                    existing.setTyyppi(updated.getTyyppi());
 
                     existing.getMyyntirivit().clear();
                     for (Myyntirivi rivi : updated.getMyyntirivit()) {

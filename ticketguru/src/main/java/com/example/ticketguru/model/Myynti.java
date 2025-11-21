@@ -43,11 +43,6 @@ public class Myynti {
     @Column(length = 50)
     private String maksutapa;
     
-    @NotBlank(message = "Tyyppi ei voi olla tyhjä")
-    @Size(max = 50, message = "Tyypin maksimipituus 50 merkkiä")
-    @Column(length = 50)
-    private String tyyppi;
-    
     @JsonIgnoreProperties("myynti")
     @OneToMany(mappedBy = "myynti", cascade = CascadeType.ALL, orphanRemoval = true)
     @Valid
@@ -59,7 +54,6 @@ public class Myynti {
         this.kayttaja = kayttaja;
         this.paivamaara = paivamaara;
         this.maksutapa = maksutapa;
-        this.tyyppi = tyyppi;
     }
     
     public Long getMyyntiId() {return myyntiId;}
@@ -74,15 +68,12 @@ public class Myynti {
     public String getMaksutapa() {return maksutapa;}
     public void setMaksutapa(String maksutapa) {this.maksutapa = maksutapa;}
     
-    public String getTyyppi() {return tyyppi;}
-    public void setTyyppi(String tyyppi) {this.tyyppi = tyyppi;}
-    
     public List<Myyntirivi> getMyyntirivit() {return myyntirivit;}
     public void setMyyntirivit(List<Myyntirivi> myyntirivit) {this.myyntirivit = myyntirivit;}
     
     @Override
     public String toString() {
         return "Myynti [myyntiId=" + myyntiId + ", kayttaja=" + kayttaja + ", paivamaara=" + paivamaara + ", maksutapa="
-                + maksutapa + ", tyyppi=" + tyyppi + ", myyntirivit=" + myyntirivit + "]";
+                + maksutapa + ", myyntirivit=" + myyntirivit + "]";
     }
 }
