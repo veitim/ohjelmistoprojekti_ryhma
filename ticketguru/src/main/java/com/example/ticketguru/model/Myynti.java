@@ -43,7 +43,7 @@ public class Myynti {
     @Column(length = 50)
     private String maksutapa;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Double summa;
     
     
