@@ -71,7 +71,7 @@ public class TicketguruApplication {
 				LocalDate.of(2025, 1, 8),
 				"ikärajaa ei ole",
 				jarjestaja1, 
-				200
+				3
 			);
 
 			Tapahtuma tapahtuma2 = new Tapahtuma(

@@ -25,7 +25,7 @@ public class Tapahtuma {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long tapahtuma_id;
+    private long tapahtumaId;
     
     @NotNull(message = "Tapahtumalla täytyy olla nimi")
     @Size(min = 1, max = 150, message = "Tapahtuman nimen pituus täytyy olla 1-150 merkkiä pitkä")
@@ -74,12 +74,12 @@ public class Tapahtuma {
         this.paikkamaara = paikkamaara;
     }
     
-    public long getTapahtuma_id() {
-        return tapahtuma_id;
+    public long getTapahtumaId() {
+        return tapahtumaId;
     }
     
-    public void setTapahtuma_id(long tapahtuma_id) {
-        this.tapahtuma_id = tapahtuma_id;
+    public void setTapahtumaId(long tapahtumaId) {
+        this.tapahtumaId = tapahtumaId;
     }
     
     public String getNimi() {
@@ -149,7 +149,7 @@ public class Tapahtuma {
     @Override
     public String toString() {
         return "Tapahtuma{" +
-                "tapahtuma_id=" + tapahtuma_id +
+                "tapahtumaId=" + tapahtumaId +
                 ", nimi='" + nimi + '\'' +
                 ", katuosoite='" + katuosoite + '\'' +
                 ", alkamisPvm=" + alkamisPvm +
