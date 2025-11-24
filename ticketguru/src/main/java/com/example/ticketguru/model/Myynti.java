@@ -34,7 +34,7 @@ public class Myynti {
     @JoinColumn(name = "kayttaja_id", nullable = false)
     private Kayttaja kayttaja;
 
-    @NotNull(message = "Päivämäärä ei voi olla tyhjä")
+    
     @Column(nullable = false)
     private LocalDate paivamaara;
     
