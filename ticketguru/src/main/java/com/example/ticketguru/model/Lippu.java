@@ -15,8 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -26,27 +24,20 @@ public class Lippu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long lippu_id;
 
-    @NotBlank(message = "Paikka on pakollinen tieto")
     @Size(max = 15, message = "Paikan nimi saa olla enintään 15 merkkiä")
-    @Column(name = "paikka", nullable = false, length = 15)
+    @Column(name = "paikka", length = 15)
     private String paikka;
 
+    @Column(name = "kaytetty", nullable = false)
+    private boolean kaytetty;
 
-    @Column(name = "tila", nullable = false)
-    private boolean tila;
+    @Column(name = "koodi", nullable = false)
+    private String koodi;
 
-    @NotNull(message = "Tapahtuma ei voi olla tyhjä")
-    @JsonIgnoreProperties({"liput", "jarjestaja"})
+    @JsonIgnoreProperties({"lippu", "tapahtuma"})
     @ManyToOne
-    @JoinColumn(name = "tapahtuma_id")
-    private Tapahtuma tapahtuma;
-
-    @NotNull(message = "LippuTyyppi ei saa olla tyhjä")
-    @JsonIgnoreProperties("liput")
-    @ManyToOne
-    @JoinColumn(name = "tyyppi_id", nullable = false)
+    @JoinColumn
     private LippuTyyppi lipputyyppi;
-
 
     @JsonIgnore
     @OneToMany(mappedBy= "lippu", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
@@ -56,11 +47,12 @@ public class Lippu {
         super();
     }
 
-    public Lippu(String paikka, boolean tila, Tapahtuma tapahtuma) {
+    public Lippu(String paikka, boolean kaytetty, LippuTyyppi lipputyyppi, String koodi) {
         super();
         this.paikka = paikka;
-        this.tila = tila;
-        this.tapahtuma = tapahtuma;
+        this.kaytetty = kaytetty;
+        this.lipputyyppi = lipputyyppi;
+        this.koodi = koodi;
     }
 
     public long getLippu_id() {
@@ -75,24 +67,16 @@ public class Lippu {
         return paikka;
     }
 
+    public boolean isKaytetty() {
+        return kaytetty;
+    }
+
+    public void setKaytetty(boolean kaytetty) {
+        this.kaytetty = kaytetty;
+    }
+
     public void setPaikka(String paikka) {
         this.paikka = paikka;
-    }
-
-    public boolean isTila() {
-        return tila;
-    }
-
-    public void setTila(boolean tila) {
-        this.tila = tila;
-    }
-
-    public Tapahtuma getTapahtuma() {
-        return tapahtuma;
-    }
-
-    public void setTapahtuma(Tapahtuma tapahtuma) {
-        this.tapahtuma = tapahtuma;
     }
 
     public List<Myyntirivi> getMyyntirivit() {
@@ -111,10 +95,22 @@ public class Lippu {
         this.lipputyyppi = lipputyyppi;
     }
 
+
+    public String getKoodi() {
+        return koodi;
+    }
+
+    public void setKoodi(String koodi) {
+        this.koodi = koodi;
+    }
+
     @Override
     public String toString() {
-        return "Lippu [lippu_id=" + lippu_id + ", paikka=" + paikka + ", tila=" + tila + ", tapahtuma=" + tapahtuma
-                + "]";
+        return "Lippu [lippu_id=" + lippu_id + 
+        ", paikka=" + paikka + 
+        ", kaytetty=" + kaytetty +
+        ", lipputyyppi=" + this.getLipputyyppi() +
+        ", koodi=" + koodi + "]";
     }
 
 }

@@ -35,21 +35,17 @@ public class MyyntiService {
         throw new EntityNotFoundException("Käyttäjää ei löytynyt annetulla ID:llä");
         }
 
-        // Asetetaan myyntipäivämäärä
-        myynti.setPaivamaara(LocalDate.now());
-
-        System.out.println("Myyntirivejä: " + myynti.getMyyntirivit().size());
-        // Kytketään rivit tähän myyntiin
         for (Myyntirivi r : myynti.getMyyntirivit()) {
-            r.setMyynti(myynti);
 
-            // Päivitä lipun tila myydyksi
             Lippu lippu = lippuRepository.findById(r.getLippu().getLippu_id())
-                                   .orElseThrow();
-            lippu.setTila(true);
-            lippuRepository.save(lippu);
+                .orElseThrow();
+                
+            r.setMyynti(myynti);
         }
-
+        
+        // Summataan myynnin myyntirivit lipputyypin hinnan mukaan. TEHTAVA!
+        // myynti.setSumma(summa);
+        myynti.setPaivamaara(LocalDate.now());
         return myyntiRepository.save(myynti);
     }
 }

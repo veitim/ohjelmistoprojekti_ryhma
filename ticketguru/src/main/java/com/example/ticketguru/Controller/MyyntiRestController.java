@@ -51,11 +51,13 @@ public class MyyntiRestController {
 
     @PostMapping
     public ResponseEntity<?> luoMyynti(@Valid @RequestBody Myynti myynti){
-        System.out.println("DEBUG: Saapui myynti, rivit=" + myynti.getMyyntirivit().size());
-        Myynti tallennettu = myyntiService.luoMyynti(myynti);
-        return ResponseEntity.ok(tallennettu);
+        try {
+            Myynti tallennettu = myyntiService.luoMyynti(myynti);
+            return ResponseEntity.ok(tallennettu);
+        } catch (IllegalStateException virhe) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(virhe.getMessage());
+        }
     }
-
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
@@ -66,7 +68,7 @@ public class MyyntiRestController {
                     existing.setKayttaja(updated.getKayttaja());
                     existing.setPaivamaara(updated.getPaivamaara());
                     existing.setMaksutapa(updated.getMaksutapa());
-                    existing.setTyyppi(updated.getTyyppi());
+                    existing.setSumma(updated.getSumma());
 
                     existing.getMyyntirivit().clear();
                     for (Myyntirivi rivi : updated.getMyyntirivit()) {

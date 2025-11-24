@@ -11,6 +11,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -26,16 +28,22 @@ public class LippuTyyppi {
     @Column(name = "hinta")
     private double hinta;
 
+    @OneToMany(mappedBy = "lipputyyppi", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    private List<Lippu> lippu;
+
     @JsonIgnoreProperties("lipputyyppi")
-    @OneToMany(mappedBy= "lipputyyppi", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
-    private List<Lippu> liput;
+    @ManyToOne
+    @JoinColumn
+    private Tapahtuma tapahtuma;
 
     public LippuTyyppi() {
     }
 
-    public LippuTyyppi(String nimi, double hinta) {
+    public LippuTyyppi(String nimi, double hinta, Tapahtuma tapahtuma) {
+        super();
         this.nimi = nimi;
         this.hinta = hinta;
+        this.tapahtuma = tapahtuma;
     }
 
     public long getTyyppi_id() {
@@ -62,17 +70,31 @@ public class LippuTyyppi {
         this.hinta = hinta;
     }
 
-    public List<Lippu> getLiput() {
-        return liput;
+
+    public Tapahtuma getTapahtuma() {
+        return tapahtuma;
     }
 
-    public void setLiput(List<Lippu> liput) {
-        this.liput = liput;
+    public void setTapahtuma(Tapahtuma tapahtuma) {
+        this.tapahtuma = tapahtuma;
+    }
+
+    public List<Lippu> getLippu() {
+        return lippu;
+    }
+
+    public void setLippu(List<Lippu> lippu) {
+        this.lippu = lippu;
     }
 
     @Override
     public String toString() {
-        return "LippuTyyppi [tyyppi_id=" + tyyppi_id + ", nimi=" + nimi + ", hinta=" + hinta + "]";
+        return "LippuTyyppi [tyyppi_id=" + tyyppi_id + 
+        ", nimi=" + nimi + 
+        ", hinta=" + hinta + 
+        ", tapahtuma=" + this.getTapahtuma() + "]";
     }
+
+
 
 }

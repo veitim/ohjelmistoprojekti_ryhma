@@ -25,7 +25,7 @@ public class Tapahtuma {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long tapahtuma_id;
+    private long tapahtumaId;
     
     @NotNull(message = "Tapahtumalla täytyy olla nimi")
     @Size(min = 1, max = 150, message = "Tapahtuman nimen pituus täytyy olla 1-150 merkkiä pitkä")
@@ -51,8 +51,8 @@ public class Tapahtuma {
     @Column(name = "paikkamaara")
     private int paikkamaara;
     
-    @OneToMany(mappedBy = "tapahtuma", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Lippu> liput;
+    @OneToMany(mappedBy = "tapahtuma", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    private List<LippuTyyppi> lipputyyppi;
 
     @NotNull(message = "Tapahtumalla täytyy olla järjestäjä")
     @JsonIgnoreProperties("tapahtumat")
@@ -74,12 +74,12 @@ public class Tapahtuma {
         this.paikkamaara = paikkamaara;
     }
     
-    public long getTapahtuma_id() {
-        return tapahtuma_id;
+    public long getTapahtumaId() {
+        return tapahtumaId;
     }
     
-    public void setTapahtuma_id(long tapahtuma_id) {
-        this.tapahtuma_id = tapahtuma_id;
+    public void setTapahtumaId(long tapahtumaId) {
+        this.tapahtumaId = tapahtumaId;
     }
     
     public String getNimi() {
@@ -122,14 +122,6 @@ public class Tapahtuma {
         this.lisatiedot = lisatiedot;
     }
     
-    public List<Lippu> getLiput() {
-        return liput;
-    }
-    
-    public void setLiput(List<Lippu> liput) {
-        this.liput = liput;
-    }
-
     public Jarjestaja getJarjestaja() {
         return jarjestaja;
     }
@@ -145,11 +137,19 @@ public class Tapahtuma {
     public void setPaikkamaara(int paikkamaara) {
         this.paikkamaara = paikkamaara;
     }
+    
+    public List<LippuTyyppi> getLipputyyppi() {
+        return lipputyyppi;
+    }
+
+    public void setLipputyyppi(List<LippuTyyppi> lipputyyppi) {
+        this.lipputyyppi = lipputyyppi;
+    }
 
     @Override
     public String toString() {
         return "Tapahtuma{" +
-                "tapahtuma_id=" + tapahtuma_id +
+                "tapahtumaId=" + tapahtumaId +
                 ", nimi='" + nimi + '\'' +
                 ", katuosoite='" + katuosoite + '\'' +
                 ", alkamisPvm=" + alkamisPvm +
@@ -159,5 +159,4 @@ public class Tapahtuma {
                 ", jarjestaja=" + this.getJarjestaja() +
                 '}';
     }
-
 }

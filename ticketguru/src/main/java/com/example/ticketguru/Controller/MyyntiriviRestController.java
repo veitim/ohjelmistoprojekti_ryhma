@@ -108,8 +108,6 @@ public ResponseEntity<Myyntirivi> updateMyyntirivi(@PathVariable Long id, @Reque
     
     myyntirivi.setMyynti(myynti);
     myyntirivi.setLippu(lippu);
-    myyntirivi.setPaivamaara(updated.getPaivamaara());
-    myyntirivi.setSumma(updated.getSumma());
     
     Myyntirivi saved = myyntiriviRepository.save(myyntirivi);
     return ResponseEntity.ok(saved);
