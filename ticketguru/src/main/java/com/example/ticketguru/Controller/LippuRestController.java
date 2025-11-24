@@ -1,6 +1,7 @@
 package com.example.ticketguru.Controller;
 
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ticketguru.Service.LippuService;
 import com.example.ticketguru.Service.QrService;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
@@ -25,12 +27,14 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/liput")
 public class LippuRestController {
 
+    private final LippuService lippuService;
     private final LippuRepository lippuRepository;
     private final QrService qrService;
 
-    public LippuRestController(LippuRepository lippuRepository, QrService qrService) {
+    public LippuRestController(LippuRepository lippuRepository, QrService qrService, LippuService lippuService) {
         this.lippuRepository = lippuRepository;
           this.qrService = qrService;
+          this.lippuService = lippuService;
     }
 
     @GetMapping("/{id}")
@@ -52,9 +56,13 @@ public class LippuRestController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
-    public ResponseEntity<Lippu> createLippu(@Valid @RequestBody Lippu uusi) {
-        Lippu tallennettu = lippuRepository.save(uusi);
-        return ResponseEntity.ok(tallennettu);
+    public ResponseEntity<?> luoLippu(@Valid @RequestBody Lippu lippu) {
+        try {
+            Lippu tallennettu = lippuService.luoLippu(lippu);
+            return ResponseEntity.ok(tallennettu);
+        } catch (IllegalStateException virhe) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(virhe.getMessage());
+        }
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -63,7 +71,6 @@ public class LippuRestController {
         return lippuRepository.findById(id)
                 .map(lippu -> {
                     lippu.setPaikka(updated.getPaikka());
-                    lippu.setTila(updated.isTila());
                     lippu.setKaytetty(updated.isKaytetty());
                     lippu.setLipputyyppi(updated.getLipputyyppi());
 

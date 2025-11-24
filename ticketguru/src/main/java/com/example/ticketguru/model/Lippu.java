@@ -28,9 +28,6 @@ public class Lippu {
     @Column(name = "paikka", length = 15)
     private String paikka;
 
-    @Column(name = "tila", nullable = false)
-    private boolean tila;
-
     @Column(name = "kaytetty", nullable = false)
     private boolean kaytetty;
 
@@ -50,10 +47,9 @@ public class Lippu {
         super();
     }
 
-    public Lippu(String paikka, boolean tila, boolean kaytetty, LippuTyyppi lipputyyppi, String koodi) {
+    public Lippu(String paikka, boolean kaytetty, LippuTyyppi lipputyyppi, String koodi) {
         super();
         this.paikka = paikka;
-        this.tila = tila;
         this.kaytetty = kaytetty;
         this.lipputyyppi = lipputyyppi;
         this.koodi = koodi;
@@ -81,14 +77,6 @@ public class Lippu {
 
     public void setPaikka(String paikka) {
         this.paikka = paikka;
-    }
-
-    public boolean isTila() {
-        return tila;
-    }
-
-    public void setTila(boolean tila) {
-        this.tila = tila;
     }
 
     public List<Myyntirivi> getMyyntirivit() {
@@ -120,7 +108,6 @@ public class Lippu {
     public String toString() {
         return "Lippu [lippu_id=" + lippu_id + 
         ", paikka=" + paikka + 
-        ", tila=" + tila + 
         ", kaytetty=" + kaytetty +
         ", lipputyyppi=" + this.getLipputyyppi() +
         ", koodi=" + koodi + "]";

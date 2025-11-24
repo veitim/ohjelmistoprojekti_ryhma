@@ -107,10 +107,10 @@ public class TicketguruApplication {
 			ltRepository.save(lipputyyppi3);
 			ltRepository.save(lipputyyppi4);
 
-			Lippu lippu1 = new Lippu("A1", true, true, lipputyyppi1, "12345a");
-			Lippu lippu2 = new Lippu("manala", true, false, lipputyyppi2, "12345b");
-			Lippu lippu3 = new Lippu("lessinki", false, false, lipputyyppi3, "12345c");
-			Lippu lippu4 = new Lippu("A1", false, true, lipputyyppi4, "12345a");
+			Lippu lippu1 = new Lippu("A1", true, lipputyyppi1, "12345a");
+			Lippu lippu2 = new Lippu("manala", false, lipputyyppi2, "12345b");
+			Lippu lippu3 = new Lippu("lessinki", false, lipputyyppi3, "12345c");
+			Lippu lippu4 = new Lippu("A1", true, lipputyyppi4, "12345a");
 			lippuRepository.save(lippu1);
 			lippuRepository.save(lippu2);
 			lippuRepository.save(lippu3);
@@ -147,8 +147,12 @@ public class TicketguruApplication {
 			kRepository.save(kayttaja2);
 
 			log.info("myynti");
-			Myynti myynti1 = new Myynti(kayttaja1, LocalDate.of(2025, 10, 1), "käteinen", 20.0);
-			Myynti myynti2 = new Myynti(kayttaja2, LocalDate.of(2025, 10, 1), "kortti", 20.0);
+			Myynti myynti1 = new Myynti(kayttaja1, 
+				LocalDate.of(2025, 10, 1),
+				"käteinen", 20.0);
+			Myynti myynti2 = new Myynti(kayttaja2, 
+				LocalDate.of(2025, 10, 1), 
+				"kortti", 20.0);
 			mRepository.save(myynti1);
 			mRepository.save(myynti2);
 
