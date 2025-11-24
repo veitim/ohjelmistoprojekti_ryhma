@@ -35,7 +35,7 @@ public class LippuService {
 
         if (liput >= tapahtuma.getPaikkamaara()) {
             throw new ResponseStatusException(
-                HttpStatus.CONFLICT,"Tapahtuma on täynnä, paikkoja ei ole jäljellä");
+                HttpStatus.CONFLICT,"Tapahtumaan ei ole myytäviä lippuja enään jäljellä");
         }
  
         lippu.setLipputyyppi(lipputyyppi);
