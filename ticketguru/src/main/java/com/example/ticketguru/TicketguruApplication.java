@@ -110,11 +110,17 @@ public class TicketguruApplication {
 			Lippu lippu1 = new Lippu("A1", true, lipputyyppi1, "12345a");
 			Lippu lippu2 = new Lippu("manala", false, lipputyyppi2, "12345b");
 			Lippu lippu3 = new Lippu("lessinki", false, lipputyyppi3, "12345c");
-			Lippu lippu4 = new Lippu("A1", true, lipputyyppi4, "12345a");
+			Lippu lippu4 = new Lippu("A2", false, lipputyyppi2, "12345d");
+			Lippu lippu5 = new Lippu("A3", false, lipputyyppi2, "12345e");
+			Lippu lippu6 = new Lippu("A4", false, lipputyyppi2, "12345f");
+			Lippu lippu7 = new Lippu("A5", false, lipputyyppi2, "12345g");
 			lippuRepository.save(lippu1);
 			lippuRepository.save(lippu2);
 			lippuRepository.save(lippu3);
 			lippuRepository.save(lippu4);
+			lippuRepository.save(lippu5);
+			lippuRepository.save(lippu6);
+			lippuRepository.save(lippu7);
 
 			log.info("käyttäjiä");
 			Kayttaja kayttaja1 = new Kayttaja(
