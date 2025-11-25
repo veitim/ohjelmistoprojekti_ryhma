@@ -49,7 +49,6 @@ class MyyntiRestControllerTest {
         myynti.setKayttaja(new Kayttaja());
         myynti.setPaivamaara(LocalDate.now());
         myynti.setMaksutapa("Kortti");
-        myynti.setTyyppi("Online");
         myynti.setMyyntirivit(new ArrayList<>());
     }
 
@@ -120,7 +119,6 @@ class MyyntiRestControllerTest {
         updated.setKayttaja(new Kayttaja());
         updated.setPaivamaara(LocalDate.of(2025, 1, 1));
         updated.setMaksutapa("Kortti");
-        updated.setTyyppi("Uusi");
         updated.setMyyntirivit(new ArrayList<>());
 
         when(repository.findById(1L)).thenReturn(Optional.of(myynti));

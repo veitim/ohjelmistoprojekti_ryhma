@@ -7,13 +7,11 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
@@ -56,7 +54,6 @@ public class MyyntiServiceTests {
 
         lippu = new Lippu();
         lippu.setLippu_id(10L);
-        lippu.setTila(false);
 
         myynti = new Myynti();
         myynti.setKayttaja(kayttaja);
@@ -76,7 +73,6 @@ public class MyyntiServiceTests {
 
         assertNotNull(tulos);
         assertEquals(LocalDate.now(), tulos.getPaivamaara());
-        assertTrue(lippu.isTila(), "Tila = true");
 
         verify(lippuRepository).save(lippu);
         verify(myyntiRepository).save(myynti);
@@ -91,20 +87,6 @@ public class MyyntiServiceTests {
         });
 
         assertEquals("Käyttäjää ei löytynyt annetulla ID:llä", e.getMessage());
-    }
-
-    @Test
-    void LippuJoMyyty() {
-        when(kayttajaRepository.existsById(1L)).thenReturn(true);
-        lippu.setTila(true);
-        when(lippuRepository.findById(10L)).thenReturn(Optional.of(lippu));
-
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
-            myyntiService.luoMyynti(myynti);
-        });
-
-        assertEquals("Lippu on jo myyty!", e.getMessage());
-        verify(lippuRepository, never()).save(any(Lippu.class));
     }
 }
 

@@ -21,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import com.example.ticketguru.Controller.LippuRestController;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
+import com.example.ticketguru.Service.LippuService;
 
 class LippuRestControllerTest {
 
@@ -29,6 +30,7 @@ class LippuRestControllerTest {
 
     @InjectMocks
     private LippuRestController lippuRestController;
+    private LippuService lippuService;
 
     private Lippu lippu;
 
@@ -39,7 +41,6 @@ class LippuRestControllerTest {
         lippu = new Lippu();
         lippu.setLippu_id(1L);
         lippu.setPaikka("A1");
-        lippu.setTila(false);
         lippu.setKaytetty(false);
         lippu.setKoodi("ABC123");
     }
@@ -96,7 +97,7 @@ class LippuRestControllerTest {
     void testCreateLippu() {
         when(lippuRepository.save(any(Lippu.class))).thenReturn(lippu);
 
-        ResponseEntity<Lippu> response = lippuRestController.createLippu(lippu);
+        ResponseEntity<?> response = lippuRestController.luoLippu(lippu);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(lippu, response.getBody());
@@ -108,7 +109,6 @@ class LippuRestControllerTest {
     void testUpdateLippu_Found() {
         Lippu updated = new Lippu();
         updated.setPaikka("B2");
-        updated.setTila(true);
         updated.setKaytetty(true);
         updated.setLippu_id(1L);
 

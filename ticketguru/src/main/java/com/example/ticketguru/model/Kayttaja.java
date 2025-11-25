@@ -15,6 +15,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -26,25 +28,29 @@ public class Kayttaja {
     private long kayttaja_id;
     
     @NotBlank(message = "Käyttäjällä pitää olla etunimi")
-    @Size(min = 1, max = 50, message = "Etunimen täytyy olla 1-50 merkkiä pitkä.")
+    @Size(min = 1, max = 50, message = "Etunimi voi olla enintään 50 merkkiä pitkä.")
     @Column(name = "etunimi", length = 50, nullable = false)
     private String etunimi;
 
     @NotBlank(message = "Käyttäjällä pitää olla sukunimi")
-    @Size(min = 1, max = 50, message = "sukunimen täytyy olla 1-50 merkkiä pitkä.")
+    @Size(min = 1, max = 50, message = "sukunimi voi olla enintään 50 merkkiä pitkä.")
     @Column(name = "sukunimi", length = 50, nullable = false)
     private String sukunimi;
-    
-    @Size(min = 1, max = 150, message = "Katuosoite voi olla vain 1-150 merkkiä pitkä.")
+
+    @NotBlank(message = "Katuosoite on pakollinen")
+    @Size(min = 1, max = 150, message = "Katuosoite voi olla enintään 150 merkkiä pitkä.")
     @Column(name = "katuosoite", length = 150, nullable = false)
     private String katuosoite;
 
-    @Column(name = "syntymaaika")
+    @NotNull(message = "Syntymäaika on pakollinen")
+    @PastOrPresent(message = "Syntymäaika ei voi olla tulevaisuudessa")
+    @Column(name = "syntymaaika", nullable = false)
     private LocalDate syntymaaika;
 
+    @NotBlank(message = "Sähköpostiosoite on pakollinen")
     @Email(message = "Sähköpostiosoite ei ole kelvollinen")
-    @Size(min = 1, max = 100, message = "Sähköpostin täytyy olla 1-100 merkkiä pitkä")
-    @Column(name = "sahkoposti", length = 100)
+    @Size(min = 1, max = 100, message = "Sähköposti voi olla enintään 100 merkkiä pitkä")
+    @Column(name = "sahkoposti", length = 100, nullable = false)
     private String sahkoposti;
 
     @Pattern(regexp = "^[0-9+\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä")
@@ -55,18 +61,23 @@ public class Kayttaja {
     @Column(name = "lisatieto", length = 500)
     private String lisatieto;
 
+    @NotNull(message = "Postinumero on pakollinen")
     @JsonIgnoreProperties("kayttajat")
     @ManyToOne
-    @JoinColumn(name= "postinumero", nullable = true)
+    @JoinColumn(name= "postinumero", nullable = false)
     private Postinumero postinumero;
 
+    @NotBlank(message = "Käyttäjätunnus on pakollinen")
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
+    @NotBlank(message = "Salasana on pakollinen")
     @Column(name = "password", nullable = false)
     private String passwordHash;
 
-    @Column(name= "rooli", length = 50)
+    @NotBlank(message = "Rooli on pakollinen")
+    @Pattern(regexp = "^(USER|ADMIN)$", message = "Rooli on virheellinen")
+    @Column(name= "rooli", nullable = false)
     private String rooli;
 
     @JsonIgnoreProperties("kayttaja")
