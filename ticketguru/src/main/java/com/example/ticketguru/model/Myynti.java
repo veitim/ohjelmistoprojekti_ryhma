@@ -19,6 +19,8 @@ import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "myynti")
@@ -35,6 +37,7 @@ public class Myynti {
     private Kayttaja kayttaja;
 
     @NotNull(message = "Päivämäärä ei voi olla tyhjä")
+    @PastOrPresent(message = "Päivämäärä ei voi olla tulevaisuudessa")
     @Column(nullable = false)
     private LocalDate paivamaara;
     
@@ -43,6 +46,7 @@ public class Myynti {
     @Column(length = 50)
     private String maksutapa;
 
+    @PositiveOrZero(message = "Summa ei voi olla negatiivinen")
     @Column(nullable = true)
     private Double summa;
     

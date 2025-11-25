@@ -14,6 +14,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class LippuTyyppi {
@@ -22,9 +25,12 @@ public class LippuTyyppi {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long tyyppi_id;
 
-    @Column(name = "nimi", length = 150)
+    @NotBlank(message = "Lipputyypillä täytyy olla nimi")
+    @Size(max = 150, message = "Lipputyypin nimi voi olla enintään 150 merkkiä pitkä")
+    @Column(name = "nimi", length = 150, nullable = false)
     private String nimi;
 
+    @PositiveOrZero(message = "Hinnan täytyy olla positiivinen tai nolla")
     @Column(name = "hinta")
     private double hinta;
 

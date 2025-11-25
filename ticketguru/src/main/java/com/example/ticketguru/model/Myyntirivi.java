@@ -19,7 +19,6 @@ public class Myyntirivi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long riviId;
     
-    // @NotNull(message = "Myynti ei voi olla tyhjä")
     @JsonIgnoreProperties("myyntirivit")
     @ManyToOne
     @JoinColumn(name = "myynti_id", nullable = false)

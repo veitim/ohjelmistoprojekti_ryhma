@@ -15,6 +15,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -24,19 +26,21 @@ public class Lippu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long lippu_id;
 
-    @Size(max = 15, message = "Paikan nimi saa olla enintään 15 merkkiä")
-    @Column(name = "paikka", length = 15)
+    @Size(max = 30, message = "Paikan nimi saa olla enintään 30 merkkiä")
+    @Column(name = "paikka", length = 30)
     private String paikka;
 
     @Column(name = "kaytetty", nullable = false)
     private boolean kaytetty;
 
+    @NotBlank(message = "Lipulla täytyy olla koodi")
     @Column(name = "koodi", nullable = false)
     private String koodi;
 
+    @NotNull(message = "Lipulla täytyy olla lipputyyppi")
     @JsonIgnoreProperties({"lippu", "tapahtuma"})
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private LippuTyyppi lipputyyppi;
 
     @JsonIgnore

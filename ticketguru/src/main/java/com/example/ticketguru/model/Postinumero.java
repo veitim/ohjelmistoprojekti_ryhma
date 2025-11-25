@@ -9,7 +9,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -17,15 +17,14 @@ import jakarta.validation.constraints.Size;
 public class Postinumero {
 
     @Id
-    @Size(min = 5, max = 5, message = "Postinumero voi olla vain 5 merkkiä pitkä.")
-    @Pattern(regexp = "^[0-9]{5}$", message = "Postinumeron on oltava 5 numeroa.")
+    @Size(min = 5, max = 5, message = "Postinumero voi olla viisi merkkiä pitkä.")
+    @Pattern(regexp = "^[0-9]{5}$", message = "Postinumeron on oltava viisi numeroa.")
     @Column(name = "Postinumero", nullable= false)
     private String postinumero;
 
-
-    @Column(name = "postitoimipaikka", nullable= false, length = 100)
-    @NotNull(message = "Postitoimipaikka on pakollinen tieto")
-    @Size(min = 1, max = 50, message = "Postitoimipaikan pitää olla 1-50 merkkiä pitkä.")
+    @NotBlank(message = "Postitoimipaikka on pakollinen tieto")
+    @Column(name = "postitoimipaikka", nullable= false, length = 50)
+    @Size(min = 1, max = 50, message = "Postitoimipaikka saa olla enintään 50 merkkiä.")
     private String postitoimipaikka;
 
     @JsonIgnoreProperties("postinumero")

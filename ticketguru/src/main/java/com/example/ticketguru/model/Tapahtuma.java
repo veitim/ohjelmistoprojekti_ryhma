@@ -16,7 +16,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -27,27 +29,31 @@ public class Tapahtuma {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long tapahtumaId;
     
-    @NotNull(message = "Tapahtumalla täytyy olla nimi")
-    @Size(min = 1, max = 150, message = "Tapahtuman nimen pituus täytyy olla 1-150 merkkiä pitkä")
+    @NotBlank(message = "Tapahtumalla täytyy olla nimi")
+    @Size(min = 1, max = 150, message = "Tapahtuman nimi saa olla enintään 150 merkkiä pitkä")
     @Column(name = "nimi", nullable = false, length = 150)
     private String nimi;
     
-    @NotNull(message = "Tapahtumalla täytyy olla sijainti")
-    @Size(min = 1, max = 150, message = "Tapahtuman sijainnin täytyy olla 1-150 merkkiä pitkä")
+    @NotBlank(message = "Tapahtumalla täytyy olla sijainti")
+    @Size(min = 1, max = 150, message = "Tapahtuman sijainti saa olaa enintään 150 merkkiä pitkä")
     @Column(name = "katuosoite", nullable = false, length = 150)
     private String katuosoite;
     
     @NotNull(message = "Tapahtumalla täytyy olla alkamisen ajankohta")
-    @Column(name = "alkamis_pvm")
+    @NotNull(message = "Tapahtuman alkamispäivä ei voi olla menneisyydessä")
+    @Column(name = "alkamis_pvm", nullable = false)
     private LocalDate alkamisPvm;
     
     @NotNull(message = "Tapahtumalla täytyy olla päättymisen ajankohta")
-    @Column(name = "paattymis_pvm")
+    @NotNull(message = "Tapahtuman päättymispäivä ei voi olla menneisyydessä")
+    @Column(name = "paattymis_pvm", nullable = false)
     private LocalDate paattymisPvm;
     
     @Column(name = "lisatiedot", columnDefinition = "TEXT")
     private String lisatiedot;
 
+    @NotNull(message = "Tapahtumalla täytyy olla paikkamäärä")
+    @PositiveOrZero(message = "Paikkamäärää ei voi olla negatiivinen")
     @Column(name = "paikkamaara")
     private int paikkamaara;
     
