@@ -59,6 +59,7 @@ public class TapahtumaRestController {
                     tapahtuma.setAlkamisPvm(updated.getAlkamisPvm());
                     tapahtuma.setPaattymisPvm(updated.getPaattymisPvm());
                     tapahtuma.setLisatiedot(updated.getLisatiedot());
+                    tapahtuma.setPaikkamaara(updated.getPaikkamaara());
 
                     Tapahtuma saved = tapahtumaRepository.save(tapahtuma);
                     return ResponseEntity.ok(saved);
