@@ -39,12 +39,20 @@ public class MyyntiService {
 
             Lippu lippu = lippuRepository.findById(r.getLippu().getLippu_id())
                 .orElseThrow();
-                
+            
+            // r.setLippu(lippu);    
             r.setMyynti(myynti);
         }
-        
+       // TARKASTETTAVA
+       /*  double summa = 0.0;
+        for (Myyntirivi r : myynti.getMyyntirivit()) {
+            if (r.getLippu().getLipputyyppi() != null) {
+            double hinta = r.getLippu().getLipputyyppi().getHinta();
+            summa += hinta;
+        }}
+        myynti.setSumma(summa); */
         // Summataan myynnin myyntirivit lipputyypin hinnan mukaan. TEHTAVA!
-        // myynti.setSumma(summa);
+        
         myynti.setPaivamaara(LocalDate.now());
         return myyntiRepository.save(myynti);
     }
