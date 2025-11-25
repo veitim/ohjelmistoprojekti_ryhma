@@ -1,5 +1,7 @@
 package com.example.ticketguru.Service;
 
+import java.security.SecureRandom;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,6 +19,9 @@ public class LippuService {
 
     private final LippuRepository lippuRepository;
     private final LippuTyyppiRepository lipputyyppiRepository;
+
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final SecureRandom random = new SecureRandom();
 
     public LippuService(LippuRepository lippuRepository, LippuTyyppiRepository lipputyyppiRepository) {
         this.lippuRepository = lippuRepository;
@@ -39,10 +44,24 @@ public class LippuService {
         }
  
         lippu.setLipputyyppi(lipputyyppi);
-        lippu.setKoodi("a0000001");
         lippu.setKaytetty(false);
 
+        String generatedCode = generateTicketCode();
+        while (lippuRepository.findByKoodi(generatedCode).isPresent()) {
+            generatedCode = generateTicketCode();
+        }
+        lippu.setKoodi(generatedCode);
+        
         return lippuRepository.save(lippu);
+    }
+
+    private String generateTicketCode() {
+        StringBuilder sb = new StringBuilder(8);
+        for (int i = 0; i < 8; i++) {
+            int index = random.nextInt(CHARACTERS.length());
+            sb.append(CHARACTERS.charAt(index));
+        }
+        return sb.toString();
     }
 
 }

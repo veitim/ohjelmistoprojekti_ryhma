@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -33,7 +32,7 @@ public class Lippu {
     @Column(name = "kaytetty", nullable = false)
     private boolean kaytetty;
 
-    @NotBlank(message = "Lipulla täytyy olla koodi")
+    //@NotBlank(message = "Lipulla täytyy olla koodi")
     @Column(name = "koodi", nullable = false)
     private String koodi;
 
