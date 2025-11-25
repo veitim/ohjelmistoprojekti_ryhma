@@ -31,8 +31,8 @@ public class MyyntiService {
     public Myynti luoMyynti(Myynti myynti) {
 
         if (myynti.getKayttaja() == null || 
-        !kayttajaRepository.existsById(myynti.getKayttaja().getKayttaja_id())) {
-        throw new EntityNotFoundException("Käyttäjää ei löytynyt annetulla ID:llä");
+            !kayttajaRepository.existsById(myynti.getKayttaja().getKayttaja_id())) {
+            throw new EntityNotFoundException("Käyttäjää ei löytynyt annetulla ID:llä");
         }
 
         double summa = 0.0;
@@ -41,26 +41,16 @@ public class MyyntiService {
             Lippu lippu = lippuRepository.findById(r.getLippu().getLippu_id())
                 .orElseThrow();
 
-            if (r.getLippu().getLipputyyppi() != null) {
-            double hinta = r.getLippu().getLipputyyppi().getHinta();
-            System.out.println("HINTA: " + hinta);
+            r.setLippu(lippu);
+
+            if (lippu.getLipputyyppi() != null) {
+            double hinta = lippu.getLipputyyppi().getHinta();
+            // System.out.println("HINTA: " + hinta);
             summa += hinta;
             }
 
-            // System.out.println("Lippu: " + lippu);
-            // System.out.println("Lippu: " + myynti);
-            
-            r.setLippu(lippu);
             r.setMyynti(myynti);
         }
-
-       // TARKASTETTAVA
-        // for (Myyntirivi r : myynti.getMyyntirivit()) {
-        //     if (r.getLippu().getLipputyyppi() != null) {
-        //     double hinta = r.getLippu().getLipputyyppi().getHinta();
-        //     System.out.println(hinta);
-        //     summa += hinta;
-        // }}
 
         myynti.setSumma(summa);
         myynti.setPaivamaara(LocalDate.now());
