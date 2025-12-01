@@ -37,7 +37,7 @@ public class Lippu {
     private String koodi;
 
     @NotNull(message = "Lipulla täytyy olla lipputyyppi")
-    @JsonIgnoreProperties({"lippu", "tapahtuma"})
+    @JsonIgnoreProperties("lippu")
     @ManyToOne
     @JoinColumn(nullable = false)
     private LippuTyyppi lipputyyppi;

@@ -37,7 +37,7 @@ public class LippuTyyppi {
     @OneToMany(mappedBy = "lipputyyppi", cascade= CascadeType.ALL, fetch= FetchType.LAZY)
     private List<Lippu> lippu;
 
-    @JsonIgnoreProperties("lipputyyppi")
+    @JsonIgnoreProperties({"lipputyyppi", "jarjestaja"})
     @ManyToOne
     @JoinColumn
     private Tapahtuma tapahtuma;

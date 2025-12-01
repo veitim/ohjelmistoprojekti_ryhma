@@ -49,7 +49,7 @@ public class Jarjestaja {
     @Column(name = "puhelin", length = 15)
     private String puhelin;
     
-    @JsonIgnoreProperties("tapahtumat")
+    @JsonIgnoreProperties({"lipputyyppi", "jarjestaja"})
     @OneToMany(mappedBy = "jarjestaja", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tapahtuma> tapahtumat;
     
