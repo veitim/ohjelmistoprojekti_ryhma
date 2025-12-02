@@ -39,6 +39,14 @@ public class TapahtumaRestController {
     @GetMapping
     public List<Tapahtuma> getAllTapahtumat() {
         return (List<Tapahtuma>) tapahtumaRepository.findAll();
+        
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Tapahtuma> getLippuById(@PathVariable Long id) {
+        return tapahtumaRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
