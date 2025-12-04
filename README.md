@@ -21,7 +21,7 @@ Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiak
 
  Järjestelmä toteutetaan Spring Boot ympäristössä.
 
-Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelaitetyypeillä. Jatkokehityksessä on tarkoituksena luoda myös verkkokauppa lipunostoa varten
+Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelaitetyypeillä. Jatkokehityksessä on tarkoituksena luoda myös verkkokauppa lipunostoa varten.
 
 ## Järjestelmän määrittely
 
@@ -29,19 +29,23 @@ Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelai
 
 ### Asiakas
 
-* Epäsuorasti käyttää järjestelmää
+Epäsuorasti käyttää järjestelmää. Pyytää lipunmyyjältä lipun/liput tiettyyn tapahtumaan ja maksaa ne.
 
 ### Lipunmyyjä
 
-* Järjestelmän pääkäyttäjä. Eli henkilö, joka myy ja tulostaa liput asiakkaalle.
+Lipunmyyjä myy asiakkaan valitsemalle tapahtumalle lipun/liput ja tulostaa tarvittaessa ne. Lipunmyyjä pystyy tarkastelemaan tapahtumia ja tekemään myyntitoimintoja.
 
 ### Lipuntarkastaja
 
-* Henkilö, joka tarkastaa lipun aitouden ja sen, että onko tämä käytetty.
+Lipuntarkastaja tarkastaa lipun aitouden ja merkitsee lipun käytetksi, jotta yhtä lippua voi käyttää vain kerran.
 
 ### Järjestelmän ylläpitäjä
 
-* Pitää huolen siitä, että järjestelmä toimii oikein.
+Pitää huolen siitä, että järjestelmä toimii oikein. Pystyy lisäämään, muokkaamaan ja poistamaan tapahtumia. Pystyy myös tekemään saman myynnin suhteen.
+
+### Järjestäjä
+
+Epäsuorasti käyttää järjestelmää. Ilmoittaa järjestelmän ylläpitäjälle tapahtuman tiedot, lipputyypit ja hinnat. 
 
 ## Käyttötapaus
 
