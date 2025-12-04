@@ -96,8 +96,8 @@ Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käyt
 
 ![tietokanta](images/tietokantakaavio.png)
 
-Asiakas
-Asiakas-taulu sisältää asiakkaiden tiedot
+#Käyttäjä
+Käyttäjä-taulu sisältää käyttäjän tiedot
 
 | Kenttä      | Tyyppi  | Kuvaus                          |
 | ----------- | ------- | ------------------------------- |
