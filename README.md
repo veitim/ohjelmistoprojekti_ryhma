@@ -99,17 +99,21 @@ Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käyt
 ### Käyttäjä
 Käyttäjä-taulu sisältää käyttäjän tiedot
 
-| Kenttä      | Tyyppi  | Kuvaus                          |
-| ----------- | ------- | ------------------------------- |
-| Asiakas_id  | AN PK   | Asiakkaan yksilöllinen tunniste |
-| Etunimi     | C/50    | Asiakkaan etunimi               |
-| Sukunimi    | C/50    | Asiakkaan sukunimi              |
-| Katuosoite  | C/150   | Asiakkaan katuosoite            |
-| Postinumero | C/50 FK | Viittaus Postinumero-tauluun    |
-| Syntymäaika | C/50    | Asiakkaan syntymäaika           |
-| Sähköposti  | C/100   | Asiakkaan sähköpostiosoite      |
-| Puhelin     | C/15    | Asiakkaan puhelinnumero         |
-| Lisätiedot  | C/500   | Muut lisätiedot                 |
+| Kenttä            | Tyyppi  | Kuvaus                          |
+| -----------       | ------- | ------------------------------- |
+| Käyttäjä_id       | AN PK   | Käyttäjän yksilöllinen tunniste |
+| Etunimi           | C/50    | Käyttäjän etunimi               |
+| Sukunimi          | C/50    | Käyttäjän sukunimi              |
+| Katuosoite        | C/150   | Käyttäjän katuosoite            |
+| Postinumero       | C FK    | Viittaus Postinumero-tauluun    |
+| Syntymäaika       | C/50    | Käyttäjän syntymäaika           |
+| Sähköposti        | C/100   | Käyttäjän sähköpostiosoite      |
+| Puhelin           | C/15    | Käyttäjän puhelinnumero         |
+| Lisätiedot        | C/500   | Muut lisätiedot                 |
+| Käyttäjätunnus    | C       | Käyttäjän tunnus järjestelmään  |
+| Käyttäjä salasana | C       | Käyttäjän salasana kryptattu    |
+| Rooli             | C       | Käyttäjän rooli esim USER       |
+
 
 Postinumero
 Postinumero-taulu sisältää postinumeron tiedot
