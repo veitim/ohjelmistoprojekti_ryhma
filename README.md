@@ -45,7 +45,7 @@ Pitää huolen siitä, että järjestelmä toimii oikein. Pystyy lisäämään, 
 
 ### Järjestäjä
 
-Epäsuorasti käyttää järjestelmää. Ilmoittaa järjestelmän ylläpitäjälle tapahtuman tiedot, lipputyypit ja hinnan. 
+Epäsuorasti käyttää järjestelmää. Ilmoittaa järjestelmän ylläpitäjälle tapahtuman tiedot, lipputyypit ja hinnat. 
 
 ## Käyttötapaus
 
