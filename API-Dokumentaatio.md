@@ -5,14 +5,23 @@
 ## Kaikki endpointit
 Endpoint	Metodit
 /jarjestajat	GET, POST, PUT, DELETE
+
 /kayttajat	GET, POST, PUT, DELETE
+
 /liput	GET, POST, PUT, PATCH, DELETE
+
 /lipputyypit	GET, POST, PUT, DELETE
+
 /myynnit	GET, POST, PUT, DELETE
+
 /myyntirivit	GET, POST, PUT, DELETE
+
 /postinumerot	GET, POST, PUT, DELETE
+
 /tapahtumat	GET, POST, PUT, DELETE
-Käyttöoikeudet
+
+
+## Käyttöoikeudet
 
 Kaikki endpointit edellyttävät autentikointia.
 
