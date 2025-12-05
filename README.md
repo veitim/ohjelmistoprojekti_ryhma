@@ -94,7 +94,7 @@ Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käyt
 
 ## Tietokanta
 
-![tietokanta](images/tietokantkaavio.png)
+![tietokanta](images/tietokantakaavio.png)
 
 ### Käyttäjä
 Käyttäjä-taulu sisältää käyttäjän tiedot
