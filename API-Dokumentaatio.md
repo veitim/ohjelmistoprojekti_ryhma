@@ -84,6 +84,7 @@ Body
 
 
 Pakollinen kenttä: nimi
+
 Vastaus 201 Created
 
 {
@@ -112,9 +113,13 @@ Vastaus: 200 OK
 DELETE /jarjestajat/{id}
 
 Mahdolliset vastaukset:
+
 201 Created — Poistettu
+
 400 Bad Request — Virheellinen pyyntö
+
 403 Forbidden — Ei oikeuksia
+
 404 Not Found — ID ei löydy
 
 
@@ -181,9 +186,13 @@ Vastaus: 200 OK
 DELETE /kayttajat/{id}
 
 Mahdolliset vastaukset:
+
 201 Created — Poistettu
+
 400 Bad Request — Virheellinen pyyntö
+
 403 Forbidden — Ei oikeuksia
+
 404 Not Found — ID ei löydy
 
 
@@ -200,7 +209,9 @@ Haku koodilla
 /liput?koodi={koodi}
 
 Vastaus: 200 OK
+
 tai
+
 404 Not Found
 
 Haku ID:llä
@@ -288,9 +299,11 @@ Body
 Vastaus: 200 OK
 
 PUT /tapahtumat/{id}
+
 Sama rakenne kuin POSTissa.
 
 DELETE /tapahtumat/{id}
+
 Samat vastauskoodit kuin muissa DELETE-pyynnöissä.
 
 
