@@ -68,14 +68,17 @@ public class Kayttaja {
     private Postinumero postinumero;
 
     @NotBlank(message = "Käyttäjätunnus on pakollinen")
+    @Size(max = 50)
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @NotBlank(message = "Salasana on pakollinen")
+    @Size(min = 4)
     @Column(name = "password", nullable = false)
     private String passwordHash;
 
     @NotBlank(message = "Rooli on pakollinen")
+    @Size(min = 1, max = 15)
     @Pattern(regexp = "^(USER|ADMIN)$", message = "Rooli on virheellinen")
     @Column(name= "rooli", nullable = false)
     private String rooli;

@@ -98,7 +98,6 @@ public class Lippu {
         this.lipputyyppi = lipputyyppi;
     }
 
-
     public String getKoodi() {
         return koodi;
     }
