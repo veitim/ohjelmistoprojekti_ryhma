@@ -30,12 +30,12 @@ public class Jarjestaja {
     private long jarjestaja_id;
 
     @NotBlank(message = "Järjestäjän nimi on pakollinen")
-    @Size(max = 150, message = "Nimi saa olla enintään 150 merkkiä")
-    @Column(name = "nimi", nullable = false, length = 150)
+    @Size(max = 50, message = "Nimi saa olla enintään 50 merkkiä")
+    @Column(name = "nimi", nullable = false, length = 50)
     private String nimi;
 
-    @Size(max = 150, message = "Yhteyshenkilö saa olla enintään 150 merkkiä")
-    @Column(name = "yhteyshenkilo", length = 150)
+    @Size(max = 50, message = "Yhteyshenkilö saa olla enintään 50 merkkiä")
+    @Column(name = "yhteyshenkilo", length = 50)
     private String yhteyshenkilo;
 
     @NotBlank(message = "Sähköpostiosoite on pakollinen")
