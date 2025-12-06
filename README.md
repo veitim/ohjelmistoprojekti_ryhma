@@ -188,3 +188,51 @@ Tapahtuma-taulu sisältää tapahtumatiedot
 | lisatiedot    | String            | Muut lisätiedot                |
 | paikkamaara   | Long, NOT NULL    | Tapahtuman paikkamäärä         |
 | jarjestaja_id | Long FK, NOT NULL | Viittaus Järjestäjä-tauluun    |
+
+
+## API-dokumentaatio
+
+API-dokumentaatio löytyy toisesta tiedostosta, jonka pääsee lukemaan [tästä](API-Dokumentaatio.md).
+
+
+## Tekninen kuvaus
+
+Spring Bootilla toteutettu sovellus, jossa käytetään RESTia backendin ja frontendin kommunikoinnissa. Frontend toimii erillisenä React-projektina. React kommunikoi RESTin kanssa ja tallentaa tapahtumat MySQL. 
+Käytetyt teknologiat: Spring Boot, Java, Spring Data JPA, Spring Security, React, MySQL.
+
+React toimii käyttäjän selaimessa, eli näyttää myyntinäkymän ja tekee REST-kutsuja.
+REST vastaanottaa pyynnöt ja syöttäää ne Service-kerrokselle.
+Service-kerros tarkastaa käyttäjän, varaa lipun ja hoitaa myyntitapahtuman.
+Model ja Repository- kerrokset hallitsevat tietokantaa CRUD toiminnoilla olioille. 
+Security-kerros autentikoi, auktorisoi ja valvoo CORS-säännöksiä. 
+Tietokanta-kerros tallentaa kaikki tiedot. 
+
+Järjestely:
+    Model: Entiteetit
+    Service: Toiminnot
+    Controller: REST-kontrollerit
+    SecurityConfig: autentikaatio ja auktorisaatio
+
+Kommentointi:
+    Kommentointi suoraan koodin pätkän eteen. 
+
+## Testaus
+
+Ohjelmaa testataan yksikkö, integraatio ja E2E testeillä. Testejä luodaan tuotetta kehittäessä/heti kun sitä voi testata. Testausta suoritetaan myös manuaalisesti.
+Testien tavoite on varmentaa ohjelman tai sen osien toiminta, sekä löytää virheet.
+Testaukseen käytettävät teknologiat: JUnit, Mockito, Spring Data JPA, Spring Boot Test, MockMvc.
+
+## Asennustiedot
+
+Järjestelmän asennus on syytä dokumentoida kahdesta näkökulmasta:
+
+järjestelmän kehitysympäristö: miten järjestelmän kehitysympäristön saisi rakennettua johonkin toiseen koneeseen
+
+järjestelmän asentaminen tuotantoympäristöön: miten järjestelmän saisi asennettua johonkin uuteen ympäristöön.
+
+Asennusohjeesta tulisi ainakin käydä ilmi, miten käytettävä tietokanta ja käyttäjät tulee ohjelmistoa asentaessa määritellä (käytettävä tietokanta, käyttäjätunnus, salasana, tietokannan luonti yms.).
+## Käynnistys- ja käyttöohje
+
+Tyypillisesti tässä riittää kertoa ohjelman käynnistykseen tarvittava URL sekä mahdolliset kirjautumiseen tarvittavat tunnukset. Jos järjestelmän käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimintajärjestykseen liittyviä asioita, nekin kerrotaan tässä yhteydessä.
+
+Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat järjestelmän pariin !
