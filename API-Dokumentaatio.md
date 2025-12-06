@@ -52,6 +52,17 @@
 
 ### HUOM POST, PUT ja DELETE vaativat ADMIN oikeudet.
 
+* Backend base url: https://ticketguru-git-ticketguru.2.rahtiapp.fi
+* Testiympäristön url: http://localhost:8080 (Projektista pitää olla spring.profiles.active=dev
+
+| Metodi      | Endpoint                  | ADMIN  | USER  |        |
+|:-----------:|:-------------------------:|:------:|:-----:|:------:|
+| GET         | /api/jarjestajat          | X      | X     |        |
+| POST        | /api/jarjestajat          | X      |       |        |
+| PUT         | /api/jarjestajat/{id}     | X      |       |        |
+| DELETE      | /api/jarjestajat/{id}     | X      |       |        |
+
+
 ### Method: POST
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat
