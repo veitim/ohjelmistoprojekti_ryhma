@@ -26,12 +26,12 @@ public class LippuTyyppi {
     private long tyyppi_id;
 
     @NotBlank(message = "Lipputyypillä täytyy olla nimi")
-    @Size(max = 150, message = "Lipputyypin nimi voi olla enintään 150 merkkiä pitkä")
-    @Column(name = "nimi", length = 150, nullable = false)
+    @Size(max = 50, message = "Lipputyypin nimi voi olla enintään 50 merkkiä pitkä")
+    @Column(name = "nimi", length = 50, nullable = false)
     private String nimi;
 
     @PositiveOrZero(message = "Hinnan täytyy olla positiivinen tai nolla")
-    @Column(name = "hinta")
+    @Column(name = "hinta", nullable = false)
     private double hinta;
 
     @OneToMany(mappedBy = "lipputyyppi", cascade= CascadeType.ALL, fetch= FetchType.LAZY)

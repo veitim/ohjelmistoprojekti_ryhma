@@ -26,13 +26,14 @@ public class Lippu {
     private long lippu_id;
 
     @Size(max = 30, message = "Paikan nimi saa olla enintään 30 merkkiä")
-    @Column(name = "paikka", length = 30)
+    @Column(name = "paikka", length = 30, nullable = true)
     private String paikka;
 
     @Column(name = "kaytetty", nullable = false)
     private boolean kaytetty;
 
     //@NotBlank(message = "Lipulla täytyy olla koodi")
+    @Size(min = 8, max = 8)
     @Column(name = "koodi", nullable = false)
     private String koodi;
 
