@@ -103,86 +103,104 @@ Tärkeimmät käyttöliittymän näkymät:
 
 ## Tietokanta
 
-Asiakas
-Asiakas-taulu sisältää asiakkaiden tiedot
+Järjestäjä
+Järjestäjä-taulu sisältää tapahtumien järjestäjät
 
-| Kenttä      | Tyyppi  | Kuvaus                          |
-| ----------- | ------- | ------------------------------- |
-| Asiakas_id  | AN PK   | Asiakkaan yksilöllinen tunniste |
-| Etunimi     | C/50    | Asiakkaan etunimi               |
-| Sukunimi    | C/50    | Asiakkaan sukunimi              |
-| Katuosoite  | C/150   | Asiakkaan katuosoite            |
-| Postinumero | C/50 FK | Viittaus Postinumero-tauluun    |
-| Syntymäaika | C/50    | Asiakkaan syntymäaika           |
-| Sähköposti  | C/100   | Asiakkaan sähköpostiosoite      |
-| Puhelin     | C/15    | Asiakkaan puhelinnumero         |
-| Lisätiedot  | C/500   | Muut lisätiedot                 |
+| Kenttä        | Tyyppi          | Kuvaus                     |
+| ------------- | --------------- | -------------------------- |
+| jarjestaja_id | N PK, NOT NULL  | Järjestäjän tunniste       |
+| nimi          | C/150, NOT NULL | Järjestäjän nimi           |
+| yhteyshenkilo | C/150           | Järjestäjän yhteyshenkilö  |
+| sahkoposti    | C/150, NOT NULL | Järjestäjän sähköposti     |
+| puhelin       | C/15            | Järjestäjän puhelinnumero  |
+| tapahtumat    | REL (1–N)       | Viittaus Tapahtuma-tauluun |
 
-Postinumero
-Postinumero-taulu sisältää postinumeron tiedot
+Käyttäjä
+Käyttäjä-taulu sisältää käyttäjän tiedot
 
-| Kenttä           | Tyyppi | Kuvaus                |
-| ---------------- | ------ | --------------------- |
-| Postinumero      | C/5 PK | Postinumero           |
-| Postitoimipaikka | C/100  | Postitoimipaikan nimi |
-
-Myynti
-Myynti-taulu sisältää asiakkaan tekemät ostotiedot
-
-| Kenttä      | Tyyppi | Kuvaus                   |
-| ----------- | ------ | ------------------------ |
-| Myynti_id   | AN PK  | Myynnin tunniste         |
-| Asiakas_id  | N FK    | Viittaus Asiakas-tauluun|
-| Paivamaara  | N      | Myynnin päivämäärä       |
-| Maksutapa   | C/50   | Maksutapa                |
-| Tyyppi      | C/50   | Myynnin tyyppi           |
-
-Myyntirivi
-Myyntirivi-taulu sisältää yksittäiset myynnit
-
-| Kenttä    | Tyyppi | Kuvaus                  |
-| ----------| ------ | ----------------------- |
-| Rivi_id   | AN PK  | Myyntirivin tunniste    |
-| Myynti_id | N FK   | Viittaus Myynti-tauluun |
-| Lippu_id  | N FK   | Viittaus Lippu-tauluun  |
-| Paivamaara| N      | Rivin päivämäärä        |
-| Summa     | N      | Rivin summa             |
+| Kenttä       | Tyyppi              | Kuvaus                          |
+| ------------ | ------------------- | ------------------------------- |
+| kayttaja_id  | N PK                | Käyttäjän yksilöllinen tunniste |
+| etunimi      | C/50, NOT NULL      | Käyttäjän etunimi               |
+| sukunimi     | C/50, NOT NULL      | Käyttäjän sukunimi              |
+| katuosoite   | C/150, NOT NULL     | Käyttäjän katuosoite            |
+| syntymaaika  | DATE, NOT NULL      | Käyttäjän syntymäaika           |
+| sahkoposti   | C/100, NOT NULL     | Käyttäjän sähköpostiosoite      |
+| puhelinnro   | C/15                | Käyttäjän puhelinnumero         |
+| lisatieto    | C/500               | Muut lisätiedot                 |
+| postinumero  | N FK                | Viittaus Postinumero-tauluun    |
+| username     | C, NOT NULL, UNIQUE | Käyttäjän tunnus järjestelmään  |
+| passwordHash | C, NOT NULL         | Käyttäjän salasana (kryptattu)  |
+| rooli        | C, NOT NULL         | Käyttäjän rooli (USER / ADMIN)  |
+| myynnit      | REL (1–N)           | Viittaus Myynti-tauluun.        |
 
 Lippu
 Lippu-taulu sisältää liput tapahtumiin
 
-| Kenttä       | Tyyppi | Kuvaus                           |
-| -------------| ------ | -------------------------------- |
-| Lippu_id     | AN PK  | Lipun tunniste                   |
-| Tapahtuma_id | N FK   | Viittaus Tapahtuma-tauluun       |
-| Paikka       | C/15   | Lipun paikka                     |
-| Tila         | B      | Lipun tila (esim. varattu/myyty) |
+| Kenttä      | Tyyppi         | Kuvaus                            |
+| ----------- | -------------- | --------------------------------- |
+| lippu_id    | N PK, NOT NULL | Lipun tunniste                    |
+| lipputyyppi | N FK, NOT NULL | Viittaus LippuTyyppi-tauluun      |
+| paikka      | C/30           | Lipun paikka                      |
+| kaytetty    | B, NOT NULL    | Lipun tila (käytetty/käyttämätön) |
+| koodi       | C, NOT NULL    | Lipun koodi                       |
+| myyntirivit | REL (1–N)      | Viittaus Myyntirivi-tauluun       |
+
+LippuTyyppi
+LippuTyyppi-taulu sisältää tapahtumien erilaiset lipputyypit
+
+| Kenttä    | Tyyppi          | Kuvaus                     |
+| --------- | --------------- | -------------------------- |
+| tyyppi_id | N PK, NOT NULL  | Lipputyypin tunniste       |
+| nimi      | C/150, NOT NULL | Lipputyypin nimi           |
+| hinta     | N               | Lipputyypin hinta          |
+| tapahtuma | N FK, NOT NULL  | Viittaus Tapahtuma-tauluun |
+| lippu     | REL (1–N)       | Viittaus Lippu-tauluun     |
+
+Myynti
+Myynti-taulu sisältää asiakkaan tekemät ostotiedot
+
+| Kenttä      | Tyyppi         | Kuvaus                      |
+| ----------- | -------------- | --------------------------- |
+| myyntiId    | N PK, NOT NULL | Myynnin tunniste            |
+| kayttaja    | N FK, NOT NULL | Viittaus Kayttaja-tauluun   |
+| paivamaara  | DATE, NOT NULL | Myynnin päivämäärä          |
+| maksutapa   | C/50, NOT NULL | Maksutapa                   |
+| summa       | N              | Myynnin summa               |
+| myyntirivit | REL (1–N)      | Viittaus Myyntirivi-tauluun |
+
+Myyntirivi
+Myyntirivi-taulu sisältää yksittäiset myynnit
+
+| Kenttä    | Tyyppi         | Kuvaus                  |
+| ----------| -------------- | ----------------------- |
+| Rivi_id   | N PK, NOT NULL | Myyntirivin tunniste    |
+| Myynti_id | N FK, NOT NULL | Viittaus Myynti-tauluun |
+| Lippu_id  | N FK, NOT NULL | Viittaus Lippu-tauluun  |
+
+Postinumero
+Postinumero-taulu sisältää postinumeron tiedot
+
+| Kenttä           | Tyyppi           | Kuvaus                    |
+| ---------------- | ---------------- | ------------------------- |
+| postinumero      | C/5 PK, NOT NULL | Postinumero               |
+| postitoimipaikka | C/50, NOT NULL   | Postitoimipaikan nimi     |
+| kayttajat        | REL (1–N)        | Viittaus Kayttaja-tauluun |
 
 Tapahtuma
 Tapahtuma-taulu sisältää tapahtumatiedot
 
-| Kenttä        | Tyyppi   | Kuvaus                         |
-| ------------- | -------- | ------------------------------ |
-| Tapahtuma_id  | AN PK    | Tapahtuman tunniste            |
-| Lippu_id      | N FK     | Viittaus Lippu-tauluun         |
-| Nimi          | C/150    | Tapahtuman nimi                |
-| Katuosoite    | C/150    | Tapahtuman katuosoite          |
-| Jarjestaja    | C/150 FK | Viittaus Järjestäjä-tauluun    |
-| AlkamisPvm    | D        | Tapahtuman alkamispäivämäärä   |
-| PaattymisPvm  | D        | Tapahtuman päättymispäivämäärä |
-| Hinta         | N        | Tapahtuman hinta               |
-| Lisätiedot    | C/500    | Muut lisätiedot                |
-
-Järjestäjä
-Järjestäjä-taulu sisältää tapahtumien järjestäjät
-
-| Kenttä         | Tyyppi | Kuvaus                    |
-| -------------- | ------ | ------------------------- |
-| Jarjestaja_id  | AN PK  | Järjestäjän tunniste      |
-| Nimi           | C/150  | Järjestäjän nimi          |
-| Yhteyshenkilö  | C/150  | Järjestäjän yhteyshenkilö |
-| Sähköposti     | C/150  | Järjestäjän sähköposti    |
-| Puhelin        | C/15   | Järjestäjän puhelinnumero |
+| Kenttä       | Tyyppi          | Kuvaus                         |
+| ------------ | --------------- | ------------------------------ |
+| tapahtumaId  | N PK, NOT NULL  | Tapahtuman tunniste            |
+| nimi         | C/150, NOT NULL | Tapahtuman nimi                |
+| katuosoite   | C/150, NOT NULL | Tapahtuman katuosoite          |
+| alkamisPvm   | DATE, NOT NULL  | Tapahtuman alkamispäivämäärä   |
+| paattymisPvm | DATE, NOT NULL  | Tapahtuman päättymispäivämäärä |
+| lisatiedot   | C/500           | Muut lisätiedot                |
+| paikkamaara  | N, NOT NULL     | Tapahtuman paikkamäärä         |
+| jarjestaja   | N FK, NOT NULL  | Viittaus Järjestäjä-tauluun    |
+| lipputyyppi  | REL (1–N)       | Viittaus LippuTyyppi-tauluun   |
 
 ## Tekninen kuvaus
 
