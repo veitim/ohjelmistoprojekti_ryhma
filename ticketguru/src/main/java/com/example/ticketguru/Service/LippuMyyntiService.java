@@ -85,7 +85,13 @@ public class LippuMyyntiService {
                 // Tämä tekee liput   
                 Lippu lippu = new Lippu();
                 lippu.setLipputyyppi(tyyppi);
-                lippu.setKoodi(generateTicketCode());
+                
+                // Tämä Tarkistaa, että samaa lippukoodia ei ole olemassa.
+                String generatedCode = generateTicketCode();
+                while (lippuRepository.findByKoodi(generatedCode).isPresent()) {
+                    generatedCode = generateTicketCode();
+                }
+                lippu.setKoodi(generatedCode);
                 lippuRepository.save(lippu);
             
 
