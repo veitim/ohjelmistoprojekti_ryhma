@@ -18,10 +18,8 @@ Kurssitoteutuksen vetäjät (tuotteenomistajat):
 ## Johdanto ##
 
 Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
-
- Järjestelmä toteutetaan Spring Boot ympäristössä.
-
-Lähtökohtaisesti järjestelmä pyritään saada toimimaaan kaikilla päätelaitetyypeillä. Jatkokehityksessä on tarkoituksena luoda myös verkkokauppa lipunostoa varten
+Järjestelmä toteutetaan Spring Bootilla ja käyttää REST-rajapintaa sekä relaatiotietokantaa, ja sen käyttöliittymä on selainpohjainen.
+Lähtökohtaisesti järjestelmä pyritään saada toimimaan kaikilla päätelaitetyypeillä. Jatkokehityksessä on tarkoituksena luoda myös verkkokauppa lipunostoa varten.
 
 ## Järjestelmän määrittely
 
