@@ -200,6 +200,11 @@ Tapahtuma-taulu sisältää tapahtumatiedot
 | jarjestaja   | N FK, NOT NULL  | Viittaus Järjestäjä-tauluun    |
 | lipputyyppi  | REL (1–N)       | Viittaus LippuTyyppi-tauluun   |
 
+## API-dokumentaatio
+
+API-dokumentaatio löytyy toisesta tiedostosta, jonka pääsee lukemaan [tästä](API-Dokumentaatio.md).
+
+
 ## Tekninen kuvaus
 
 Spring Bootilla toteutettu sovellus, jossa käytetään RESTia backendin ja frontendin kommunikoinnissa. Frontend toimii erillisenä React-projektina. React kommunikoi RESTin kanssa ja tallentaa tapahtumat MySQL. 
