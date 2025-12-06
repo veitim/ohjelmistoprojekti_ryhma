@@ -56,17 +56,19 @@
 
 ### Hae kaikki järjestäjät
 
+### Method: GET
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat"
 
 ### Hae järjestäjä ID:llä
 
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/1"
+
+### Lisää uusi järjestäjä
 
 ### Method: POST
 
@@ -93,6 +95,8 @@
         }
 
 
+### Muokkaa järjestäjää
+
 ### Method: PUT
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
@@ -107,6 +111,8 @@
 
 * Result: 200 OK   
     
+### Poista järjestäjä
+
 ### Method: DELETE
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/jarjestajat/{id}
@@ -123,10 +129,13 @@
 
 ### Hae käyttäjät
 
+### Method: GET
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat"
+
+### Lisää uusi käyttäjä
 
 ### Method: POST
 
@@ -171,6 +180,8 @@
             "myynnit": []
         }
 
+### Muokkaa käyttäjää
+
 ### Method: PUT
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/{id}
@@ -193,6 +204,8 @@
 
 Result: 200 OK
 
+### Poista käyttäjä
+
 ### Method: DELETE
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/kayttajat/{id}
@@ -213,7 +226,7 @@ Result: 200 OK
 
 ### Method: GET
 
-### Kaikki liput
+### Hae kaikki liput
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
 
@@ -226,6 +239,8 @@ Result: 200 OK
 ### Lipun haku id:n perusteella
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
+
+### Lisää lippu
 
 ### Method: POST
 
@@ -268,6 +283,8 @@ Result: 200 OK
         "myyntirivit": null
         }
 
+### Muokkaa lippua
+
 ### Method: PUT
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
@@ -297,6 +314,8 @@ Result: 200 OK
 * Response: 200 OK
 * Tämä asettaa false tilan trueksi (eli lippu käytetty)
 
+### Poista lippu
+
 ### Method: DELETE
 
 URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
@@ -315,18 +334,20 @@ URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
 
 ### Hae tapahtumat
 
+### MEthod: GET
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat"
 
 * VirheKoodi: 404 Not Found 
 
 ### Lisää tapahtuma
 
+### Method: POST
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat"
-* Metodi: POST
 * Esimerkki: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat
   
   Body:
@@ -347,9 +368,10 @@ Response: 200
 
 ### Päivitä tapahtuma
 
+### Method: PUT
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat/{id}"
-* Metodi: PUT
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat/1"
   
   Body:
@@ -368,9 +390,10 @@ Response: 200
 
 ### Poista tapahtuma
 
+### Method: DELETE
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat/{id}"
-* Metodi: DELETE
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/tapahtumat/1"
 
 
@@ -379,16 +402,18 @@ Response: 200
 
 ### Hae lipputyypit
 
+### Method: GET
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit"
 
 ### Lisää lipputyyppi
 
+### Method: POST
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit"
-* Metodi: POST
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit"
 
 Body:
@@ -401,9 +426,10 @@ Body:
 
 ### Päivitä lippytyyppi
 
+### Method: PUT
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit/{id}"
-* Metodi: PUT
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit/1"
 
 Body:
@@ -415,32 +441,34 @@ Body:
 
 ### Poista lipputyyppi
 
+### Method: DELETE
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit/{id}"
-* Metodi: DELETE
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/lipputyypit/2"
 
 # Endpoint: Myynti
 
 ### Hae kaikki myynnit
 
+### Method: GET
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit"
 
 ### Hae myynti ID:llä
 
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit/{id}"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit/1"
 
 ### Lisää myynti
 
+### Method: POST
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit"
-* Metodi: POST
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit"
 
 Body:
@@ -457,9 +485,10 @@ Body:
 
 ### Päivitä myynti
 
+### Method: PUT
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit/{id}"
-* Metodi: PUT
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit/1"
 
 Body:
@@ -476,27 +505,28 @@ Body:
 
 ### Poista myynti
 
-ENDPOINTIT MITÄ VOI KÄYTTTÄÄ  TAPAHTUMAT; LIPUT; JNE: MENEE ESIM TILALLE
+### Method: DELETE
 
 * Vaatimus: ADMIN, oikeudet
-* URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/{ESIM}/{id}"
-* Metodi: DELETE
+* URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit/{id}"
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myynnit/1"
 
 # Endpoint: Postinumero
 
 ### Hae postinumerot/postitoimipaikat
 
+### Method: GET
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot"
 
 ### Lisää postinumero/postitoimipaikka
 
+### Method: POST
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot"
-* Metodi: POST
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot"
 
 Body:
@@ -509,9 +539,10 @@ Body:
 
 ### Päivitä postinumero/postitoimipaikka
 
+### Method: PUT
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot/{postinumero}"
-* Metodi: PUT
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot/00980"
 
 Body:
@@ -523,28 +554,31 @@ Body:
 
 ### Poista postinumero/postitoimipaikka
 
+### Method: DELETE
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot/{postinumero}"
-* Metodi: DELETE
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/postinumerot/00980"
 
 # Endpoint: Myyntirivi
 
 ### Hae kaikki myyntirivit
 
+### Method: GET
+
 * Vaatimus: autentikoitu käyttäjä
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit"
 
 ### Hae myyntirivi ID:llä
 
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit/{id}"
-* Metodi: GET
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit/1"
 
 ### Lisää uusi myyntirivi
+
+### Method: POST
 
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit"
@@ -566,9 +600,10 @@ Body:
 
 ### Päivitä myyntirivi
 
+### Method: PUT
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit/{id}"
-* Metodi: PUT
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit/1"
 
 Body:
@@ -586,7 +621,8 @@ Body:
 
 ### Poista myyntirivi
 
+### Method: DELETE
+
 * Vaatimus: ADMIN, oikeudet
 * URL: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit/{id}"
-* Metodi: DELETE
 * Esimerkki: "https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/myyntirivit/1"
