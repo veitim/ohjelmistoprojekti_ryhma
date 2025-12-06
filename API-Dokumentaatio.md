@@ -347,7 +347,7 @@ POST /myynnit:
 Body
 
 {
-    "kayttaja": { "kayttajaId": 1 },
+    "kayttaja": { "kayttaja_Id": 1 },
     "paivamaara": "2025-09-30",
     "maksutapa": "Kortti",
     "tyyppi": "Verkkokauppa",
