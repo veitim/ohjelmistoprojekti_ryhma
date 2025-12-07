@@ -44,7 +44,7 @@ public class Myynti {
     private String maksutapa;
 
     @PositiveOrZero(message = "Summa ei voi olla negatiivinen")
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Double summa;
     
     
