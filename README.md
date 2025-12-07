@@ -96,7 +96,7 @@ Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käyt
 
 ![tietokanta](images/tietokantakaavio.png)
 
-Järjestäjä
+### Järjestäjä
 Järjestäjä-taulu sisältää tapahtumien järjestäjät
 
 | Kenttä        | Tyyppi           | Kuvaus                     |
@@ -107,7 +107,7 @@ Järjestäjä-taulu sisältää tapahtumien järjestäjät
 | sahkoposti    | String, NOT NULL | Järjestäjän sähköposti     |
 | puhelin       | String           | Järjestäjän puhelinnumero  |
 
-Käyttäjä
+### Käyttäjä
 Käyttäjä-taulu sisältää käyttäjän tiedot
 
 | Kenttä       | Tyyppi                   | Kuvaus                          |
@@ -125,7 +125,7 @@ Käyttäjä-taulu sisältää käyttäjän tiedot
 | passwordHash | String, NOT NULL         | Käyttäjän salasana (kryptattu)  |
 | rooli        | String, NOT NULL         | Käyttäjän rooli (USER / ADMIN)  |
 
-Lippu
+### Lippu
 Lippu-taulu sisältää liput tapahtumiin
 
 | Kenttä        | Tyyppi            | Kuvaus                            |
@@ -136,7 +136,7 @@ Lippu-taulu sisältää liput tapahtumiin
 | kaytetty      | Boolean, NOT NULL | Lipun tila (käytetty/käyttämätön) |
 | koodi         | String, NOT NULL  | Lipun koodi                       |
 
-LippuTyyppi
+### LippuTyyppi
 LippuTyyppi-taulu sisältää tapahtumien erilaiset lipputyypit
 
 | Kenttä      | Tyyppi            | Kuvaus                     |
@@ -146,7 +146,7 @@ LippuTyyppi-taulu sisältää tapahtumien erilaiset lipputyypit
 | hinta       | Double            | Lipputyypin hinta          |
 | tapahtumaId | Long FK, NOT NULL | Viittaus Tapahtuma-tauluun |
 
-Myynti
+### Myynti
 Myynti-taulu sisältää asiakkaan tekemät ostotiedot
 
 | Kenttä      | Tyyppi              | Kuvaus                      |
@@ -157,7 +157,7 @@ Myynti-taulu sisältää asiakkaan tekemät ostotiedot
 | maksutapa   | String, NOT NULL    | Maksutapa                   |
 | summa       | Double              | Myynnin summa               |
 
-Myyntirivi
+### Myyntirivi
 Myyntirivi-taulu sisältää yksittäiset myynnit
 
 | Kenttä    | Tyyppi            | Kuvaus                  |
@@ -166,7 +166,7 @@ Myyntirivi-taulu sisältää yksittäiset myynnit
 | myyntiId  | Long FK, NOT NULL | Viittaus Myynti-tauluun |
 | lippu_id  | Long FK, NOT NULL | Viittaus Lippu-tauluun  |
 
-Postinumero
+### Postinumero
 Postinumero-taulu sisältää postinumeron tiedot
 
 | Kenttä           | Tyyppi              | Kuvaus                    |
@@ -175,7 +175,7 @@ Postinumero-taulu sisältää postinumeron tiedot
 | postitoimipaikka | String, NOT NULL    | Postitoimipaikan nimi     |
 
 
-Tapahtuma
+### Tapahtuma
 Tapahtuma-taulu sisältää tapahtumatiedot
 
 | Kenttä        | Tyyppi            | Kuvaus                         |
