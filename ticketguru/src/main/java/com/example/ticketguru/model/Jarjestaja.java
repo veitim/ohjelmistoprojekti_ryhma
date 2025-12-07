@@ -30,18 +30,18 @@ public class Jarjestaja {
     private long jarjestaja_id;
 
     @NotBlank(message = "Järjestäjän nimi on pakollinen")
-    @Size(max = 150, message = "Nimi saa olla enintään 150 merkkiä")
-    @Column(name = "nimi", nullable = false, length = 150)
+    @Size(max = 50, message = "Nimi saa olla enintään 50 merkkiä")
+    @Column(name = "nimi", nullable = false, length = 50)
     private String nimi;
 
-    @Size(max = 150, message = "Yhteyshenkilö saa olla enintään 150 merkkiä")
-    @Column(name = "yhteyshenkilo", length = 150)
+    @Size(max = 50, message = "Yhteyshenkilö saa olla enintään 50 merkkiä")
+    @Column(name = "yhteyshenkilo", length = 50, nullable = false)
     private String yhteyshenkilo;
 
     @NotBlank(message = "Sähköpostiosoite on pakollinen")
     @Email(message = "Sähköpostiosoite ei ole kelvollinen")
-    @Size(max = 150, message = "Sähköposti saa olla enintään 150 merkkiä" )
-    @Column(name = "sahkoposti", nullable = false, length = 150)
+    @Size(max = 100, message = "Sähköposti saa olla enintään 100 merkkiä" )
+    @Column(name = "sahkoposti", nullable = false, length = 100)
     private String sahkoposti;
 
     @Pattern(regexp = "^[0-9+\\-()\\s]*$", message = "Puhelinnumero sisältää virheellisiä merkkejä. Merkit voivat olla: 0-9, + ja -")

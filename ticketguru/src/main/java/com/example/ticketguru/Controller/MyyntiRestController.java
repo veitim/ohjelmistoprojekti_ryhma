@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ticketguru.Dto.MyyntiDto;
+import com.example.ticketguru.Service.LippuMyyntiService;
 import com.example.ticketguru.Service.MyyntiService;
 import com.example.ticketguru.model.Myynti;
 import com.example.ticketguru.model.MyyntiRepository;
@@ -31,10 +33,12 @@ public class MyyntiRestController {
     
     private final MyyntiRepository repository;
     private final MyyntiService myyntiService;
+    private final LippuMyyntiService lippuMyyntiService;
 
-    public MyyntiRestController(MyyntiRepository repository, MyyntiService myyntiService) {
+    public MyyntiRestController(MyyntiRepository repository, MyyntiService myyntiService, LippuMyyntiService lippuMyyntiService) {
         this.repository = repository;
         this.myyntiService = myyntiService;
+        this.lippuMyyntiService = lippuMyyntiService;
     }
 
     @GetMapping
@@ -50,9 +54,9 @@ public class MyyntiRestController {
     }
 
     @PostMapping
-    public ResponseEntity<?> luoMyynti(@Valid @RequestBody Myynti myynti){
+    public ResponseEntity<?> createMyynti(@RequestBody @Valid MyyntiDto myynti){
         try {
-            Myynti tallennettu = myyntiService.luoMyynti(myynti);
+            Myynti tallennettu = lippuMyyntiService.createMyynti(myynti);
             return ResponseEntity.ok(tallennettu);
         } catch (IllegalStateException virhe) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(virhe.getMessage());

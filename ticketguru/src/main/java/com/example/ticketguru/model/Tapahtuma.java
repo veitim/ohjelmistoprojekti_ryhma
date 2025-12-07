@@ -30,11 +30,11 @@ public class Tapahtuma {
     private long tapahtumaId;
     
     @NotBlank(message = "Tapahtumalla täytyy olla nimi")
-    @Size(min = 1, max = 150, message = "Tapahtuman nimi saa olla enintään 150 merkkiä pitkä")
-    @Column(name = "nimi", nullable = false, length = 150)
+    @Size(min = 1, max = 50, message = "Tapahtuman nimi saa olla enintään 50 merkkiä pitkä")
+    @Column(name = "nimi", nullable = false, length = 50)
     private String nimi;
     
-    @NotBlank(message = "Tapahtumalla täytyy olla sijainti")
+    @NotBlank(message = "Tapahtumalla täytyy olla osoite")
     @Size(min = 1, max = 150, message = "Tapahtuman sijainti saa olaa enintään 150 merkkiä pitkä")
     @Column(name = "katuosoite", nullable = false, length = 150)
     private String katuosoite;
@@ -49,7 +49,8 @@ public class Tapahtuma {
     @Column(name = "paattymis_pvm", nullable = false)
     private LocalDate paattymisPvm;
     
-    @Column(name = "lisatiedot", columnDefinition = "TEXT")
+    @Column(name = "lisatiedot", length = 500)
+    @Size(max = 500, message = "Lisätiedot voivat olla enintään 500 merkkiä pitkä")
     private String lisatiedot;
 
     @NotNull(message = "Tapahtumalla täytyy olla paikkamäärä")

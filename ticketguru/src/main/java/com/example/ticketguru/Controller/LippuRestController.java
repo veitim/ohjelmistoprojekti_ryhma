@@ -110,42 +110,42 @@ public class LippuRestController {
             })
             .orElse(ResponseEntity.notFound().build());
     }
- @GetMapping("/{id}/qr")
-public ResponseEntity<ByteArrayResource> getLippuQr(@PathVariable Long id) {
-    var optionalLippu = lippuRepository.findById(id);
+    @GetMapping("/{id}/qr")
+    public ResponseEntity<ByteArrayResource> getLippuQr(@PathVariable Long id) {
+        var optionalLippu = lippuRepository.findById(id);
 
-    if (optionalLippu.isEmpty()) {
-        return ResponseEntity.notFound().build();
+        if (optionalLippu.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        var lippu = optionalLippu.get();
+
+        try {
+            String qrContent = "http://localhost:8080/api/liput/" + lippu.getLippu_id();
+
+            byte[] qrBytes = qrService.generateQrPng(qrContent, 400);
+            ByteArrayResource resource = new ByteArrayResource(qrBytes);
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.IMAGE_PNG)
+                    .contentLength(qrBytes.length)
+                    .body(resource);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
-    var lippu = optionalLippu.get();
-
-    try {
-        String qrContent = "https://app.example.com/redeem?lippuId=" + lippu.getLippu_id();
-
-        byte[] qrBytes = qrService.generateQrPng(qrContent, 400);
-        ByteArrayResource resource = new ByteArrayResource(qrBytes);
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_PNG)
-                .contentLength(qrBytes.length)
-                .body(resource);
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        return ResponseEntity.internalServerError().build();
-    }
-}
-
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+        @ExceptionHandler(MethodArgumentNotValidException.class)
+        public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+            Map<String, String> errors = new HashMap<>();
+            ex.getBindingResult().getAllErrors().forEach(error -> {
+                String fieldName = ((FieldError) error).getField();
+                String errorMessage = error.getDefaultMessage();
+                errors.put(fieldName, errorMessage);
+            });
         return errors;
     }
 }

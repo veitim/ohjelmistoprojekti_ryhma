@@ -33,7 +33,7 @@ public class Kayttaja {
     private String etunimi;
 
     @NotBlank(message = "Käyttäjällä pitää olla sukunimi")
-    @Size(min = 1, max = 50, message = "sukunimi voi olla enintään 50 merkkiä pitkä.")
+    @Size(min = 1, max = 50, message = "Sukunimi voi olla enintään 50 merkkiä pitkä.")
     @Column(name = "sukunimi", length = 50, nullable = false)
     private String sukunimi;
 
@@ -58,24 +58,29 @@ public class Kayttaja {
     @Size(max = 15, message = "puhelinumero on enintään 15 merkkiä pitkä")
     private String puhelinnro;
 
-    @Column(name = "lisatieto", length = 500)
+    @Column(name = "lisatiedot", length = 500)
+    @Size(max = 500, message = "Lisätiedot voi olla enintään 500 merkkiä pitkä")
     private String lisatieto;
 
     @NotNull(message = "Postinumero on pakollinen")
+    @Size(min = 5, max = 5, message = "Postinumero on pakollinen")
     @JsonIgnoreProperties("kayttajat")
     @ManyToOne
     @JoinColumn(name= "postinumero", nullable = false)
     private Postinumero postinumero;
 
     @NotBlank(message = "Käyttäjätunnus on pakollinen")
+    @Size(max = 50)
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @NotBlank(message = "Salasana on pakollinen")
+    @Size(min = 4, max = 150)
     @Column(name = "password", nullable = false)
     private String passwordHash;
 
     @NotBlank(message = "Rooli on pakollinen")
+    @Size(min = 1, max = 15)
     @Pattern(regexp = "^(USER|ADMIN)$", message = "Rooli on virheellinen")
     @Column(name= "rooli", nullable = false)
     private String rooli;

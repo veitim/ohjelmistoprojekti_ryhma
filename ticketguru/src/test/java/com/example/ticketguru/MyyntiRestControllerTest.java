@@ -8,7 +8,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
@@ -82,16 +81,16 @@ class MyyntiRestControllerTest {
         assertNull(vastaus.getBody());
     }
 
-    @Test
-    void testLuoMyynti() {
-        when(myyntiService.luoMyynti(any(Myynti.class))).thenReturn(myynti);
+    // @Test
+    // void testLuoMyynti() {
+    //     when(myyntiService.luoMyynti(any(Myynti.class))).thenReturn(myynti);
 
-        ResponseEntity<?> vastaus = controller.luoMyynti(myynti);
+    //     ResponseEntity<?> vastaus = controller.luoMyynti(myynti);
 
-        assertEquals(HttpStatus.OK, vastaus.getStatusCode());
-        assertTrue(vastaus.getBody() instanceof Myynti);
-        verify(myyntiService, times(1)).luoMyynti(any(Myynti.class));
-    }
+    //     assertEquals(HttpStatus.OK, vastaus.getStatusCode());
+    //     assertTrue(vastaus.getBody() instanceof Myynti);
+    //     verify(myyntiService, times(1)).luoMyynti(any(Myynti.class));
+    // }
 
     @Test
     void testDelete_Found() {

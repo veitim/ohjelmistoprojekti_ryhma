@@ -1,5 +1,7 @@
 package com.example.ticketguru.Dto;
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotNull;
 
 public class MyyntiDto {
@@ -8,10 +10,7 @@ public class MyyntiDto {
     private long kayttaja_id;
 
     @NotNull
-    private long tyyppi_id;
-
-    @NotNull
-    private int maara;
+    private List<MyyntiRiviDto> rivit;
 
     @NotNull
     private String maksutapa;
@@ -24,28 +23,20 @@ public class MyyntiDto {
         this.kayttaja_id = kayttaja_id;
     }
 
-    public long getTyyppi_id() {
-        return tyyppi_id;
-    }
-
-    public void setTyyppi_id(long tyyppi_id) {
-        this.tyyppi_id = tyyppi_id;
-    }
-
-    public int getMaara() {
-        return maara;
-    }
-
-    public void setMaara(int maara) {
-        this.maara = maara;
-    }
-
     public String getMaksutapa() {
         return maksutapa;
     }
 
     public void setMaksutapa(String maksutapa) {
         this.maksutapa = maksutapa;
+    }
+
+    public List<MyyntiRiviDto> getRivit() {
+        return rivit;
+    }
+
+    public void setRivit(List<MyyntiRiviDto> rivit) {
+        this.rivit = rivit;
     }
 
 }
