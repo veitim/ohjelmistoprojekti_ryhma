@@ -63,7 +63,6 @@ public class Kayttaja {
     private String lisatieto;
 
     @NotNull(message = "Postinumero on pakollinen")
-    @Size(min = 5, max = 5, message = "Postinumero on pakollinen")
     @JsonIgnoreProperties("kayttajat")
     @ManyToOne
     @JoinColumn(name= "postinumero", nullable = false)
