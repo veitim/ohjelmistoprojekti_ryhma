@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,6 +44,7 @@ public class KayttajaRestController {
             this.kayttajaRepository = kayttajaRepository;
             this.postinumeroRepository = postinumeroRepository;
         }
+    
 
 
     @GetMapping
@@ -121,4 +123,31 @@ public class KayttajaRestController {
         });
         return errors;
     }
+
+    
+@GetMapping("/auth/check")
+public Map<String, String> checkAuth(Authentication auth) {
+
+    if (auth == null) {
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Ei valtuuksia");
+    }
+
+    // esim. ROLE_ADMIN tai ROLE_USER
+    String authority = auth.getAuthorities()
+            .stream()
+            .findFirst()
+            .map(a -> a.getAuthority())
+            .orElse("ROLE_USER");
+
+    Map<String, String> response = new HashMap<>();
+    
+    // pudotetaan "ROLE_" pois ja lähetetään frontille siisti rooli
+    if (authority.equals("ROLE_ADMIN")) {
+        response.put("role", "admin");
+    } else {
+        response.put("role", "user");
+    }
+
+    return response;
+}
 }

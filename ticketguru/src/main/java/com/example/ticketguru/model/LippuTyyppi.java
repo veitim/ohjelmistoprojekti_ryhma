@@ -39,8 +39,9 @@ public class LippuTyyppi {
 
     @JsonIgnoreProperties({"lipputyyppi", "jarjestaja"})
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "tapahtuma_id", nullable = false)
     private Tapahtuma tapahtuma;
+    
 
     public LippuTyyppi() {
     }

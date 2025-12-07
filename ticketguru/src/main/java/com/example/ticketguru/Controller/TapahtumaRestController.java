@@ -52,8 +52,12 @@ public class TapahtumaRestController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<Tapahtuma> createTapahtuma(@Valid @RequestBody Tapahtuma uusi) {
-        Tapahtuma tallennettu = tapahtumaRepository.save(uusi);
-        return ResponseEntity.ok(tallennettu);
+         if (uusi.getLipputyyppi() != null) {
+        uusi.getLipputyyppi().forEach(lt -> lt.setTapahtuma(uusi));
+    }
+
+    Tapahtuma tallennettu = tapahtumaRepository.save(uusi);
+    return ResponseEntity.ok(tallennettu);
     }
     
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -68,6 +72,7 @@ public class TapahtumaRestController {
                     tapahtuma.setPaattymisPvm(updated.getPaattymisPvm());
                     tapahtuma.setLisatiedot(updated.getLisatiedot());
                     tapahtuma.setPaikkamaara(updated.getPaikkamaara());
+                    tapahtuma.setLipputyyppi(updated.getLipputyyppi());
 
                     Tapahtuma saved = tapahtumaRepository.save(tapahtuma);
                     return ResponseEntity.ok(saved);
