@@ -94,7 +94,7 @@ Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käyt
 
 ## Tietokanta
 
-![tietokanta](images/Näyttökuva 2025-12-06 kello 20.07.32.png)
+![tietokanta](images/images/tietokantakaavio1.png)
 
 ### Järjestäjä
 Järjestäjä-taulu sisältää tapahtumien järjestäjät
