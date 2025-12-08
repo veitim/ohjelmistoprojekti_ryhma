@@ -90,8 +90,7 @@
             "nimi": "Konserttiyhtiö Oy",
             "yhteyshenkilo": "Matti Meikäläinen",
             "sahkoposti": "matti@konserttiyhtio.fi",
-            "puhelin": "0401234567",
-            "tapahtumat": null
+            "puhelin": "0401234567"
         }
 
 
@@ -172,7 +171,6 @@
             "lisatieto": "Ei lisätietoja",
             "postinumero": {
                 "postinumero": "00100",
-                "postitoimipaikka": "Helsinki"
             },
             "username": "matti123",
             "passwordHash": "$2a$10$...",
@@ -294,12 +292,9 @@ Result: 200 OK
         "paikka": "MUUTOS",
         "tila": false,
         "kaytetty": true,
-        "tapahtuma": {
-            "tapahtuma_id": 1
         },
         "lipputyyppi": {
             "tyyppi_id": 2
-        }
         }
 
 ### Method: PATCH
@@ -420,7 +415,8 @@ Body:
 
     {
         "nimi": "1 päivän lippu",
-        "hinta": 90
+        "hinta": 90,
+        "tapahtuma": [],
     }
  
 
@@ -436,7 +432,8 @@ Body:
 
     {
         "nimi": "normilippu",
-        "hinta": 30
+        "hinta": 30,
+        "tapahtuma": [],
     }
 
 ### Poista lipputyyppi
@@ -479,7 +476,7 @@ Body:
           },
           "paivamaara": "2025-09-30",
           "maksutapa": "Kortti",
-          "tyyppi": "Verkkokauppa",
+          "summa":
           "myyntirivit": []
       }
 
@@ -499,7 +496,7 @@ Body:
           },
           "paivamaara": "2025-10-01",
           "maksutapa": "Käteinen",
-          "tyyppi": "Kassa",
+          "summa":
           "myyntirivit": []
       }
 
@@ -593,9 +590,7 @@ Body:
         },
         "lippu": {
             "lippu_id": 5
-        },
-        "paivamaara": "2025-01-07",
-        "summa": 59.90
+        }
     }
 
 ### Päivitä myyntirivi
@@ -614,9 +609,7 @@ Body:
         },
         "lippu": {
             "lippu_id": 1
-        },
-        "paivamaara": "2025-01-07",
-        "summa": 59.90
+        }
     }
 
 ### Poista myyntirivi
