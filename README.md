@@ -198,7 +198,11 @@ API-dokumentaatio löytyy toisesta tiedostosta, jonka pääsee lukemaan [tästä
 ## Tekninen kuvaus
 
 Spring Bootilla toteutettu sovellus, jossa käytetään RESTia backendin ja frontendin kommunikoinnissa. Frontend toimii erillisenä React-projektina. React kommunikoi RESTin kanssa ja tallentaa tapahtumat MySQL. 
-Käytetyt teknologiat: Spring Boot, Java, Spring Data JPA, Spring Security, React, MySQL.
+#### Käytetyt teknologiat: 
+- Java 17
+- Spring Boot 3.5.5
+- React 19.2.0
+- MySQL 8.0.17
 
 React toimii käyttäjän selaimessa, eli näyttää myyntinäkymän ja tekee REST-kutsuja.
 REST vastaanottaa pyynnöt ja syöttäää ne Service-kerrokselle.
@@ -207,14 +211,11 @@ Model ja Repository- kerrokset hallitsevat tietokantaa CRUD toiminnoilla olioill
 Security-kerros autentikoi, auktorisoi ja valvoo CORS-säännöksiä. 
 Tietokanta-kerros tallentaa kaikki tiedot. 
 
-Järjestely:
-    Model: Entiteetit
-    Service: Toiminnot
-    Controller: REST-kontrollerit
-    SecurityConfig: autentikaatio ja auktorisaatio
-
-Kommentointi:
-    Kommentointi suoraan koodin pätkän eteen. 
+#### Järjestely:
+- Model: Entiteetit
+- Service: Toiminnot
+- Controller: REST-kontrollerit
+- SecurityConfig: autentikaatio ja auktorisaatio
 
 ## Testaus
 
