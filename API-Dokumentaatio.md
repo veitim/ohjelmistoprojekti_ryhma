@@ -245,18 +245,13 @@ Result: 200 OK
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput
 * Body: 
 
-        {
-            "paikka": "Helsinki",
-            "tila": true,
-            "tapahtuma": {
-                "tapahtuma_id": 1
-            },
-            "lipputyyppi": {
-                "tyyppi_id": 1
+            {
+                "lipputyyppi": {
+                    "tyyppi_id": 7
+                }
             }
-        }
 
-* Pakolliset arvot: "tapahtuma", "lipputyyppi"
+* Pakolliset arvot: "tapahtuma", "lipputyyppi" (olemassa olevat lipputyypit pitää tarkastaa)
 * Result: 201 Created
 
         {
