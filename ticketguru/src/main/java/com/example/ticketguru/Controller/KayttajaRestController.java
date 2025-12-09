@@ -129,21 +129,12 @@ public class KayttajaRestController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Ei valtuuksia");
         }
 
-        // esim. ROLE_ADMIN tai ROLE_USER
-        String authority = auth.getAuthorities()
+        boolean isAdmin = auth.getAuthorities()
                 .stream()
-                .findFirst()
-                .map(a -> a.getAuthority())
-                .orElse("ROLE_USER");
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
 
         Map<String, String> response = new HashMap<>();
-        
-        // pudotetaan "ROLE_" pois ja lähetetään frontille siisti rooli
-        if (authority.equals("ROLE_ADMIN")) {
-            response.put("role", "admin");
-        } else {
-            response.put("role", "user");
-        }
+        response.put("role", isAdmin ? "admin" : "user");
 
         return response;
     }
