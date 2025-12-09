@@ -240,7 +240,7 @@ Ensiksi kloonaa projekti
 Backend osoitteesta: https://github.com/veitim/ohjelmistoprojekti_ryhma.git
 Frontend osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Frontend.git
 
-### Järjestelmän kehitysympäristö
+### Järjestelmän kehitysympäristö - Backend
 
 - Vaatimukset:
  - Maven 4.0.0 
@@ -267,7 +267,7 @@ Frontend osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Frontend.git
       spring.profiles.active=dev
       spring.data.rest.base-path=/api
 
-### Järjestelmän tuotantoympäristö
+### Järjestelmän tuotantoympäristö - Backend
 
 - Vaatimukset:
  - Maven 4.0.0 
@@ -309,6 +309,31 @@ Sovelluksen dockerfile:
     ENTRYPOINT ["java", "-jar", "/opt/app/app.jar"]
 
 * Tätä tarvitaan, kun halutaan tehdä ajettava versio ohjelmasta.
+
+* Ympäristö tarvitseem myös 
+
+### Järjestelmän Frontend
+
+Kloonaa frontend osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Frontend.git
+
+* Asenna vaaditut kirjastot komennolla:
+
+      npm install
+
+* Käynnistä sovellus komennolla:
+
+      npm run dev
+
+* Sovellus käynnistyy osoitteeseen:
+
+      http://localhost:5174/
+
+* Tai:
+
+      http://localhost:5173/
+
+* Frontendi tekee pyynnöt rahtipalvelussa olevaan sovellukseen.
+* Jos halutaan kehitysympäristöön, pitää koodista käytdä muuttamassa api-kutsujen osoitteet vastaamaan lokaalia osoitetta (oletuksena "localhost:8080"). 
 
 ## Käynnistys- ja käyttöohje
 
