@@ -39,7 +39,7 @@ public class Myynti {
     private LocalDate paivamaara;
     
     @NotBlank(message = "Maksutapa ei voi olla tyhjä")
-    @Size(min = 5, max = 50, message = "Maksutavan pituus 5-50 merkkiä")
+    @Size(min = 1, max = 50, message = "Maksutavan pituus 1-50 merkkiä")
     @Column(length = 50)
     private String maksutapa;
 
