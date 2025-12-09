@@ -19,9 +19,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.ticketguru.Controller.LippuRestController;
+import com.example.ticketguru.Service.LippuService;
 import com.example.ticketguru.model.Lippu;
 import com.example.ticketguru.model.LippuRepository;
-import com.example.ticketguru.Service.LippuService;
 
 class LippuRestControllerTest {
 
@@ -42,7 +42,7 @@ class LippuRestControllerTest {
         lippu.setLippu_id(1L);
         lippu.setPaikka("A1");
         lippu.setKaytetty(false);
-        lippu.setKoodi("ABC123");
+        lippu.setKoodi("ABC12311");
     }
 
     // ✅ 1: lipun haku ID:llä onnistuu

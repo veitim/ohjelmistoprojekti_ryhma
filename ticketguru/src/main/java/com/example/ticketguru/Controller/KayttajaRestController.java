@@ -45,8 +45,6 @@ public class KayttajaRestController {
             this.postinumeroRepository = postinumeroRepository;
         }
     
-
-
     @GetMapping
     public List<Kayttaja> getAllKayttajat() {
         return (List<Kayttaja>) kayttajaRepository.findAll();
@@ -124,30 +122,29 @@ public class KayttajaRestController {
         return errors;
     }
 
-    
-@GetMapping("/auth/check")
-public Map<String, String> checkAuth(Authentication auth) {
+    @GetMapping("/auth/check")
+    public Map<String, String> checkAuth(Authentication auth) {
 
-    if (auth == null) {
-        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Ei valtuuksia");
+        if (auth == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Ei valtuuksia");
+        }
+
+        // esim. ROLE_ADMIN tai ROLE_USER
+        String authority = auth.getAuthorities()
+                .stream()
+                .findFirst()
+                .map(a -> a.getAuthority())
+                .orElse("ROLE_USER");
+
+        Map<String, String> response = new HashMap<>();
+        
+        // pudotetaan "ROLE_" pois ja lähetetään frontille siisti rooli
+        if (authority.equals("ROLE_ADMIN")) {
+            response.put("role", "admin");
+        } else {
+            response.put("role", "user");
+        }
+
+        return response;
     }
-
-    // esim. ROLE_ADMIN tai ROLE_USER
-    String authority = auth.getAuthorities()
-            .stream()
-            .findFirst()
-            .map(a -> a.getAuthority())
-            .orElse("ROLE_USER");
-
-    Map<String, String> response = new HashMap<>();
-    
-    // pudotetaan "ROLE_" pois ja lähetetään frontille siisti rooli
-    if (authority.equals("ROLE_ADMIN")) {
-        response.put("role", "admin");
-    } else {
-        response.put("role", "user");
-    }
-
-    return response;
-}
 }
