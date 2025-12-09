@@ -240,8 +240,22 @@ järjestelmän kehitysympäristö: miten järjestelmän kehitysympäristön sais
 järjestelmän asentaminen tuotantoympäristöön: miten järjestelmän saisi asennettua johonkin uuteen ympäristöön.
 
 Asennusohjeesta tulisi ainakin käydä ilmi, miten käytettävä tietokanta ja käyttäjät tulee ohjelmistoa asentaessa määritellä (käytettävä tietokanta, käyttäjätunnus, salasana, tietokannan luonti yms.).
+
+
 ## Käynnistys- ja käyttöohje
 
-Tyypillisesti tässä riittää kertoa ohjelman käynnistykseen tarvittava URL sekä mahdolliset kirjautumiseen tarvittavat tunnukset. Jos järjestelmän käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimintajärjestykseen liittyviä asioita, nekin kerrotaan tässä yhteydessä.
+Projektissa tehty frontend clientti voin käydä hakemassa osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Frontend
 
-Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat järjestelmän pariin !
+* Kun on git clone suoritettu omaan kehitysympäristöön ja "npm run dev" komennolla käynnistää clientin. "huom. mahdolisesti pitää ajaa 'npm install' komento ennen käynnistystä"
+
+### Käyttäjätunnukset:
+
+* Käyttäjä: "admin" Salasana: "admin" = admin oikeudet
+* Käyttäjä: "user" Salasana: "user" = user oikeudet
+
+Sovelluksen backend löytyy seuraavasta osoitteesta: https://ticketguru-git-ticketguru.2.rahtiapp.fi/
+
+### Käyttäjätunnukset:
+
+* Käyttäjä: "admin" Salasana: "admin" = admin oikeudet
+* Käyttäjä: "user" Salasana: "user" = user oikeudet
