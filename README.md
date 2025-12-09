@@ -206,11 +206,13 @@ API-dokumentaatio löytyy toisesta tiedostosta, jonka pääsee lukemaan [tästä
 ## Tekninen kuvaus
 
 Spring Bootilla toteutettu sovellus, jossa käytetään RESTia backendin ja frontendin kommunikoinnissa. Frontend toimii erillisenä React-projektina. React kommunikoi RESTin kanssa ja tallentaa tapahtumat MySQL. 
-#### Käytetyt teknologiat: 
+#### Käytetyt teknologiat:
+- Maven 4.0.0 
 - Java 17
 - Spring Boot 3.5.5
 - React 19.2.0
 - MySQL 8.0.17
+- h2
 
 React toimii käyttäjän selaimessa, eli näyttää myyntinäkymän ja tekee REST-kutsuja.
 REST vastaanottaa pyynnöt ja syöttäää ne Service-kerrokselle.
@@ -233,9 +235,15 @@ Testaukseen käytettävät teknologiat: JUnit, Mockito, Spring Data JPA, Spring 
 
 ## Asennustiedot
 
+Ensiksi kloonaa projekti
+
+Backend osoitteesta: https://github.com/veitim/ohjelmistoprojekti_ryhma.git
+Frontend osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Frontend.git
+
 ### Järjestelmän kehitysympäristö
 
 - Vaatimukset:
+ - Maven 4.0.0 
  - Java 17
  - Spring Boot 3.5.5
  - h2
@@ -260,6 +268,12 @@ Testaukseen käytettävät teknologiat: JUnit, Mockito, Spring Data JPA, Spring 
       spring.data.rest.base-path=/api
 
 ### Järjestelmän tuotantoympäristö
+
+- Vaatimukset:
+ - Maven 4.0.0 
+ - Java 17
+ - Spring Boot 3.5.5
+ - MySQL 8.0.17
 
 * application-prod.properties säädöt mySql tietokantaa varten.
   
