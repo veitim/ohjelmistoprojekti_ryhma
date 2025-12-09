@@ -296,13 +296,18 @@ Result: 200 OK
 
 * URL: https://ticketguru-git-ticketguru.2.rahtiapp.fi/api/liput/{id}
 * Body:
-
-        {
-            "kaytetty": true
-        }
+        
+            {    
+                "kaytetty": true,
+                "lipputyyppi": 
+                {
+                    "tyyppi_id": 4
+                }
+            }
 
 * Response: 200 OK
 * Tämä asettaa false tilan trueksi (eli lippu käytetty)
+* Validoinnit haluavat lipuntyypin mukaan!
 
 ### Poista lippu
 
