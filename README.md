@@ -88,6 +88,14 @@ Asiakas haluaa voida ostaa lippunsa myös sähköisenä (esim. mobiililippuna), 
 
 Lipuntarkastaja haluaa, että järjestelmä ilmoittaa heti jos lippu on jo käytetty, jotta väärinkäytökset voidaan estää nopeasti.
 
+### Tarina 10
+
+Asiakas haluaa voida tarkastella tapahtumia ja niiden tietoja.
+
+### Tarina 11
+
+Lipunmyyjä haluaa pystyä myymään lippuja asiakkaalle myyntipisteessä
+
 ## Käyttöliittymä
 
 ![kayttoliittyma](images/Käyttöliittymäkaava.png)
