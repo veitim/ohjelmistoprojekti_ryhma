@@ -338,18 +338,16 @@ Kloonaa frontend osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Fronte
 
 ## Käynnistys- ja käyttöohje
 
-Projektissa tehty frontend clientti voin käydä hakemassa osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Frontend
+Kun frontend on asennettuna, niin,
 
-* Kun on git clone suoritettu omaan kehitysympäristöön ja "npm run dev" komennolla käynnistää clientin. "huom. mahdolisesti pitää ajaa 'npm install' komento ennen käynnistystä"
-
-### Käyttäjätunnukset:
+### Frontend: Kirjautumistiedot:
 
 * Käyttäjä: "admin" Salasana: "admin" = admin oikeudet
 * Käyttäjä: "user" Salasana: "user" = user oikeudet
 
 Sovelluksen backend löytyy seuraavasta osoitteesta: https://ticketguru-git-ticketguru.2.rahtiapp.fi/
 
-### Käyttäjätunnukset:
+### Backend: Kirjautumistiedot:
 
 * Käyttäjä: "admin" Salasana: "admin" = admin oikeudet
 * Käyttäjä: "user" Salasana: "user" = user oikeudet
