@@ -25,7 +25,6 @@ import com.example.ticketguru.model.LippuTyyppiRepository;
 
 import jakarta.validation.Valid;
 
-
 @RestController
 @RequestMapping("api/lipputyypit")
 public class LipputyyppiRestController {

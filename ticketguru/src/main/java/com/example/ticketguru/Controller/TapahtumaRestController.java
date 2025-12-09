@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ticketguru.model.LippuTyyppi;
 import com.example.ticketguru.model.Tapahtuma;
 import com.example.ticketguru.model.TapahtumaRepository;
 
@@ -87,6 +88,32 @@ public class TapahtumaRestController {
                 .map(tapahtuma -> {
                     tapahtumaRepository.delete(tapahtuma);
                     return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("/{id}/lipputyypit")
+    public ResponseEntity<?> updateLipputyypitForTapahtuma(
+            @PathVariable Long id,
+            @RequestBody Map<String, List<LippuTyyppi>> payload) {
+
+        return tapahtumaRepository.findById(id)
+                .map(tapahtuma -> {
+                    List<LippuTyyppi> newTypes = payload.get("lipputyyppi");
+
+                    // Link each lipputyyppi to the tapahtuma
+                    for (LippuTyyppi l : newTypes) {
+                        l.setTapahtuma(tapahtuma);
+                    }
+
+                    // Replace old lipputyypit with new ones
+                    tapahtuma.setLipputyyppi(newTypes);
+
+                    tapahtumaRepository.save(tapahtuma);
+
+                    return ResponseEntity.ok("OK");
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
