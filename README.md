@@ -238,6 +238,7 @@ Testaukseen käytettävät teknologiat: JUnit, Mockito, Spring Data JPA, Spring 
 Ensiksi kloonaa projekti
 
 Backend osoitteesta: https://github.com/veitim/ohjelmistoprojekti_ryhma.git
+
 Frontend osoitteesta: https://github.com/SamuelFizumSemere/Ticket-Frontend.git
 
 ### Järjestelmän kehitysympäristö - Backend
