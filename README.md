@@ -233,16 +233,68 @@ Testaukseen käytettävät teknologiat: JUnit, Mockito, Spring Data JPA, Spring 
 
 ## Asennustiedot
 
-Järjestelmän asennus on syytä dokumentoida kahdesta näkökulmasta:
+### Järjestelmän kehitysympäristö
 
-järjestelmän kehitysympäristö: miten järjestelmän kehitysympäristön saisi rakennettua johonkin toiseen koneeseen
+- Vaatimukset:
+ - Java 17
+ - Spring Boot 3.5.5
+ - h2
 
-Kehitysympäristön voi 
+* application-dev.properties säädöt h2 tietokantaa varten.
+ 
+       spring.application.name=ticketguru
+       spring.datasource.url=jdbc:h2:mem:testdb
+       spring.datasource.driverClassName=org.h2.Driver
+       spring.datasource.username=sa
+       spring.datasource.password=
+       spring.h2.console.enabled=true
+       spring.h2.console.path=/h2-console
+       spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+       spring.jpa.hibernate.ddl-auto=update
+       spring.data.rest.base-path=/api
 
-järjestelmän asentaminen tuotantoympäristöön: miten järjestelmän saisi asennettua johonkin uuteen ympäristöön.
 
-Asennusohjeesta tulisi ainakin käydä ilmi, miten käytettävä tietokanta ja käyttäjät tulee ohjelmistoa asentaessa määritellä (käytettävä tietokanta, käyttäjätunnus, salasana, tietokannan luonti yms.).
+* Kehitysympäristöä varten ohjelmiston "application.properties" tiedostosta pitaa olla aktiivsena "spring.profiles.active=dev"
 
+      spring.profiles.active=dev
+      spring.data.rest.base-path=/api
+
+### Järjestelmän tuotantoympäristö
+
+* application-prod.properties säädöt mySql tietokantaa varten.
+  
+      spring.datasource.url=jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/${DB_NAME}
+      spring.datasource.username=${DB_USER}
+      spring.datasource.password=${DB_PASSWORD}
+      spring.jpa.show-sql=true
+      spring.jpa.generate-ddl=true
+      spring.jpa.hibernate.ddl-auto=update
+      spring.data.rest.base-path=/api
+
+* Tuotantoympäristöä varten ohjelmiston "application.properties" tiedostosta pitaa olla aktiivsena "spring.profiles.active=prod"
+
+      spring.profiles.active=prod
+      spring.data.rest.base-path=/api
+
+Jos sovellusta halutaan ajaa uudessa tuotantoympäristössä, niin seuraavalla dockerfilellä voi tehdä sovelluksesta käytettävän version.
+Sovelluksen dockerfile:
+  
+    FROM eclipse-temurin:17-jdk-focal as builder
+    WORKDIR /opt/app
+    COPY .mvn/ .mvn
+    COPY mvnw pom.xml ./
+    RUN chmod +x ./mvnw
+    RUN ./mvnw dependency:go-offline
+    COPY ./src ./src
+    RUN ./mvnw clean install -DskipTests
+    RUN find ./target -type f -name '*.jar' -exec cp {} /opt/app/app.jar \; -quit
+    
+    FROM eclipse-temurin:17-jre-alpine
+    COPY --from=builder /opt/app/*.jar /opt/app/
+    EXPOSE 8080
+    ENTRYPOINT ["java", "-jar", "/opt/app/app.jar"]
+
+* Tätä tarvitaan, kun halutaan tehdä ajettava versio ohjelmasta.
 
 ## Käynnistys- ja käyttöohje
 
