@@ -490,15 +490,15 @@ Body:
 
 Body:
       
-      {
-          "kayttaja": {
-              "kayttaja_id": 1
-          },
-          "paivamaara": "2025-10-01",
-          "maksutapa": "Käteinen",
-          "summa":
-          "myyntirivit": []
-      }
+        {
+          "kayttaja_id": 1,
+          "maksutapa": "kortti",
+          "kayttaja": {"kayttaja_id": 1},
+          "rivit": [
+            { "tyyppi_id": 2, "maara": 10 },
+            { "tyyppi_id": 5, "maara": 10 }
+          ]
+        }
 
 ### Poista myynti
 
