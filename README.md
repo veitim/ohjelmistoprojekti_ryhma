@@ -233,7 +233,7 @@ Ohjelmaa testataan yksikkö, integraatio ja E2E testeillä. Testejä luodaan tuo
 Testien tavoite on varmentaa ohjelman tai sen osien toiminta, sekä löytää virheet.
 Testaukseen käytettävät teknologiat: JUnit, Mockito, Spring Data JPA, Spring Boot Test, MockMvc.
 
-linkistä tarkemmat tiedot: [TestiDomumentti](TestiDokumentti.md)
+Linkistä tarkemmat tiedot: [TestiDomumentti](TestiDokumentti.md)
 
 ## Asennustiedot
 
