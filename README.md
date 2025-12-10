@@ -17,7 +17,7 @@ Kurssitoteutuksen vetäjät (tuotteenomistajat):
 
 ## Johdanto
 
-Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen, ja lippuihin koodit jotka kuitataan tapahtuman ovella.
+Projektin aiheena on luoda järjestelmä TicketGuru lipunmyyntipalvelulle. Asiakkaana on lipputoimisto, TicketGurun omistaja. Järjestelmältä halutaan mahdollisuus lipunmyyntiin, tapahtumien järjestelyyn, lippujen tulostamiseen ja lippuihin koodit jotka kuitataan tapahtuman ovella.
 
  Järjestelmä toteutetaan Spring Boot ympäristössä.
 
